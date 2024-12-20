@@ -10,8 +10,8 @@ export const Navbar=()=>{
    {/* yha branch wise ya compney wise filter add kr skte hai */}
 
     return (
-        <nav className='bg-pink6 text-white'>
-            <ul className='flex items-center justify-between mx-auto px-4 py-4 container' >
+        <nav className='bg-pink6 text-white sticky top-0 z-50'>
+            <ul className='flex items-center justify-between mx-auto px-4 py-4 container ' >
                 {[
                     {name:"Home",href:"/"},
                     {name:"Search",href:"/search"},

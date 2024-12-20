@@ -1,6 +1,6 @@
 import React from "react";
 
-const Google = () => {
+const BNY= () => {
   return (
     
       <div className="bg-white p-6 rounded-lg shadow-lg max-w-xl w-full hover:scale-105 transition-transform">
@@ -8,12 +8,12 @@ const Google = () => {
         <div className="flex items-center justify-between mb-6">
           <div>
             <img
-              src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg"
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/BNY_logo_2024.svg/330px-BNY_logo_2024.svg.png"
               alt="Google Logo"
               className="w-32"
             />
           </div>
-          <h2 className="text-2xl font-bold text-gray-800">Google</h2>
+          <h2 className="text-2xl font-bold text-gray-800">BNY Mellon</h2>
         </div>
 
         {/* Details Section */}
@@ -52,4 +52,4 @@ const Google = () => {
   );
 };
 
-export default Google;
+export default BNY;

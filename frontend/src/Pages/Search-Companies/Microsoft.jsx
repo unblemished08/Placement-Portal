@@ -2,7 +2,7 @@ import React from "react";
 
 const Microsoft = () => {
   return (
-    <div className="bg-white p-6 rounded-lg shadow-lg max-w-xl w-full">
+    <div className="bg-white p-6 rounded-lg shadow-lg max-w-xl w-full hover:scale-105 transition-transform">
       {/* Logo Section */}
       <div className="flex items-center justify-between mb-6">
         <div>

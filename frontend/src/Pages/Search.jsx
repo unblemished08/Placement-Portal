@@ -1,6 +1,14 @@
 import React from "react";
 import Google from "./Search-Companies/Google";
 import Microsoft from "./Search-Companies/Microsoft";
+import Accenture from "./Search-Companies/Accenture";
+import Adobe from "./Search-Companies/Adobe";
+import JPmorgan from "./Search-Companies/JPmorgan";
+import TCS from "./Search-Companies/TCS";
+import BNY from "./Search-Companies/BNYmellon";
+import Goldman from "./Search-Companies/Goldman";
+import ICICI from "./Search-Companies/ICICI";
+import Visa from "./Search-Companies/VISA";
 
 const Search = () => {
   return (
@@ -38,7 +46,14 @@ const Search = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <Google />
           <Microsoft />
-          {/* Add more company components here */}
+          <Accenture/>
+          <Adobe/>
+          <JPmorgan/>
+          <TCS/>
+          <BNY/>
+          <Goldman/>
+          <ICICI/>
+          <Visa/>
         </div>
       </div>
     </>
