@@ -65,8 +65,8 @@ const StudentSchema = new mongoose.Schema(
         },
         studentImage: {
             type: String,
-            required:true,
-            match: /^(http|https):\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/,
+            // required:true,
+            //match: /^(http|https):\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/,
         },
         isDisabled: {
             type: String,

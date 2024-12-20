@@ -1,16 +1,50 @@
 import React from "react";
-import Google from "./Search-Companies/Google";
-import Microsoft from "./Search-Companies/Microsoft";
-import Accenture from "./Search-Companies/Accenture";
-import Adobe from "./Search-Companies/Adobe";
-import JPmorgan from "./Search-Companies/JPmorgan";
-import TCS from "./Search-Companies/TCS";
-import BNY from "./Search-Companies/BNYmellon";
-import Goldman from "./Search-Companies/Goldman";
-import ICICI from "./Search-Companies/ICICI";
-import Visa from "./Search-Companies/VISA";
+import Accenture from "./Companies";
 
 const Search = () => {
+  const companies = [
+    {
+      src: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg",
+      company_name: "Google",
+      ctc: "63.5 LPA",
+      location: "Hyderabad, Bangalore, Delhi, Noida, Gurgaon",
+      students_placed_yr: "5",
+      cgpa:"8.0",
+      backlog_policy: "No Backlog Allowed",
+      eligible_branches: "CS, IT"
+    },
+    {
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/J_P_Morgan_Logo_2008.svg/450px-J_P_Morgan_Logo_2008.svg.png",
+      company_name: "JPMorgan",
+      ctc: "63.5 LPA",
+      location: "Hyderabad, Bangalore, Delhi, Noida, Gurgaon",
+      students_placed_yr: "3",
+      cgpa:"8.0",
+      backlog_policy: "No Backlog Allowed",
+      eligible_branches: "CS, IT, ECE"
+    },
+    {
+      src: "https://upload.wikimedia.org/wikipedia/commons/6/6e/Adobe_Corporate_logo.svg",
+      company_name: "Adobe",
+      ctc: "63.5 LPA",
+      location: "Hyderabad, Bangalore, Delhi, Noida, Gurgaon",
+      students_placed_yr: "6",
+      cgpa:"8.0",
+      backlog_policy: "No Backlog Allowed",
+      eligible_branches: "CS, IT"
+    },
+    {
+      src: "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg",
+      company_name: "Microsoft",
+      ctc: "63.5 LPA",
+      location: "Hyderabad, Bangalore, Delhi, Noida, Gurgaon",
+      students_placed_yr: "6",
+      cgpa:"8.0",
+      backlog_policy: "No Backlog Allowed",
+      eligible_branches: "CS, IT"
+    }
+  ];
+  
   return (
     <>
       <div className="p-4 bg-gray-100">
@@ -41,19 +75,23 @@ const Search = () => {
             Search
           </button>
         </div>
-
-        {/* Company List */}
+        
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <Google />
-          <Microsoft />
-          <Accenture/>
-          <Adobe/>
-          <JPmorgan/>
-          <TCS/>
-          <BNY/>
-          <Goldman/>
-          <ICICI/>
-          <Visa/>
+        {
+          companies.map((company,index)=>{
+            return <Accenture 
+                    key={index}
+                    src={company.src}
+                    company_name={company.company_name}
+                    ctc={company.ctc} 
+                    location={company.location}
+                    students_placed_yr={company.students_placed_yr}
+                    cgpa={company.cgpa}
+                    backlog_policy={company.backlog_policy}
+                    eligible_branches={company.eligible_branches}
+                    />
+          })
+        }
         </div>
       </div>
     </>

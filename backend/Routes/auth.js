@@ -7,7 +7,7 @@ import {
     signUp
 } from '../Controllers/studentAuthContoller.js';
 
-
+ 
 
 /* Routes */
 router.post('/student/signUp', signUp);
