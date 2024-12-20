@@ -11,14 +11,16 @@ import Signup from "./Pages/SignUp"
 
 function App() {
   return (
+    //every route must be added here if we need to render any sort of component to maintain single page
     <BrowserRouter>
       <Navbar/>
       <Routes>
       <Route path="/" element={<Login/>}/>
-      <Route path="/search" element={<Signup/>}/>
+      <Route path="/search" element={<search/>}/>
       <Route path="/statistics" element={<Statistics/>}/>
       <Route path="/past-records" element={<PastRecord/>} />
       <Route path="about" element={<About/>}/>
+      <Route path="/signup" element={<Signup/>}/>
       </Routes>
     </BrowserRouter>   
   );

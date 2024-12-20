@@ -17,6 +17,7 @@ const Signup = () => {
     studentImage: "",
     password: "",
   });
+  const graterthen4=">4";
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -171,7 +172,7 @@ const Signup = () => {
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
-            <option value=">=4">>=4</option>
+            <option value=">=4">{graterthen4}</option>
           </select>
         </div>
 
