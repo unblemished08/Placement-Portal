@@ -114,6 +114,14 @@ const Home_user=()=>{
             job_role: "Placement, Intern",
           },
     ]
+
+    const user=[{
+      user_name:"Angel Priya",
+      user_cgpa:9,
+      user_branch:"EE",
+      user_batch:"2026",
+    },
+    ]
     
     return(
         <>
@@ -153,7 +161,25 @@ const Home_user=()=>{
 
                     
                 </div>
-                <div className="w-3/12 p-4 m-2 shadow-md rounded-md bg-pink3">user profile </div>
+                <div className="w-3/12 p-4 m-2 shadow-md rounded-md bg-pink3 h-1/2 sticky z-50 top-20">
+                  <div className="flex justify-center">
+                    <h3 className="font-bold"> Profile</h3>
+                  </div>
+                  <div className="flex justify-center h-52 my-4">
+                    <img src="https://www.shutterstock.com/image-vector/no-user-profile-picture-hand-260nw-99335579.jpg" alt="" />
+                  </div>
+                  <div className="text-center">
+                        {user.map((userInfo,index)=>(
+                          <ul key={index} className="space-y-2">
+                            <li className="font-bold text-lg">Name: {userInfo.user_name}</li>
+                            <li className="font-semibold">Cgpa: {userInfo.user_cgpa}</li>
+                            <li className="font-semibold">Branch: {userInfo.user_branch} </li>
+                            <li className="font-semibold">Batch: {userInfo.user_batch}</li>
+                          </ul>
+                        ))}
+                  </div>
+
+                </div>
             </div>
         </>
     )
