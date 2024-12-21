@@ -1,7 +1,7 @@
 import React from "react";
 
-const Accenture= ({
-  src,company_name,ctc,location,students_placed_yr,cgpa,backlog_policy,eligible_branches
+const Companies= ({
+  src,company_name,ctc,location,students_placed_yr,cgpa,backlog_policy,eligible_branches,job_role
 }) => {
   return (
     
@@ -48,10 +48,15 @@ const Accenture= ({
             <span className="font-semibold text-gray-600">Eligible Branches:</span>
             <span className="ml-2 text-gray-800">{eligible_branches}</span>
           </div>
-        
+          <div className="flex items-start">
+            <span className="font-semibold text-gray-600">Job Role:</span>
+            <span className="ml-2 text-gray-800">{job_role}</span>
+          </div>
+          
+          
       </div>
     </div>
   );
 };
 
-export default Accenture;
+export default Companies;
