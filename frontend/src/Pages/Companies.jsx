@@ -1,7 +1,15 @@
 import React from "react";
 
 const Companies= ({
-  src,company_name,ctc,location,students_placed_yr,cgpa,backlog_policy,eligible_branches,job_role
+  src,
+  company_name,
+  ctc,
+  location,
+  students_placed_yr,
+  cgpa,
+  backlog_policy,
+  eligible_branches,
+  job_role
 }) => {
   return (
     

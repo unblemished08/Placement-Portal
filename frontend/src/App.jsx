@@ -11,7 +11,8 @@ import Home_user from "./Pages/Home_user"
 function App() {
   return (
     //every route must be added here if we need to render any sort of component to maintain single page
-    <BrowserRouter>
+    <>
+    {/* // <BrowserRouter> */}
       <Navbar/>
       <Routes>
       <Route path="/" element={<Home_user/>}/>
@@ -21,7 +22,8 @@ function App() {
       <Route path="about" element={<About/>}/>
       <Route path="/signup" element={<Signup/>}/>
       </Routes>
-    </BrowserRouter>   
+    {/* // </BrowserRouter> */}
+    </>   
   );
 }
 
