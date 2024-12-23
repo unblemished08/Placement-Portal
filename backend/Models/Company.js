@@ -103,6 +103,11 @@ const CompanySchema = new mongoose.Schema(
             type:Number,
             required:true,
         },
+        result:{
+            type:String,
+            enum:["Yes","No"],
+            default:"No",
+        },
     },
     {
         timestamps: true,
@@ -134,4 +139,3 @@ CompanySchema.methods.comparePassword = async function (userPassword) {
 const Company = mongoose.model("Company", CompanySchema);
   
 export default Company
-
