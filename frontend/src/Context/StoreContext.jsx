@@ -209,9 +209,87 @@ const StoreContextProvider = (props) => {
             job_role: "Placement, Intern",
           },
     ]
+    
+    const currCompaniesData = [
+      {
+        src: "https://upload.wikimedia.org/wikipedia/commons/4/4a/Logo_2013_Google.png",
+        company_name: "Google",
+        gd: "yes",
+        tech_rounds: 3,
+        hr_rounds: 1,
+      },
+      {
+        src: "https://upload.wikimedia.org/wikipedia/commons/a/a5/Linkedin_Logo.png",
+        company_name: "LinkedIn",
+        gd: "no",
+        tech_rounds: 2,
+        hr_rounds: 1,
+      },
+      {
+        src: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Amazon_logo.svg",
+        company_name: "Amazon",
+        gd: "yes",
+        tech_rounds: 3,
+        hr_rounds: 1,
+      },
+      {
+        src: "https://upload.wikimedia.org/wikipedia/commons/c/c7/Microsoft_logo_%282012%29.svg",
+        company_name: "Microsoft",
+        gd: "no",
+        tech_rounds: 2,
+        hr_rounds: 1,
+      },
+      {
+        src: "https://upload.wikimedia.org/wikipedia/commons/5/51/Accenture.svg",
+        company_name: "Accenture",
+        gd: "yes",
+        tech_rounds: 3,
+        hr_rounds: 2,
+      },
+      {
+        src: "https://upload.wikimedia.org/wikipedia/commons/e/e8/TCS_Logo.svg",
+        company_name: "TCS",
+        gd: "no",
+        tech_rounds: 2,
+        hr_rounds: 1,
+      },
+      {
+        src: "https://upload.wikimedia.org/wikipedia/commons/6/6a/Infosys_logo.svg",
+        company_name: "Infosys",
+        gd: "yes",
+        tech_rounds: 3,
+        hr_rounds: 1,
+      },
+      {
+        src: "https://upload.wikimedia.org/wikipedia/commons/7/73/Wipro_logo.svg",
+        company_name: "Wipro",
+        gd: "no",
+        tech_rounds: 2,
+        hr_rounds: 1,
+      },
+      {
+        src: "https://upload.wikimedia.org/wikipedia/commons/f/f1/Cisco_logo_blue_2016.svg",
+        company_name: "Cisco",
+        gd: "yes",
+        tech_rounds: 3,
+        hr_rounds: 1,
+      },
+      {
+        src: "https://upload.wikimedia.org/wikipedia/commons/e/e3/IBM_logo.svg",
+        company_name: "IBM",
+        gd: "yes",
+        tech_rounds: 3,
+        hr_rounds: 1,
+      },
+    ];
+    
+    
+
+    // all the objects which declared in the context must be created into a single object
     const contextValue = {
         companies,
         UpcomingCompanies,
+        currCompaniesData
     }
   return (
     <StoreContext.Provider value={contextValue}>

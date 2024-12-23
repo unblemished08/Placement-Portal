@@ -103,6 +103,12 @@ const CompanySchema = new mongoose.Schema(
             type:Number,
             required:true,
         },
+        result:{
+            type:String,
+            enum:["Yes","No"],
+            default:"No",
+            required:true
+        },
     },
     {
         timestamps: true,
