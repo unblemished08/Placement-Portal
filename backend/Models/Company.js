@@ -2,78 +2,78 @@ import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
 import JWT from "jsonwebtoken";
 
-const StudentSchema = new mongoose.Schema(
-    {
-        name: {
+const CompanySchema = new mongoose.Schema(
+    { 
+        name: { //comapny name
             type: String,
             required: true,
             trim: true,
         },
-        rollNo:{
+        ctc:{ //ctc/stipend
             type:String,
             required:true,
-            unique: true,
         },
-        personal_email:{
+        job_id:{ //jobID
+            type:String,
+        },
+        email:{  //email HR //dont display
             type:String,
             required: true,
             match: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
             lowercase: true,
         },
-        college_email:{
-            type:String,
-            required: true,
-            match: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
-            lowercase: true,
-        },
-        phoneNumber:{
+        phoneNumber:{  //phn HR //dont display
             type: String,
             required: true,
             match: /^\d{10}$/,
         },
-        gender: {
+        gender: { //gender eligible
             type: String,
             required:true,
-            enum: ["Male", "Female"], 
+            enum: ["Only Female" ,"Both"], 
         },
-        batch: {
-            type: String,
+        batch: { //batch eligible
+            type: [String],
             required:true,
         },
-        cgpa:{
+        cgpa:{ //cgpa above
             type:Number,
             required: true,
             min: 0.0,
             max: 10.0,
         },
-        backlogs: {
+        backlogs: { //backlog allowed
             type: String,
             enum: ["Nil", "1", "2","3",">=4"],
             required: true,
         },
-        branch: {
-            type: String,
+        branch: { //branch allowed
+            type: [String],
             enum: ["CS", "IT", "ECE","EE","MECH","CIVIL","PIE"],
             required: true,
         },
-        familyIncome: {
-            type: String,
-            enum: ["<1Lac", ">=1Lac", ">=5Lac"],
+        location: { //job location
+            type: [String],
             required: true,
         },
-        category: {
-            type: String,
-            enum: ["Gen", "OBC", "SC/ST","PWD"],
+        job_profile: { //job profile
+            type: [String],
+            enum: ["Full Time", "Project", "Research Intern/Project"],
             required: true,
         },
-        studentImage: {
+        companyImage: {
             type: String,
             // required:true,
             //match: /^(http|https):\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/,
         },
-        isDisabled: {
+        last_date:{
+            type:Date,
+            required: true,
+        },
+        isBonus: {
             type: String,
             enum: ["Yes", "No"],
+            default: "No",
             required:true,
         },
         password:{
@@ -85,7 +85,11 @@ const StudentSchema = new mongoose.Schema(
             type:String,
             enum:["Yes","No"],
             default:"No",
-        }
+        },
+        isDeleted: { //soft delete //no display
+            type: Boolean,
+            default: false,
+        },
     },
     {
         timestamps: true,
@@ -93,7 +97,7 @@ const StudentSchema = new mongoose.Schema(
 );
 
 // middelwares
-StudentSchema.pre("save", async function (next) {
+CompanySchema.pre("save", async function (next) {
     if (!this.isModified("password")) return next();
     const salt = await bcrypt.genSalt(10);
     this.password = await bcrypt.hash(this.password, salt);
@@ -102,19 +106,19 @@ StudentSchema.pre("save", async function (next) {
 
   
 //compare password
-StudentSchema.methods.comparePassword = async function (userPassword) {
+CompanySchema.methods.comparePassword = async function (userPassword) {
     const isMatch = await bcrypt.compare(userPassword, this.password);
     return isMatch;
 };
   
   //JSON WEBTOKEN
-  StudentSchema.methods.createJWT = function () {
+  CompanySchema.methods.createJWT = function () {
     return JWT.sign({ userId: this._id }, process.env.JWT_SECRET_KEY, {
       expiresIn: "1d",
     });
   };
   
-const Student = mongoose.model("Student", StudentSchema);
+const Company = mongoose.model("Company", CompanySchema);
   
-export default Student
+export default Company
 
