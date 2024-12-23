@@ -90,6 +90,19 @@ const CompanySchema = new mongoose.Schema(
             type: Boolean,
             default: false,
         },
+        group_disscussion:{
+            type:Boolean,
+            required:true,
+            default: false,
+        },
+        tech_rounds:{
+            type:Number,
+            required:true,
+        },
+        hr_rounds:{
+            type:Number,
+            required:true,
+        },
     },
     {
         timestamps: true,
