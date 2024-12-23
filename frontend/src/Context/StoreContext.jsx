@@ -283,13 +283,41 @@ const StoreContextProvider = (props) => {
       },
     ];
     
+    const resultdata = [
+        {
+          src: "https://upload.wikimedia.org/wikipedia/commons/4/4a/Logo_2013_Google.png",
+          company_name: "Google",
+          result: "Yes",
+        },
+        {
+          src: "https://upload.wikimedia.org/wikipedia/commons/a/a5/Linkedin_Logo.png",
+          company_name: "LinkedIn",
+          value: "No",
+        },
+        {
+          src: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg",
+          company_name: "Apple",
+          value: "Yes",
+        },
+        {
+          src: "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg",
+          company_name: "Microsoft",
+          value: "No",
+        },
+        {
+          src: "https://upload.wikimedia.org/wikipedia/commons/d/d4/Amazon_icon.png",
+          company_name: "Amazon",
+          value: "Yes",
+        },
+    ];
     
 
     // all the objects which declared in the context must be created into a single object
     const contextValue = {
         companies,
         UpcomingCompanies,
-        currCompaniesData
+        currCompaniesData,
+        resultdata,
     }
   return (
     <StoreContext.Provider value={contextValue}>
