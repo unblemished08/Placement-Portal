@@ -1,6 +1,6 @@
 import React from "react";
 
-const Home_Companies= ({
+const UpComing_Companies= ({
     last_date,cgpa,src,company_name,eligible_branches,location,ctc,job_role
 }) => {
   return (
@@ -59,4 +59,4 @@ const Home_Companies= ({
   );
 };
 
-export default Home_Companies;
+export default UpComing_Companies;
