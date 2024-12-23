@@ -16,7 +16,7 @@ export const Navbar=()=>{
                     {name:"Home",href:"/"},
                     {name:"Search",href:"/search"},
                     {name:"Statistics",href:"/statistics"},
-                    {name:"Past Record",href:"/past-record"},
+                    {name:"My Profile",href:"/myprofile"},
                     {name:"About",href:"/about"},
                 ].map((item,index)=>(
                     <li

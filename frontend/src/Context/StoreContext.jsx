@@ -1,4 +1,4 @@
-import React, { createContext, useContext } from 'react'
+import React, { createContext, useContext, useEffect, useState } from 'react'
 
 export const StoreContext = createContext(null);
 
@@ -94,7 +94,7 @@ const StoreContextProvider = (props) => {
           job_role:"Placement, Intern"
         }
       ];
-      
+
     //   api req for upcoming companies will be made here
       const UpcomingCompanies=
     [
@@ -210,6 +210,35 @@ const StoreContextProvider = (props) => {
           },
     ]
     
+
+    // api req for userProfile
+    const [userData,setUserData] = useState({name:"Meetha",
+      rollNo:"69",
+      personal_email:"meetha@gmail.com",
+      college_email:"maimeetha@gmail.com",
+      phoneNumber:"6969696969",
+      gender:"Rainbow",
+      batch:"2022-26",
+      cgpa:"6.9",
+      backlogs:"Yes",
+      branch:"IT",
+      familyIncome:"69",
+      category:'XYZ',
+      studentImage:null,
+      isDisabled:"No",
+      password:"maimeethahu",
+      approved:"No",});
+
+      
+    // api req for updating user's data
+    const [isChange,setIsChange] = useState(true);
+    useEffect(()=>{
+      // req for changing the data -> send {userData} in the request
+      setIsChange(false);
+    },[isChange]);
+
+
+
     const currCompaniesData = [
       {
         src: "https://upload.wikimedia.org/wikipedia/commons/4/4a/Logo_2013_Google.png",
@@ -318,6 +347,9 @@ const StoreContextProvider = (props) => {
         UpcomingCompanies,
         currCompaniesData,
         resultdata,
+        setUserData,
+        setIsChange,
+        userData,
     }
   return (
     <StoreContext.Provider value={contextValue}>
