@@ -70,7 +70,7 @@ const CompanySchema = new mongoose.Schema(
             type:Date,
             required: true,
         },
-        isBonus: {
+        isBonus: { //admin
             type: String,
             enum: ["Yes", "No"],
             default: "No",
@@ -81,12 +81,12 @@ const CompanySchema = new mongoose.Schema(
             required:true,
             select: false,
         },
-        approved:{
+        approved:{//admin
             type:String,
             enum:["Yes","No"],
             default:"No",
         },
-        isDeleted: { //soft delete //no display
+        isDeleted: { //soft delete //no display//admin
             type: Boolean,
             default: false,
         },
@@ -103,7 +103,7 @@ const CompanySchema = new mongoose.Schema(
             type:Number,
             required:true,
         },
-        result:{
+        result:{//admin
             type:String,
             enum:["Yes","No"],
             default:"No",

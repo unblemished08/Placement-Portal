@@ -45,61 +45,59 @@ export const login1 = async (req, res, next) => {
   if (!companyImage) 
     next("Company image is required");
 
-  if (!isDisabled) 
-    next("Disability status is required");
+  if (!last_date) 
+    next("last_date is required");
 
   if (!password) 
     next("Password is required");
 
-  try {
-    const studentExist = await Student.findOne({ rollNo });
+  if (!group_disscussion) 
+    next("group_disscussion is required");
 
-    if (studentExist) {
-      next("Roll No. already exists");
+  if (!tech_rounds) 
+    next("tech_rounds is required");
+
+  if (!hr_rounds) 
+    next("last_date is required");
+
+  try {
+    const companyExist = await Company.findOne({ name,job_id });
+
+    if (companyExist) {
+      next("Company with JOB ID already exists");
       return;
     }
 
-    const newstudent = await Student.create({
-        name,
-        rollNo,
-        personal_email,
-        college_email,
-        phoneNumber,
-        gender,
-        batch,
-        cgpa,
-        backlogs,
-        branch,
-        familyIncome,
-        category,
-        studentImage,
-        isDisabled,
-        password
+    const newcompany = await Company.create({
+        name,ctc, job_id,email,phoneNumber,gender,batch,cgpa,backlogs,branch,location,job_profile,companyImage,last_date,password,group_disscussion,tech_rounds,hr_rounds
     });
 
     // user token
-    const token = await newstudent.createJWT();
+    const token = await newcompany.createJWT();
 
     res.status(201).send({
       success: true,
       message: "Account created successfully",
-      newstudent: {
-        _id: newstudent._id,
-        name: newstudent.name,
-        rollNo: newstudent.rollNo,
-        personal_email: newstudent.personal_email,
-        college_email: newstudent.college_email,
-        phoneNumber: newstudent.phoneNumber,
-        gender: newstudent.gender,
-        batch: newstudent.batch,
-        cgpa: newstudent.cgpa,
-        backlogs: newstudent.backlogs,
-        branch: newstudent.branch,
-        familyIncome: newstudent.familyIncome,
-        category: newstudent.category,
-        studentImage: newstudent.studentImage,
-        isDisabled: newstudent.isDisabled,
-        password: newstudent.password
+      newcompany: {
+        _id: newcompany._id,
+        name: newcompany.name,
+        ctc: newcompany.ctc,
+        job_id: newcompany.job_id,
+        email: newcompany.email,
+        phoneNumber: newcompany.phoneNumber,
+        gender: newcompany.gender,
+        batch: newcompany.batch,
+        cgpa: newcompany.cgpa,
+        backlogs: newcompany.backlogs,
+        branch: newcompany.branch,
+        location: newcompany.location,
+        job_profile: newcompany.job_profile,
+        companyImage: newcompany.companyImage,
+        last_date: newcompany.last_date,
+        password: newcompany.password,
+        group_disscussion: newcompany.group_disscussion,
+        tech_rounds: newcompany.tech_rounds,
+        hr_rounds: newcompany.hr_rounds
       },
       token,
     });
