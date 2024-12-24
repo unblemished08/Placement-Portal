@@ -40,7 +40,7 @@ const Home_user = () => {
     <>
       <div className="flex flex-col md:flex-row">
         {/* Left Section */}
-        <div className="w-full md:w-9/12 p-4 m-2 shadow-md bg-pink2 rounded-md my-6">
+        <div className="w-full md:w-9/12 p-4 m-2 shadow-md bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white rounded-md my-6 ">
           {/* Upcoming Companies */}
           <h1 ref={upcomingRef} className="font-bold text-4xl my-8 text-gray-800">Upcoming Companies</h1>
           <div className="w-full flex flex-wrap gap-6">
