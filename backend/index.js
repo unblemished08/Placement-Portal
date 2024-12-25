@@ -4,6 +4,7 @@ import dbConnect from './dbConfig/dbConnection.js';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import authenticationRoutes from './Routes/auth.js';
+import stucomRoutes from "./Routes/stucomRoutes.js";
 
 // Load environment variables
 dotenv.config();
@@ -29,6 +30,7 @@ app.get('/', (req, res) => {
 
   
 app.use('/api/v1/auth', authenticationRoutes);
+app.use("/api/v1/getdata", stucomRoutes);
 
 // Start server
 const PORT = process.env.PORT || 5000;

@@ -15,6 +15,7 @@ const CompanySchema = new mongoose.Schema(
         },
         job_id:{ //jobID
             type:String,
+            required:true,
         },
         email:{  //email HR //dont display
             type:String,

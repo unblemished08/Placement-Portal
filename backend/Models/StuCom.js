@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const PostHolderSchema = new mongoose.Schema(
+const StuComSchema = new mongoose.Schema(
     {
         rollNo: {
             type: String,
@@ -9,15 +9,21 @@ const PostHolderSchema = new mongoose.Schema(
             unique: true,
         },
 
-        post:{
+        name:{
             type:String,
             required: true,
-            enum:["ICC","PCC"],
-        }
+            ref:"Company",
+        },
+
+        job_id:{ 
+            type:String,
+            required:true,
+            ref:"Company",
+        },
     },
     {
         timestamps: true,
     }
 );
 
-export default mongoose.model("PostHolder", PostHolderSchema);
+export default mongoose.model("StuCom", StuComSchema);
