@@ -1,17 +1,15 @@
 import React, { useContext, useState } from "react";
-import Companies from "./Companies";
+import Companies from "./search_componets/Companies";
 import {StoreContext} from "../Context/StoreContext";
-
+import CompanyDetails from "./search_componets/Company_detail";
 const Search = () => {
   // detail of every company to be inserted here
   const {companies} = useContext(StoreContext);
-  
+  const [selectedCompany,setSelectedCompany]=useState(null)
   //for functionality of search bar
 
   const [query,setQuery]=useState('')//holds input data
-
   const [type,setType]=useState('') //will be used if we specify types of job roles
-
   const [branch,setBranch]=useState("")
 
   const filteredCompanies=companies.filter((company)=>{
@@ -66,12 +64,18 @@ const Search = () => {
             <option value="me">ME</option>
             <option value="pie">PIE</option>
           </select>
-          
         </div>
+
+         <CompanyDetails
+          company={selectedCompany}
+          onClose={()=>setSelectedCompany(null)}
+          />
+
         {/* filtered item to displayt */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredCompanies.length>0?(
           filteredCompanies.map((company,index)=>(
+            <div key={index} onClick={()=>setSelectedCompany(company)}>
              <Companies 
                 key={index}
                 src={company.src}
@@ -84,6 +88,7 @@ const Search = () => {
                 eligible_branches={company.eligible_branches}
                 job_role={company.job_role}
                 />
+                </div>
           ))
         ):(
           <h1>
