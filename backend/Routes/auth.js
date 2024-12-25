@@ -5,7 +5,7 @@ const router = express.Router();
 import {
     login,
     signUp
-} from '../Controllers/studentAuthContoller.js';
+} from '../Controllers/studentAuthController.js';
 
 import {
     login1,

@@ -5,6 +5,7 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import authenticationRoutes from './Routes/auth.js';
 import stucomRoutes from "./Routes/stucomRoutes.js";
+import errorMiddleware from "./Middlewares/errorMiddleware.js";
 
 // Load environment variables
 dotenv.config();
@@ -20,6 +21,8 @@ app.use(
     credentials: true,
   })
 );
+
+app.use(errorMiddleware);
 
 app.get('/', (req, res) => {
     res.json({
