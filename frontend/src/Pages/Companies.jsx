@@ -1,14 +1,14 @@
 import React from "react";
 
 const Companies= ({
-  src,
-  company_name,
+  companyImage,
+  name,
   ctc,
   location,
   students_placed_yr,
   cgpa,
-  backlog_policy,
-  eligible_branches,
+  backlogs,
+  branch,
   job_role
 }) => {
   return (
@@ -18,12 +18,12 @@ const Companies= ({
         <div className="flex items-center justify-between mb-6">
           <div>
             <img
-              src={src}
-              alt="Google Logo"
+              src={companyImage}
+              alt={name}
               className="w-32"
             />
           </div>
-          <h2 className="text-2xl font-bold text-gray-800">{company_name}</h2>
+          <h2 className="text-2xl font-bold text-gray-800">{name}</h2>
         </div>
 
         {/* Details Section */}
@@ -50,11 +50,11 @@ const Companies= ({
           </div>
           <div className="flex items-start">
             <span className="font-semibold text-gray-600">Backlog Policy:</span>
-            <span className="ml-2 text-gray-800">{backlog_policy}</span>
+            <span className="ml-2 text-gray-800">{backlogs}</span>
           </div>
           <div className="flex items-start">
             <span className="font-semibold text-gray-600">Eligible Branches:</span>
-            <span className="ml-2 text-gray-800">{eligible_branches}</span>
+            <span className="ml-2 text-gray-800">{branch}</span>
           </div>
           <div className="flex items-start">
             <span className="font-semibold text-gray-600">Job Role:</span>

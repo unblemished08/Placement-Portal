@@ -1,7 +1,7 @@
 import React from "react";
 
 const UpComing_Companies= ({
-    last_date,cgpa,src,company_name,eligible_branches,location,ctc,job_role
+    last_date,cgpa,companyImage,name,branch,location,ctc,job_role
 }) => {
   return (
     
@@ -11,12 +11,12 @@ const UpComing_Companies= ({
             <div className=" items-center mb-6">
             <div>
                 <img
-                src={src}
-                alt="Google Logo"
+                src={companyImage}
+                alt={name}
                 className="w-32"
                 />
             </div>
-            <h2 className="text-2xl font-bold text-gray-800 my-8 mx-5">{company_name}</h2>
+            <h2 className="text-2xl font-bold text-gray-800 my-8 mx-5">{name}</h2>
         </div>
         </div>
         {/* Details Section */}
@@ -46,7 +46,7 @@ const UpComing_Companies= ({
             
             <div className="flex items-start">
                 <span className="font-semibold text-gray-600">Eligible Branches:</span>
-                <span className="ml-2 text-gray-800">{eligible_branches}</span>
+                <span className="ml-2 text-gray-800">{branch}</span>
             </div>
             <div className="flex items-start">
                 <span className="font-semibold text-gray-600">Job Role:</span>

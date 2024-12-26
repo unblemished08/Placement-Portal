@@ -47,11 +47,11 @@ const Home_user = () => {
             {UpcomingCompanies.map((Company, index) => (
               <UpComing_Companies
                 key={index}
-                src={Company.src}
-                company_name={Company.company_name}
+                companyImage={Company.companyImage}
+                name={Company.name}
                 last_date={Company.last_date}
                 cgpa={Company.cgpa}
-                eligible_branches={Company.eligible_branches}
+                branch={Company.branch}
                 location={Company.location}
                 ctc={Company.ctc}
                 job_role={Company.job_role}
@@ -65,8 +65,8 @@ const Home_user = () => {
             {currCompaniesData.map((company, index) => (
               <Current_Companies
                 key={index}
-                src={company.src}
-                company_name={company.company_name}
+                companyImage={company.companyImage}
+                name={company.name}
                 gd={company.gd}
                 tech_rounds={company.tech_rounds}
                 hr_rounds={company.hr_rounds}
@@ -80,8 +80,8 @@ const Home_user = () => {
             {resultdata.map((company, index) => (
               <Result
                 key={index}
-                src={company.src}
-                company_name={company.company_name}
+                companyImage={company.companyImage}
+                name={company.name}
                 value={company.value}
               />
             ))}

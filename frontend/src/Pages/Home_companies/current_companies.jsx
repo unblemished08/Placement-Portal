@@ -1,8 +1,8 @@
 import React from "react";
 
 const Current_Companies= ({
-     src,
-  company_name,
+  companyImage,
+  name,
   gd, // "yes" or "no"
   tech_rounds, // Number of technical interview rounds
   hr_rounds, // Number of HR interview rounds
@@ -14,13 +14,13 @@ const Current_Companies= ({
         <div className="items-center mb-6">
           <div>
             <img
-              src={src}
-              alt={`${company_name} Logo`}
+              src={companyImage}
+              alt={`${name} Logo`}
               className="w-32"
             />
           </div>
           <h2 className="text-2xl font-bold text-gray-800 my-8 mx-5">
-            {company_name}
+            {name}
           </h2>
         </div>
       </div>

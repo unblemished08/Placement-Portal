@@ -1,7 +1,7 @@
 import React from "react";
 
 const Result= ({
-    src,company_name,value
+    companyImage,name,value
 }) => {
   return (
     
@@ -11,12 +11,12 @@ const Result= ({
             <div className=" items-center mb-6">
             <div>
                 <img
-                src={src}
+                src={companyImage}
                 alt="Google Logo"
                 className="w-32"
                 />
             </div>
-            <h2 className="text-2xl font-bold text-gray-800 my-8 mx-5">{company_name}</h2>
+            <h2 className="text-2xl font-bold text-gray-800 my-8 mx-5">{name}</h2>
         </div>
         </div>
         {/* Details Section */}

@@ -11,6 +11,7 @@ import Home_user from "./Pages/Home_user"
 import MyProfile from "./Pages/MyProfile"
 import { StoreContext } from "./Context/StoreContext"
 import { useContext } from "react"
+import Company from "./Pages/Company"
 function App() {
   const {userData} = useContext(StoreContext);
   return (
@@ -25,6 +26,7 @@ function App() {
       <Route path="about" element={<About/>}/>
       <Route path="/signup" element={<Signup/>}/>
       <Route path="/myprofile" element={<MyProfile {...userData}/>} />
+      <Route path="/company" element={<Company/>} />
       </Routes>
     {/* // </BrowserRouter> */}
     </>   
