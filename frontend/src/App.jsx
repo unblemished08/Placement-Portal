@@ -7,6 +7,7 @@ import About from "./Pages/About"
 import DisplayResult from "./Pages/Results/DisplayResult"
 import DisplayCompanyResult from "./Pages/Results/DisplayCompanyResult"
 import Login from "./Pages/Login"
+import CompanyDetails from "./Pages/search_componets/Company_detail"
 import Search from "./Pages/Search"
 import Signup from "./Pages/Signup"
 import Home_user from "./Pages/Home_user"
@@ -28,6 +29,7 @@ function App() {
       <Route path="/signup" element={<Signup/>}/>
       <Route path="/result" element={<DisplayResult/>}/>
       <Route path="/companyResult" element={<DisplayCompanyResult/>}/>
+      <Route path="/companydetails" element={<CompanyDetails/>}/>
       <Route path="/myprofile" element={<MyProfile {...userData}/>} />
       </Routes>
     {/* // </BrowserRouter> */}
