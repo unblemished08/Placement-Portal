@@ -34,7 +34,7 @@ export const Navbar = () => {
         >
           {[
             { name: "Home", href: "/" },
-            { name: "Search", href: "/search" },
+            { name: "Companies", href: "/companies" },
             { name: "Result", href: "/result" },
             { name: "My Profile", href: "/myprofile" },
             { name: "About", href: "/about" },

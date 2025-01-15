@@ -10,16 +10,16 @@ const result = [
         location: "Hydreabad"
     },
     {
-        name: "Harshit Anand",
-        rollNo: "12213053",
+        name: "Sameer Singh",
+        rollNo: "12213054",
         branch: "IT",
         job_profile: "Intern",
         role: "SDE",
         location: "Hydreabad"
     },
     {
-        name: "Harshit Anand",
-        rollNo: "12213053",
+        name: "Sameer",
+        rollNo: "12213055",
         branch: "IT",
         job_profile: "Intern",
         role: "SDE",

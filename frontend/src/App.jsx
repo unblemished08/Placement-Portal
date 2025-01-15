@@ -7,8 +7,8 @@ import About from "./Pages/About"
 import DisplayResult from "./Pages/Results/DisplayResult"
 import DisplayCompanyResult from "./Pages/Results/DisplayCompanyResult"
 import Login from "./Pages/Login"
-import CompanyDetails from "./Pages/search_componets/Company_detail"
-import Search from "./Pages/Search"
+import CompanyDetails from "./Pages/Company_Info/Company_detail"
+import Companies from "./Pages/Company_Info/Companies"
 import Signup from "./Pages/Signup"
 import Home_user from "./Pages/Home_user"
 import MyProfile from "./Pages/MyProfile"
@@ -23,7 +23,7 @@ function App() {
       <Navbar/>
       <Routes>
       <Route path="/" element={<Home_user/>}/>
-      <Route path="/search" element={<Search/>}/>
+      <Route path="/companies" element={<Companies/>}/>
       <Route path="/statistics" element={<Statistics/>}/>
       <Route path="/about" element={<About/>}/>
       <Route path="/signup" element={<Signup/>}/>
