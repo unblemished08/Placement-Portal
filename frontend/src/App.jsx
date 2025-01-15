@@ -4,6 +4,8 @@ import {BrowserRouter,Route,Routes} from "react-router-dom"
 const Statistics=()=><h1>Statistics Page</h1>
 const PastRecord=()=><h1>Past record Page</h1>
 import About from "./Pages/About"
+import DisplayResult from "./Pages/Results/DisplayResult"
+import DisplayCompanyResult from "./Pages/Results/DisplayCompanyResult"
 import Login from "./Pages/Login"
 import Search from "./Pages/Search"
 import Signup from "./Pages/Signup"
@@ -22,8 +24,10 @@ function App() {
       <Route path="/" element={<Home_user/>}/>
       <Route path="/search" element={<Search/>}/>
       <Route path="/statistics" element={<Statistics/>}/>
-      <Route path="about" element={<About/>}/>
+      <Route path="/about" element={<About/>}/>
       <Route path="/signup" element={<Signup/>}/>
+      <Route path="/result" element={<DisplayResult/>}/>
+      <Route path="/companyResult" element={<DisplayCompanyResult/>}/>
       <Route path="/myprofile" element={<MyProfile {...userData}/>} />
       </Routes>
     {/* // </BrowserRouter> */}
