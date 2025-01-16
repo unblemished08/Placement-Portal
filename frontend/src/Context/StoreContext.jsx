@@ -407,6 +407,52 @@ const StoreContextProvider = (props) => {
       password:"maimeethahu",
       approved:"No",});
 
+      // api req for the result of all copnies whose declared till now
+      const result = [
+        {
+            name: "Harshit Anand",
+            rollNo: "12213053",
+            branch: "IT",
+            job_profile: "Intern",
+            role: "SDE",
+            location: "Hydreabad"
+        },
+        {
+            name: "Sameer Singh",
+            rollNo: "12213054",
+            branch: "IT",
+            job_profile: "Intern",
+            role: "SDE",
+            location: "Hydreabad"
+        },
+        {
+            name: "Sameer",
+            rollNo: "12213055",
+            branch: "IT",
+            job_profile: "Intern",
+            role: "SDE",
+            location: "Hydreabad"
+        }
+    ];
+
+    // api req for the copanies whose result is decreald
+    const resultDeclaredCompanies = [
+      {
+        name: 'Google',
+        logo: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg",
+        job_id:"1234",
+      },
+      {
+        name: 'J P Morgan',
+        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/J_P_Morgan_Logo_2008.svg/450px-J_P_Morgan_Logo_2008.svg.png",
+        job_id:"1234",
+      },
+      {
+        name: 'Microsoft',
+        logo: "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg",
+        job_id:"1234",
+      },
+    ];
       
     // api req for updating user's data
     const [isChange,setIsChange] = useState(true);
@@ -529,6 +575,8 @@ const StoreContextProvider = (props) => {
         setUserData,
         setIsChange,
         userData,
+        result,
+        resultDeclaredCompanies,
     }
   return (
     <StoreContext.Provider value={contextValue}>
