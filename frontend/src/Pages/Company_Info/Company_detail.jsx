@@ -1,15 +1,45 @@
-import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
-const CompanyDetails = ({ company, onClose }) => {
+const CompanyDetails = ({ onClose }) => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const company = location.state?.company; // Get company details from navigation state
 
-  // useEffect(() => {
-  //   // Change the route when the component is opened
-  //   navigate("/companydetails");
-  // }, [navigate]);
+  // Handle close button
+  const handleClose = () => {
+    if (onClose) {
+      onClose(); // Call the passed onClose function
+    } else {
+      navigate(-1); // Go back to the previous page if no onClose function is passed
+    }
+  };
 
-  if (!company) return null; // Do not render if no company is selected
+  // Handle Result Navigation
+  const handleResultNavigation = () => {
+    navigate(`/companydetails/${company.job_id}/results`);
+  };
+
+  // Handle Apply Now Navigation
+  const handleApplyNow = () => {
+    navigate(`/companydetails/${company.job_id}/apply`);
+  };
+
+  if (!company) {
+    return (
+      <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex justify-center items-center z-10">
+        <div className="bg-white w-4/5 h-4/5 rounded-lg p-8 shadow-xl flex flex-col justify-center items-center">
+          <h1 className="text-2xl font-bold text-gray-700 mb-4">No Company Selected</h1>
+          <button
+            className="px-4 py-2 bg-purple-500 text-white rounded-lg shadow-md hover:bg-purple-600"
+            onClick={() => navigate(-1)}
+          >
+            Go Back
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex justify-center items-center z-10">
@@ -20,18 +50,16 @@ const CompanyDetails = ({ company, onClose }) => {
         }}
       >
         {/* Close Button */}
-        <button
-          className="absolute top-4 right-4 text-red-500 text-lg font-bold hover:text-red-700 transition-all"
-          onClick={onClose}
-        >
-          ✕
-        </button>
+        
+  <button
+    className="sticky top-4 float-right ml-auto text-red-500 text-lg font-bold hover:text-red-700 transition-all"
+    onClick={handleClose}
+  >
+    ✕
+  </button>
 
         {/* Header Section */}
-        <div className="flex justify-between items-center mb-8 my-10 mx-10">
-          {/* Company Name */}
-          
-
+        <div className="flex flex-wrap justify-between items-center mb-8 my-10 mx-10">
           {/* Company Image */}
           {company.companyImage && (
             <img
@@ -40,7 +68,7 @@ const CompanyDetails = ({ company, onClose }) => {
               className="w-40 h-40 object-contain rounded-md shadow-md"
             />
           )}
-          <h2 className="text-4xl font-extrabold text-gray-800">
+          <h2 className="text-4xl font-extrabold text-gray-800 mt-4 md:mt-0">
             {company.name}
           </h2>
         </div>
@@ -93,9 +121,29 @@ const CompanyDetails = ({ company, onClose }) => {
           <p>
             <strong className="font-semibold">Tech Rounds:</strong> {company.tech_rounds}
           </p>
-          <p>
-            <strong className="font-semibold">Results:</strong> {company.result}
-          </p>
+        </div>
+
+        {/* Action Buttons */}
+        <div className="flex flex-wrap items-center justify-start mt-8 space-x-4">
+          {company.result === "Declared" ? (
+            <button
+              className="px-6 py-2 bg-green-500 text-white rounded-lg shadow-md hover:bg-green-600 transition-all"
+              onClick={handleResultNavigation}
+            >
+              View Results
+            </button>
+          ) : company.result === "Pending" ? (
+            <span className="px-6 py-2 bg-yellow-500 text-white rounded-lg shadow-md">
+              Pending
+            </span>
+          ) : (
+            <button
+              className="px-6 py-2 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 transition-all"
+              onClick={handleApplyNow}
+            >
+              Apply Now
+            </button>
+          )}
         </div>
       </div>
     </div>
