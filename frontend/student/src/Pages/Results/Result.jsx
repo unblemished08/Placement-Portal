@@ -4,7 +4,7 @@ const Result=({companies})=>{
 
   const navigate = useNavigate();
 
-  const handleClick = (student) => {
+  const handleClick = () => {
     navigate("/companyResult");
   };
 
