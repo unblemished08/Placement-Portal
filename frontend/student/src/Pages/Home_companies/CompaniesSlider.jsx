@@ -1,0 +1,79 @@
+import React, { useState, useEffect } from "react";
+
+const CompaniesSlider = ({ companies = [] }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    if (!companies.length) return;
+
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % companies.length);
+    }, 3000);
+
+    return () => clearInterval(interval); // Cleanup on unmount
+  }, [companies]);
+
+  if (!companies.length) {
+    return (
+      <div className="text-center text-2xl p-6 text-gray-700">
+        No companies available
+      </div>
+    );
+  }
+
+  const currentCompany = companies[currentIndex];
+
+  return (
+    <div className=" w-screen h-screen flex items-center justify-center bg-gradient-to-r">
+      <div className="relative w-4/5 h-2/3 md:w-3/4 flex flex-col md:flex-row items-center p-10 rounded-sm shadow-lg hover:scale-105 hover:shadow-2xl transition-all duration-500 ease-in-out">
+        
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-1 opacity-80 bg-[url('https://vnis.edu.vn/wp-content/uploads/2024/04/edu-trends.png')] bg-cover bg-center bg-opacity-40"></div>
+        
+        {/* Logo Section */}
+        <div className="w-full md:w-1/3 flex items-center justify-center mb-6 md:mb-0 relative z-10">
+          <img
+            src={currentCompany.companyImage}
+            alt={`${currentCompany.name} Logo`}
+            className="w-48 h-48 object-contain"
+          />
+        </div>
+
+        {/* Details Section */}
+        <div className="w-full md:w-2/3 text-center md:text-left relative z-10">
+          <h2 className="text-4xl font-extrabold mb-4">
+            {currentCompany.name}
+          </h2>
+          <div className="space-y-4">
+            <div className="flex items-center justify-center md:justify-start">
+              <span className="font-semibold text-lg">CTC:</span>
+              <span className="ml-2 text-lg">{currentCompany.ctc}</span>
+            </div>
+            <div className="flex items-center justify-center md:justify-start">
+              <span className="font-semibold text-lg">Locations:</span>
+              <span className="ml-2 text-lg">{currentCompany.location}</span>
+            </div>
+            <div className="flex items-center justify-center md:justify-start">
+              <span className="font-semibold text-lg">Apply until:</span>
+              <span className="ml-2 text-lg">{currentCompany.last_date}</span>
+            </div>
+            <div className="flex items-center justify-center md:justify-start">
+              <span className="font-semibold text-lg">CGPA Required:</span>
+              <span className="ml-2 text-lg">{currentCompany.cgpa}</span>
+            </div>
+            <div className="flex items-start justify-center md:justify-start">
+              <span className="font-semibold text-lg">Eligible Branches:</span>
+              <span className="ml-2 text-lg">{currentCompany.branch}</span>
+            </div>
+            <div className="flex items-center justify-center md:justify-start">
+              <span className="font-semibold text-lg">Job Role:</span>
+              <span className="ml-2 text-lg">{currentCompany.job_role}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default CompaniesSlider;

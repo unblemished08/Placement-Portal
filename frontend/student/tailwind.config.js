@@ -6,6 +6,13 @@ export default {
   ],
   theme: {
     extend: {
+      transformOrigin: {
+        'center': 'center',
+      },
+      rotate: {
+        'y-0': 'rotateY(0deg)',
+        'y-180': 'rotateY(180deg)',
+      },
       colors: {
         pink8:"#590D22",
         pink7:"#800F2F",
@@ -19,6 +26,7 @@ export default {
       },
     },
   },
+  
   plugins: [],
 };
 
