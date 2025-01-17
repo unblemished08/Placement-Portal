@@ -21,7 +21,7 @@ const Company= ({
             <img
               src={companyImage}
               alt={name}
-              className="w-32"
+              className="h-12"
             />
           </div>
           <h2 className="text-2xl font-bold text-gray-800">{name}</h2>
