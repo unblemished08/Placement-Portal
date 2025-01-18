@@ -1,9 +1,43 @@
-import React, { createContext } from 'react'
+import React, { createContext, useState, useEffect } from 'react'
 
 export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
+    // api req for setting company requirements
+    const [CompanyRequirements,setCompanyRequirements] = useState({
+            name : "Google",
+            ctc : "67 LPA",
+            job_id : "MS1298234",
+            email : "hr@google.com",
+            phoneNumber : "1234567890",
+            gender : "Both",
+                // enum: ["Only Female" ,"Both"], 
+            batch : "2022-25",
+            cgpa : 8,
+            backlogs : "Nil",
+                // enum: ["Nil", "1", "2","3",">=4"]
+            branch : ["CS","IT"],
+                // enum: ["CS", "IT", "ECE","EE","MECH","CIVIL","PIE"]
+            location : ["Noida","Banglore"],
+            job_profile : ["Full Time", "Intern"],
+                // enum: ["Full Time", "Project", "Research Intern/Project"]
+            companyImage : "",
+            onlyPWD : false, // this feild is to be added in backend company schema
+            last_date : 12-8-2025,
+            group_disscussion : true,
+            tech_rounds : 2,
+            hr_rounds : 1
+
+    });
     
+    // api req for updating company's requirements
+    const [isChange,setIsChange] = useState(true);
+    useEffect(()=>{
+      // req for changing the data -> send {companyRequirements} in the request
+      setIsChange(false);
+    },[isChange]);
+
+
     // student applied in particular company
     const appliedStudents = [
         {
@@ -47,7 +81,10 @@ const StoreContextProvider = (props) => {
     // all the objects which declared in the context must be created into a single object
     const contextValue = {
         appliedStudents,
-        studentDetails,
+        studentDetails,        
+        CompanyRequirements,
+        setCompanyRequirements,
+
     }
     return (
        <StoreContext.Provider value={contextValue}>
