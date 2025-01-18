@@ -86,7 +86,7 @@ function Home_user() {
         </section> */}
 
         {/* Success Stories Section */}
-        <section className="mt-10 bg-gray-100 py-10">
+        <section className="mt-10 bg-gray-100 py-20 px-40">
           <h2 className="text-2xl font-bold text-center text-gray-800">Alumni Success Stories</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
             <div className="bg-white shadow-lg rounded-lg p-6">

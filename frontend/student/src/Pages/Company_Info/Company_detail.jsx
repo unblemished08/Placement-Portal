@@ -44,9 +44,9 @@ const CompanyDetails = ({ onClose }) => {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex justify-center items-center z-10">
       <div
-        className="bg-white w-4/5 h-4/5 rounded-lg p-8 shadow-xl overflow-y-auto relative border-2 ring-2 ring-purple-400"
+        className="bg-white w-4/5 h-4/5 rounded-lg p-8 shadow-xl overflow-y-auto relative border-2 ring-2 ring-blue-400"
         style={{
-          boxShadow: "0 0 20px 10px rgba(128, 90, 213, 0.5)", // Custom glowing shadow
+          boxShadow: "0 0 20px 10px rgba(61, 104, 232, 0.5)", // Custom glowing shadow
         }}
       >
         {/* Close Button */}

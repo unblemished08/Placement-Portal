@@ -11,7 +11,7 @@ export const Navbar = () => {
   };
 
   return (
-    <nav className="bg-gradient-to-r from-purple-500 to-pink-500 text-white sticky top-0 z-50 shadow-md">
+    <nav className="bg-gradient-to-r from-blue-400 to-blue-900 text-white sticky top-0 z-50 shadow-md">
       <div className="container mx-auto flex items-center justify-between px-6 py-4">
         {/* Logo */}
         <div className="text-2xl font-bold">
@@ -50,8 +50,8 @@ export const Navbar = () => {
                 to={item.href}
                 className={({ isActive }) =>
                   isActive
-                    ? "text-orange-300 font-semibold border-b-2 border-orange-300"
-                    : "hover:text-orange-300 hover:border-b-2 hover:border-orange-300 transition-all"
+                    ? "text-green-300 font-semibold border-b-2 border-green-400"
+                    : "hover:textgreen-400 hover:border-b-2 hover:border-green-400 transition-all"
                 }
               >
                 {item.name}
