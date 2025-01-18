@@ -24,11 +24,10 @@ const CompaniesSlider = ({ companies = [] }) => {
   const currentCompany = companies[currentIndex];
 
   return (
-    <div className=" w-screen h-screen flex items-center justify-center bg-gradient-to-r">
-      <div className="relative w-4/5 h-2/3 md:w-3/4 flex flex-col md:flex-row items-center p-10 rounded-sm shadow-lg hover:scale-105 hover:shadow-2xl transition-all duration-500 ease-in-out">
+    
+      <div className="relative w-4/5 h-4/5 px-10 py-10 rounded-lg bg-gray-200 flex flex-col md:flex-row items-center  shadow-lg hover:scale-105 hover:shadow-2xl transition-all duration-500 ease-in-out">
         
-        {/* Background Image with Overlay */}
-        <div className="absolute inset-1 opacity-80 bg-[url('https://vnis.edu.vn/wp-content/uploads/2024/04/edu-trends.png')] bg-cover bg-center bg-opacity-40"></div>
+      
         
         {/* Logo Section */}
         <div className="w-full md:w-1/3 flex items-center justify-center mb-6 md:mb-0 relative z-10">
@@ -72,7 +71,7 @@ const CompaniesSlider = ({ companies = [] }) => {
           </div>
         </div>
       </div>
-    </div>
+   
   );
 };
 
