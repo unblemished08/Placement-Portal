@@ -3,29 +3,40 @@ import { useContext, useState } from 'react';
 import { StoreContext } from '../../context/StoreContext';
 
 const CompanyRequirements = () => {
-    const { setCompanyRequirements, setIsChange } = useContext(StoreContext);
+    const { CompanyReq, setCompanyReq, setIsChange } = useContext(StoreContext);
 
     const [data, setData] = useState({
-        name: "",
-        ctc: "",
-        job_id: "",
-        email: "",
-        phoneNumber: "",
-        gender: "",
-        batch: "",
-        cgpa: 0,
-        backlogs: "",
-        branch: [],
-        location: "",
-        companyImage: "",
-        job_profile: [],
-        onlyPWD: false,
-        group_disscussion: true,
-        tech_rounds: 2,
-        hr_rounds: 1,
+        name: CompanyReq.name,
+        ctc: CompanyReq.ctc,
+        job_id: CompanyReq.job_id,
+        email: CompanyReq.email,
+        phoneNumber: CompanyReq.phoneNumber,
+        gender: CompanyReq.gender,
+        batch: CompanyReq.batch,
+        cgpa: CompanyReq.cgpa,
+        backlogs: CompanyReq.backlogs,
+        branch: CompanyReq.branch,
+        location: CompanyReq.location,
+        companyImage: CompanyReq.companyImage,
+        job_profile: CompanyReq.job_profile,
+        onlyPWD: CompanyReq.onlyPWD,
+        group_disscussion: CompanyReq.group_disscussion,
+        tech_rounds: CompanyReq.tech_rounds,
+        hr_rounds: CompanyReq.hr_rounds,
     });
+    const [isNewLocationAdding, setIsNewLocationAddinig] = useState(false);
+    const [newLocation, setNewLocation] = useState("");
     const [edit, setEdit] = useState(false);
-    const [see, setSee] = useState(false);
+
+    const handleAddLocation = () => {
+        if (newLocation.trim()) {
+            setData((prev) => ({
+                ...prev,
+                location: [...prev.location, newLocation],
+            }));
+            setNewLocation("");
+        }
+    };
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -37,7 +48,7 @@ const CompanyRequirements = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        setUserData(data);
+        setCompanyReq(data);
         setEdit(false);
         setIsChange(true);
     };
@@ -51,12 +62,12 @@ const CompanyRequirements = () => {
     return (
         <div className="p-6 min-h-screen text-pink8">
             <div className="flex justify-between">
-                <h2 className="text-2xl font-bold mb-4">My Profile</h2>
+                <h2 className="text-2xl font-bold mb-4">Requirements</h2>
                 <div className="flex gap-3">
                     <button
                         className={edit === false ? "h-8 w-8 text-slate-500" : "px-2 py-1 h-10 rounded text-xs bg-pink6 text-white hover:bg-pink7"}
                         onClick={() => setEdit((prev) => !prev)}
-                        title="Edit Details"
+                        title="Edit Requirements"
                     >
                         {
                             edit === false ?
@@ -78,18 +89,20 @@ const CompanyRequirements = () => {
                     </button>
 
                     <div>
-                        <label htmlFor="studentImage">
-                            <img src={data.studentImage
-                                ? URL.createObjectURL(data.studentImage)
+                        <label htmlFor="companyImage">
+                            <img src={data.companyImage
+                                ? URL.createObjectURL(data.companyImage)
                                 : "/images/upload_area.png"}
-                                alt="student image" className="w-28 cursor-pointer"
-                                title="upload profile photo"
+                                alt="company image" className="w-28 cursor-pointer"
+                                title="upload company photo"
                             />
                         </label>
-                        <input onChange={handleImage} type="file" name="studentImage" id='studentImage' hidden required />
+                        <input onChange={handleImage} type="file" name="companyImage" id='companyImage' hidden required />
                     </div>
+
                 </div>
             </div>
+
             <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
@@ -105,6 +118,7 @@ const CompanyRequirements = () => {
                             className={`w-full px-3 py-2 border rounded ${edit ? "border-pink6" : "border-gray-300"}`}
                         />
                     </div>
+
                     <div>
                         <label htmlFor="ctc" className="block font-semibold">CTC: </label>
                         <input
@@ -122,7 +136,7 @@ const CompanyRequirements = () => {
                     <div>
                         <label htmlFor="job_id" className="block font-semibold">Job ID:</label>
                         <input
-                            type="email"
+                            type="text"
                             value={data.job_id}
                             name="job_id"
                             id="job_id"
@@ -132,6 +146,7 @@ const CompanyRequirements = () => {
                             className={`w-full px-3 py-2 border rounded ${edit ? "border-pink6" : "border-gray-300"}`}
                         />
                     </div>
+
                     <div>
                         <label htmlFor="email" className="block font-semibold">Email:</label>
                         <input
@@ -159,6 +174,7 @@ const CompanyRequirements = () => {
                             className={`w-full px-3 py-2 border rounded ${edit ? "border-pink6" : "border-gray-300"}`}
                         />
                     </div>
+
                     <div>
                         <label htmlFor="gender" className="block font-semibold">Gender:</label>
                         {
@@ -180,7 +196,6 @@ const CompanyRequirements = () => {
                         }
                     </div>
 
-
                     <div>
                         <label htmlFor="batch" className="block font-semibold">Batch:</label>
                         <input
@@ -194,6 +209,7 @@ const CompanyRequirements = () => {
                             className={`w-full px-3 py-2 border rounded ${edit ? "border-pink6" : "border-gray-300"}`}
                         />
                     </div>
+
                     <div>
                         <label htmlFor="cgpa" className="block font-semibold">Minimum CGPA:</label>
                         <input
@@ -207,6 +223,7 @@ const CompanyRequirements = () => {
                             className={`w-full px-3 py-2 border rounded ${edit ? "border-pink6" : "border-gray-300"}`}
                         />
                     </div>
+
                     <div>
                         <label htmlFor="backlogs" className="block font-semibold">Backlog:</label>
                         {
@@ -230,6 +247,7 @@ const CompanyRequirements = () => {
                                 </select>
                         }
                     </div>
+
                     <div>
                         <label htmlFor="branch" className="block font-semibold">Branch:</label>
                         {
@@ -255,24 +273,111 @@ const CompanyRequirements = () => {
                                 </select>
                         }
                     </div>
+
                     <div>
-                        <label htmlFor="Location" className="block font-semibold">Locations :</label>
+                        <label htmlFor="job_profile" className="block font-semibold">Locations :</label>
                         <input
                             type="text"
-                            value={data.location}
-                            name="location"
-                            id="location"
+                            value={data.job_profile}
+                            name="job_profile"
+                            id="job_profile"
                             required={edit}
                             readOnly={!edit}
                             onChange={handleChange}
                             className={`w-full px-3 py-2 border rounded ${edit ? "border-pink6" : "border-gray-300"}`}
                         />
                     </div>
+
+                    <div>
+                        <label htmlFor="Location" className="block font-semibold">
+                            Locations :
+                        </label>
+                        {data.location.map((loc, index) => (
+                            <input
+                                key={index}
+                                type="text"
+                                value={loc}
+                                name={`location-${index}`}
+                                readOnly
+                                className="w-full px-3 py-2 border rounded border-gray-300 mb-2"
+                            />
+                        ))}
+
+                        <div className="mt-4">
+                            {edit && data.location.length === 0 ?
+                                isNewLocationAdding === false ?
+                                <button
+                                    onClick={() => setIsNewLocationAddinig(true)}
+                                    className="px-4 py-2 bg-blue-500 text-white rounded"
+                                >
+                                    Add Location
+                                </button>
+                                :
+                                    <div className="mt-2">
+                                        <input
+                                            type="text"
+                                            value={newLocation}
+                                            placeholder="Enter a location"
+                                            onChange={(e) => setNewLocation(e.target.value)}
+                                            className="w-full px-3 py-2 border rounded border-pink6"
+                                        />
+                                        <button
+                                            onClick={handleAddLocation}
+                                            className="mt-2 px-4 py-2 bg-pink-500 text-white rounded"
+                                        >
+                                            Add
+                                        </button>
+                                        <button
+                                            onClick={()=>setIsNewLocationAddinig(false)}
+                                            className="m-2 px-4 py-2 bg-pink-500 text-white rounded"
+                                        >
+                                            Cancel
+                                        </button>
+                                    </div>
+                            :""}
+
+                            {edit && data.location.length > 0 ?
+                                isNewLocationAdding === false ?
+                                <button
+                                    onClick={() => setIsNewLocationAddinig(true)}
+                                    className="px-4 py-2 bg-blue-500 text-white rounded"
+                                >
+                                    Add more Location
+                                </button>
+                                :
+                                    <div className="mt-2">
+                                        <input
+                                            type="text"
+                                            value={newLocation}
+                                            placeholder="Enter a location"
+                                            onChange={(e) => setNewLocation(e.target.value)}
+                                            className="w-full px-3 py-2 border rounded border-pink6"
+                                        />
+                                        <button
+                                            onClick={handleAddLocation}
+                                            className="mt-2 px-4 py-2 bg-pink-500 text-white rounded"
+                                        >
+                                            Add
+                                        </button>
+                                        <button
+                                            onClick={()=>setIsNewLocationAddinig(false)}
+                                            className="m-2 px-4 py-2 bg-pink-500 text-white rounded"
+                                        >
+                                            Cancel
+                                        </button>
+                                    </div>
+                                
+                            :""}
+                        </div>
+
+
+                    </div>
+
                     <div>
                         <label htmlFor="onlyPWD" className="block font-semibold">Is Only PWD Candidates Allowed:</label>
                         {
                             edit === false
-                                ? <p className="w-full px-3 py-2 border rounded border-gray-300">{data.onlyPWD}</p>
+                                ? <p className="w-full px-3 py-2 border rounded border-gray-300">{data.onlyPWD === true ? "Yes" : "No"}</p>
                                 : <select
                                     value={data.onlyPWD}
                                     name="onlyPWD"
@@ -288,11 +393,12 @@ const CompanyRequirements = () => {
                                 </select>
                         }
                     </div>
+
                     <div>
                         <label htmlFor="group_disscussion" className="block font-semibold">Is Group Discussion:</label>
                         {
                             edit === false
-                                ? <p className="w-full px-3 py-2 border rounded border-gray-300">{data.group_disscussion}</p>
+                                ? <p className="w-full px-3 py-2 border rounded border-gray-300">{data.group_disscussion === true ? "Yes" : "No"}</p>
                                 : <select
                                     value={data.group_disscussion}
                                     name="group_disscussion"
@@ -308,6 +414,7 @@ const CompanyRequirements = () => {
                                 </select>
                         }
                     </div>
+
                     <div>
                         <label htmlFor="cgpa" className="block font-semibold">Number of Tech Rounds :</label>
                         <input
@@ -321,6 +428,7 @@ const CompanyRequirements = () => {
                             className={`w-full px-3 py-2 border rounded ${edit ? "border-pink6" : "border-gray-300"}`}
                         />
                     </div>
+
                     <div>
                         <label htmlFor="hr_rounds" className="block font-semibold">Is HR Round:</label>
                         {
@@ -341,6 +449,7 @@ const CompanyRequirements = () => {
                                 </select>
                         }
                     </div>
+
                 </div>
                 {
                     edit ?

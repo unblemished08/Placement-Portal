@@ -14,7 +14,7 @@ const Company= ({
   
   return (
     
-      <div className="bg-white p-6 rounded-lg shadow-lg max-w-xl w-full hover:scale-105 transition-transform">
+      <div className="bg-white p-6 rounded-lg shadow-lg max-w-xl w-full hover:scale-105 transition-transform cursor-pointer">
         {/* Logo Section */}
         <div className="flex items-center justify-between mb-6">
           <div>

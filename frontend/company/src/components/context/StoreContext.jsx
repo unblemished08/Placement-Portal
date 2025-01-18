@@ -4,7 +4,7 @@ export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
     // api req for setting company requirements
-    const [CompanyRequirements,setCompanyRequirements] = useState({
+    const [CompanyReq,setCompanyReq] = useState({
             name : "Google",
             ctc : "67 LPA",
             job_id : "MS1298234",
@@ -16,9 +16,9 @@ const StoreContextProvider = (props) => {
             cgpa : 8,
             backlogs : "Nil",
                 // enum: ["Nil", "1", "2","3",">=4"]
-            branch : ["CS","IT"],
+            branch : ["CS", "IT"],
                 // enum: ["CS", "IT", "ECE","EE","MECH","CIVIL","PIE"]
-            location : ["Noida","Banglore"],
+            location : ["Noida", "Banglore"],
             job_profile : ["Full Time", "Intern"],
                 // enum: ["Full Time", "Project", "Research Intern/Project"]
             companyImage : "",
@@ -81,9 +81,10 @@ const StoreContextProvider = (props) => {
     // all the objects which declared in the context must be created into a single object
     const contextValue = {
         appliedStudents,
-        studentDetails,        
-        CompanyRequirements,
-        setCompanyRequirements,
+        studentDetails,  
+        setIsChange,      
+        CompanyReq,
+        setCompanyReq,
 
     }
     return (
