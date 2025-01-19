@@ -408,7 +408,7 @@ const StoreContextProvider = (props) => {
       password:"maimeethahu",
       approved:"No",});
 
-      // api req for the result of all copnies whose declared till now
+      // api req for the result of all copnies whose result declared till now
     const result = [
         {
             name: "Harshit Anand",
@@ -442,37 +442,28 @@ const StoreContextProvider = (props) => {
         name: "Harshit Anand",
         rollNo: "12213053",
         studentImage:"/images/profle.jpg",
-        companyImage:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Hero_MotoCorp.svg/270px-Hero_MotoCorp.svg.png",
-        branch: "IT",
-        job_profile: "Intern",
+        companyImage:"https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg",
+        job_profile: "Placement",
         role: "SDE",
-        CGPA:9,
         batch:"2022-26",
-        location: "Hydreabad"
     },
     {
         name: "Sameer Singh",
         rollNo: "12213054",
         studentImage:"/images/profle.jpg",
-        companyImage:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Hero_MotoCorp.svg/270px-Hero_MotoCorp.svg.png",
-        branch: "IT",
-        CGPA:9,
-        job_profile: "Intern",
+        companyImage:"https://upload.wikimedia.org/wikipedia/commons/6/6e/Adobe_Corporate_logo.svg",
+        job_profile: "Placement",
         role: "SDE",
         batch:"2022-26",
-        location: "Hydreabad"
     },
     {
         name: "Sameer",
         rollNo: "12213055",
         studentImage:"/images/profle.jpg",
-        companyImage:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Hero_MotoCorp.svg/270px-Hero_MotoCorp.svg.png",
-        branch: "IT",
-        job_profile: "Intern",
+        companyImage:"https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg",
+        job_profile: "Placement",
         role: "SDE",
-        CGPA:9,
         batch:"2022-26",
-        location: "Hydreabad"
     },
     ]
 

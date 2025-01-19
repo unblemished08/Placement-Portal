@@ -24,22 +24,22 @@ const ResultSlider = ({ student = [] }) => {
   const currentStudent = student[currentIndex];
 
   return (
-    <div className="relative max-w-5xl mx-auto p-10 bg-gradient-to-r from-purple-600 to-blue-500 text-white rounded-lg shadow-xl hover:shadow-2xl hover:scale-105 transition-transform duration-500 ease-in-out">
+    <div className="relative w-8/12 max-w-5xl mx-auto p-10 bg-gradient-to-r from-purple-600 to-blue-500 text-white rounded-lg shadow-xl hover:shadow-2xl hover:scale-105 transition-transform duration-500 ease-in-out">
       {/* Student Info and Images */}
       <div className="flex flex-col md:flex-row items-center gap-12">
         {/* Company Logo Section */}
-        <div className="flex-shrink-0">
+        <div className="md:w-56 md:h-56 bg-white object-contain rounded-full border-4 border-white shadow-md flex-shrink-0 flex items-center justify-center">
           <img
             src={currentStudent.companyImage}
             alt={`${currentStudent.name} Logo`}
-            className="w-32 h-32 md:w-48 md:h-48 object-contain rounded-full border-4 border-white shadow-md"
+            className="w-8/12"
           />
         </div>
 
         {/* Student Details Section */}
-        <div className="flex-1 space-y-4 text-center md:text-left">
-          <h2 className="text-4xl font-extrabold mb-4">{currentStudent.name}</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-y-4 text-lg">
+        <div className="flex-1 ml-12 space-y-4 text-center md:text-left">
+          <h2 className="text-4xl text-center font-extrabold mb-4">{currentStudent.name}</h2>
+          <div className="flex-row flex items-center justify-center grid-cols-2 md:grid-cols-3 gap-y-4 text-lg">
             <div>
               <span className="font-bold">Roll No:</span> {currentStudent.rollNo}
             </div>
@@ -47,16 +47,7 @@ const ResultSlider = ({ student = [] }) => {
               <span className="font-bold">Batch:</span> {currentStudent.batch}
             </div>
             <div>
-              <span className="font-bold">Branch:</span> {currentStudent.branch}
-            </div>
-            <div>
-              <span className="font-bold">CGPA:</span> {currentStudent.CGPA}
-            </div>
-            <div>
               <span className="font-bold">Job Role:</span> {currentStudent.job_profile}
-            </div>
-            <div>
-              <span className="font-bold">Location:</span> {currentStudent.location}
             </div>
           </div>
         </div>
@@ -66,7 +57,7 @@ const ResultSlider = ({ student = [] }) => {
           <img
             src={currentStudent.studentImage}
             alt={`${currentStudent.name}`}
-            className="w-32 h-32 md:w-48 md:h-48 object-cover rounded-full border-4 border-white shadow-md"
+            className="w-32 h-32 md:w-56 md:h-56 object-cover rounded-full border-4 border-white shadow-md"
           />
         </div>
       </div>
