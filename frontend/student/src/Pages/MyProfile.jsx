@@ -64,7 +64,7 @@ const MyProfile = ({
     }
 
     return (
-        <div className="p-6 min-h-screen text-pink8">
+        <div className="p-6 min-h-screen text-pink8 ">
             <div className="flex justify-between">
                 <h2 className="text-2xl font-bold mb-4">My Profile</h2>
                 <div className="flex gap-3">

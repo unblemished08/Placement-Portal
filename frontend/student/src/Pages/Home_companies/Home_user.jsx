@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 import { StoreContext } from "../../Context/StoreContext";
 import CompaniesSlider from "./CompaniesSlider";
+import ResultSlider from "./ResultSlider";
 
 function Home_user() {
   const { companies } = useContext(StoreContext);
+  const {result_for_profile} = useContext(StoreContext);
   return (
     <div className="bg-gray-50">
       {/* Hero Section */}
@@ -17,7 +19,7 @@ function Home_user() {
         <div className="flex items-center justify-center ">
         <div className="flex-row items-center w-2/12 h-full  ">
           <img
-            src="/images/placement6.png"
+            src="/images/placement7.png"
             alt="Logo"
             className="h-4/5" // Adjust width and height as needed
           />
@@ -52,38 +54,18 @@ function Home_user() {
         <header className="text-center  text-gray-700 py-20" >
           <h1 className="text-4xl font-bold">Some Best Offers</h1>
         </header>
+        
         <div className="flex items-center justify-center py-10">
-          <CompaniesSlider companies={companies} />
+          
+          <ResultSlider student={result_for_profile}/>
+
         </div>
 
 
 
         {/* Top Recruiters Section */}
-        {/* <section className="mt-10">
-          <h2 className="text-2xl font-bold text-center text-gray-800">Top Recruiters</h2>
-          <div className="flex overflow-x-auto gap-4 mt-6 py-4 px-2">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Adobe_logo.png"
-              alt="Adobe Logo"
-              className="w-32 h-auto rounded-lg hover:scale-110 transition-transform duration-300"
-            />
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Google_2015_logo.svg"
-              alt="Google Logo"
-              className="w-32 h-auto rounded-lg hover:scale-110 transition-transform duration-300"
-            />
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Amazon_logo_plain.svg"
-              alt="Amazon Logo"
-              className="w-32 h-auto rounded-lg hover:scale-110 transition-transform duration-300"
-            />
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/c/c2/Microsoft_logo_%282012%29.svg"
-              alt="Microsoft Logo"
-              className="w-32 h-auto rounded-lg hover:scale-110 transition-transform duration-300"
-            />
-          </div>
-        </section> */}
+        {/* to insert silder of top company like github color theme is to be decided */}
+       
 
         {/* Success Stories Section */}
         <section className="mt-10 bg-gray-100 py-20 px-40">

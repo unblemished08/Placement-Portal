@@ -2,6 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from 'react'
 
 export const StoreContext = createContext(null);
 
+
 const StoreContextProvider = (props) => {
     // api req for companies will be made here
     const companies = [
@@ -408,7 +409,7 @@ const StoreContextProvider = (props) => {
       approved:"No",});
 
       // api req for the result of all copnies whose declared till now
-      const result = [
+    const result = [
         {
             name: "Harshit Anand",
             rollNo: "12213053",
@@ -432,8 +433,48 @@ const StoreContextProvider = (props) => {
             job_profile: "Intern",
             role: "SDE",
             location: "Hydreabad"
+            
         }
     ];
+    
+    const result_for_profile=[
+      {
+        name: "Harshit Anand",
+        rollNo: "12213053",
+        studentImage:"/images/profle.jpg",
+        companyImage:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Hero_MotoCorp.svg/270px-Hero_MotoCorp.svg.png",
+        branch: "IT",
+        job_profile: "Intern",
+        role: "SDE",
+        CGPA:9,
+        batch:"2022-26",
+        location: "Hydreabad"
+    },
+    {
+        name: "Sameer Singh",
+        rollNo: "12213054",
+        studentImage:"/images/profle.jpg",
+        companyImage:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Hero_MotoCorp.svg/270px-Hero_MotoCorp.svg.png",
+        branch: "IT",
+        CGPA:9,
+        job_profile: "Intern",
+        role: "SDE",
+        batch:"2022-26",
+        location: "Hydreabad"
+    },
+    {
+        name: "Sameer",
+        rollNo: "12213055",
+        studentImage:"/images/profle.jpg",
+        companyImage:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Hero_MotoCorp.svg/270px-Hero_MotoCorp.svg.png",
+        branch: "IT",
+        job_profile: "Intern",
+        role: "SDE",
+        CGPA:9,
+        batch:"2022-26",
+        location: "Hydreabad"
+    },
+    ]
 
     // api req for the copanies whose result is decreald
     const resultDeclaredCompanies = [
@@ -459,82 +500,7 @@ const StoreContextProvider = (props) => {
     useEffect(()=>{
       // req for changing the data -> send {userData} in the request
       setIsChange(false);
-    },[isChange]);
-
-
-
-    const currCompaniesData = [
-      {
-        companyImage: "https://upload.wikimedia.org/wikipedia/commons/4/4a/Logo_2013_Google.png",
-        name: "Google",
-        gd: "yes",
-        tech_rounds: 3,
-        hr_rounds: 1,
-      },
-      {
-        companyImage: "https://upload.wikimedia.org/wikipedia/commons/a/a5/Linkedin_Logo.png",
-        name: "LinkedIn",
-        gd: "no",
-        tech_rounds: 2,
-        hr_rounds: 1,
-      },
-      {
-        companyImage: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Amazon_logo.svg",
-        name: "Amazon",
-        gd: "yes",
-        tech_rounds: 3,
-        hr_rounds: 1,
-      },
-      {
-        companyImage: "https://upload.wikimedia.org/wikipedia/commons/c/c7/Microsoft_logo_%282012%29.svg",
-        name: "Microsoft",
-        gd: "no",
-        tech_rounds: 2,
-        hr_rounds: 1,
-      },
-      {
-        companyImage: "https://upload.wikimedia.org/wikipedia/commons/5/51/Accenture.svg",
-        name: "Accenture",
-        gd: "yes",
-        tech_rounds: 3,
-        hr_rounds: 2,
-      },
-      {
-        companyImage: "https://upload.wikimedia.org/wikipedia/commons/e/e8/TCS_Logo.svg",
-        name: "TCS",
-        gd: "no",
-        tech_rounds: 2,
-        hr_rounds: 1,
-      },
-      {
-        companyImage: "https://upload.wikimedia.org/wikipedia/commons/6/6a/Infosys_logo.svg",
-        name: "Infosys",
-        gd: "yes",
-        tech_rounds: 3,
-        hr_rounds: 1,
-      },
-      {
-        companyImage: "https://upload.wikimedia.org/wikipedia/commons/7/73/Wipro_logo.svg",
-        name: "Wipro",
-        gd: "no",
-        tech_rounds: 2,
-        hr_rounds: 1,
-      },
-      {
-        companyImage: "https://upload.wikimedia.org/wikipedia/commons/f/f1/Cisco_logo_blue_2016.svg",
-        name: "Cisco",
-        gd: "yes",
-        tech_rounds: 3,
-        hr_rounds: 1,
-      },
-      {
-        companyImage: "https://upload.wikimedia.org/wikipedia/commons/e/e3/IBM_logo.svg",
-        name: "IBM",
-        gd: "yes",
-        tech_rounds: 3,
-        hr_rounds: 1,
-      },
-    ];
+    },[isChange]);   
     
     const resultdata = [
         {
@@ -570,10 +536,10 @@ const StoreContextProvider = (props) => {
         companies,
         appliedCompanies,
         UpcomingCompanies,
-        currCompaniesData,
         resultdata,
         setUserData,
         setIsChange,
+        result_for_profile,
         userData,
         result,
         resultDeclaredCompanies,
