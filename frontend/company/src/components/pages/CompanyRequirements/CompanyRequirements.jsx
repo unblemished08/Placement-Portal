@@ -1,5 +1,5 @@
-import React from 'react'
-import { useContext, useState } from 'react';
+import React, { useEffect } from 'react'
+import { useContext, useState, useRef } from 'react';
 import { StoreContext } from '../../context/StoreContext';
 
 const CompanyRequirements = () => {
@@ -35,7 +35,44 @@ const CompanyRequirements = () => {
                 location: [...prev.location, newLocation],
             }));
             setNewLocation("");
+            setIsNewLocationAddinig(false);
         }
+    };
+
+    const handleBranchSelection = (e, branch) => {
+        setData((prev) => {
+            const branches = [...prev.branch];
+            if (e.target.checked) {
+                if (!branches.includes(branch)) {
+                    branches.push(branch);
+                }
+            }
+            else {
+                const index = branches.indexOf(branch);
+                if (index > -1) {
+                    branches.splice(index, 1);
+                }
+            }
+            return { ...prev, branch: branches };
+        });
+    };
+
+    const handleProfileSelection = (e, profile) => {
+        setData((prev) => {
+            const profiles = [...prev.job_profile];
+            if (e.target.checked) {
+                if (!profiles.includes(profile)) {
+                    profiles.push(profile);
+                }
+            }
+            else {
+                const index = profiles.indexOf(profile);
+                if (index > -1) {
+                    profiles.splice(index, 1);
+                }
+            }
+            return { ...prev, job_profile: profiles };
+        });
     };
 
     const handleChange = (event) => {
@@ -249,48 +286,44 @@ const CompanyRequirements = () => {
                     </div>
 
                     <div>
-                        <label htmlFor="branch" className="block font-semibold">Branch:</label>
-                        {
-                            edit === false
-                                ? <p className="w-full px-3 py-2 border rounded border-gray-300">{data.branch}</p>
-                                : <select
-                                    value={data.branch}
-                                    name="branch"
-                                    id="branch"
-                                    required={edit}
-                                    readOnly={!edit}
-                                    onChange={handleChange}
-                                    className={`w-full px-3 py-2 border rounded ${edit ? "border-pink6" : "border-gray-300"}`}
-                                >
-                                    <option value="" disabled>Select Branch</option>
-                                    <option value="CS">CS</option>
-                                    <option value="IT">IT</option>
-                                    <option value="ECE">ECE</option>
-                                    <option value="EE">EE</option>
-                                    <option value="CIVIL">CIVIL</option>
-                                    <option value="MECH">MECH</option>
-                                    <option value="PIE">PIE</option>
-                                </select>
-                        }
+                        <label htmlFor="branch" className="block font-semibold">Branches:</label>
+                        <div className="w-full px-3 py-2 border rounded border-pink6">
+                            {["CS", "IT", "ECE", "EE", "CIVIL", "MECH", "PIE"].map((branch) => (
+                                <label key={branch} className="block">
+                                    <input
+                                        type="checkbox"
+                                        value={branch}
+                                        checked={data.branch.includes(branch)}
+                                        onChange={(e) => handleBranchSelection(e, branch)}
+                                        className="mr-2"
+                                    />
+                                    {branch}
+                                </label>
+                            ))}
+                        </div>
                     </div>
 
                     <div>
-                        <label htmlFor="job_profile" className="block font-semibold">Locations :</label>
-                        <input
-                            type="text"
-                            value={data.job_profile}
-                            name="job_profile"
-                            id="job_profile"
-                            required={edit}
-                            readOnly={!edit}
-                            onChange={handleChange}
-                            className={`w-full px-3 py-2 border rounded ${edit ? "border-pink6" : "border-gray-300"}`}
-                        />
+                        <label htmlFor="job_profile" className="block font-semibold">Job Profile :</label>
+                        <div className="w-full px-3 py-2 border rounded border-pink6">
+                            {["Full Time", "Project", "Intern"].map((profile) => (
+                                <label key={profile} className="block">
+                                    <input
+                                        type="checkbox"
+                                        value={profile}
+                                        checked={data.job_profile.includes(profile)}
+                                        onChange={(e) => handleProfileSelection(e, profile)}
+                                        className="mr-2"
+                                    />
+                                    {profile}
+                                </label>
+                            ))}
+                        </div>
                     </div>
 
                     <div>
                         <label htmlFor="Location" className="block font-semibold">
-                            Locations :
+                            Locations:
                         </label>
                         {data.location.map((loc, index) => (
                             <input
@@ -304,15 +337,14 @@ const CompanyRequirements = () => {
                         ))}
 
                         <div className="mt-4">
-                            {edit && data.location.length === 0 ?
-                                isNewLocationAdding === false ?
-                                <button
-                                    onClick={() => setIsNewLocationAddinig(true)}
-                                    className="px-4 py-2 bg-blue-500 text-white rounded"
-                                >
-                                    Add Location
-                                </button>
-                                :
+                            {isNewLocationAdding === false ? (
+                                    <button
+                                        onClick={() => setIsNewLocationAddinig(true)}
+                                        className="px-4 py-2 bg-blue-500 text-white rounded"
+                                    >
+                                        {data.location.length === 0 ? "Add Location" : "Add more Location"}
+                                    </button>
+                                ) : (
                                     <div className="mt-2">
                                         <input
                                             type="text"
@@ -323,53 +355,21 @@ const CompanyRequirements = () => {
                                         />
                                         <button
                                             onClick={handleAddLocation}
-                                            className="mt-2 px-4 py-2 bg-pink-500 text-white rounded"
+                                            className="mt-2 px-4 py-2 bg-blue-500 text-white rounded"
                                         >
                                             Add
                                         </button>
                                         <button
-                                            onClick={()=>setIsNewLocationAddinig(false)}
-                                            className="m-2 px-4 py-2 bg-pink-500 text-white rounded"
+                                            onClick={() => setIsNewLocationAddinig(false)}
+                                            className="m-2 px-4 py-2 bg-blue-500 text-white rounded"
                                         >
                                             Cancel
                                         </button>
                                     </div>
-                            :""}
+                                )}
 
-                            {edit && data.location.length > 0 ?
-                                isNewLocationAdding === false ?
-                                <button
-                                    onClick={() => setIsNewLocationAddinig(true)}
-                                    className="px-4 py-2 bg-blue-500 text-white rounded"
-                                >
-                                    Add more Location
-                                </button>
-                                :
-                                    <div className="mt-2">
-                                        <input
-                                            type="text"
-                                            value={newLocation}
-                                            placeholder="Enter a location"
-                                            onChange={(e) => setNewLocation(e.target.value)}
-                                            className="w-full px-3 py-2 border rounded border-pink6"
-                                        />
-                                        <button
-                                            onClick={handleAddLocation}
-                                            className="mt-2 px-4 py-2 bg-pink-500 text-white rounded"
-                                        >
-                                            Add
-                                        </button>
-                                        <button
-                                            onClick={()=>setIsNewLocationAddinig(false)}
-                                            className="m-2 px-4 py-2 bg-pink-500 text-white rounded"
-                                        >
-                                            Cancel
-                                        </button>
-                                    </div>
-                                
-                            :""}
+                            
                         </div>
-
 
                     </div>
 
