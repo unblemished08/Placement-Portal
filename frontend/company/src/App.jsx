@@ -3,11 +3,13 @@ import Home from "./components/pages/Home/Home";
 import DisplayStudentDetails from "./components/pages/StudentDetails/DisplayStudentDetails";
 import DisplayFullDetail from "./components/pages/StudentDetails/DisplayFullDetail";
 import CompanyRequirements from "./components/pages/CompanyRequirements/CompanyRequirements";
+import { Navbar } from "./components/Header/navbar";
 
 function App() {
   return (
     //every route must be added here if we need to render any sort of component to maintain single page
     <>
+      <Navbar/>
       <Routes>
 
       <Route path="/" element={<Home/>}/>
