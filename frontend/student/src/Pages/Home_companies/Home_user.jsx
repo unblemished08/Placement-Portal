@@ -55,7 +55,7 @@ function Home_user() {
           <h1 className="text-4xl font-bold">Some Best Offers</h1>
         </header>
         
-        <div className="flex items-center justify-center py-10">
+        <div className="h-96 flex items-center justify-center">
           
           <ResultSlider student={result_for_profile}/>
 

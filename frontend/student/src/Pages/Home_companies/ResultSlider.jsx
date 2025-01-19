@@ -24,9 +24,9 @@ const ResultSlider = ({ student = [] }) => {
   const currentStudent = student[currentIndex];
 
   return (
-    <div className="relative w-8/12 max-w-5xl mx-auto p-10 bg-gradient-to-r from-purple-600 to-blue-500 text-white rounded-lg shadow-xl hover:shadow-2xl hover:scale-105 transition-transform duration-500 ease-in-out">
+    <div className="relative h-full  w-8/12 max-w-5xl mx-auto p-10 bg-gradient-to-r from-blue-400 to-gray-600 text-white rounded-lg shadow-xl hover:shadow-2xl hover:scale-105 transition-transform duration-500 ease-in-out">
       {/* Student Info and Images */}
-      <div className="flex flex-col md:flex-row items-center gap-12">
+      <div className="flex flex-col h-full justify-center md:flex-row items-center gap-12">
         {/* Company Logo Section */}
         <div className="md:w-56 md:h-56 bg-white object-contain rounded-full border-4 border-white shadow-md flex-shrink-0 flex items-center justify-center">
           <img
@@ -39,7 +39,7 @@ const ResultSlider = ({ student = [] }) => {
         {/* Student Details Section */}
         <div className="flex-1 ml-12 space-y-4 text-center md:text-left">
           <h2 className="text-4xl text-center font-extrabold mb-4">{currentStudent.name}</h2>
-          <div className="flex-row flex items-center justify-center grid-cols-2 md:grid-cols-3 gap-y-4 text-lg">
+          <div className="flex-row items-center text-center justify-center grid-cols-2 md:grid-cols-3 gap-y-4 text-lg">
             <div>
               <span className="font-bold">Roll No:</span> {currentStudent.rollNo}
             </div>
