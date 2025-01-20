@@ -3,11 +3,12 @@ import React from 'react'
 function Recruiters() {
   return (
     <div className="max-w-full m-0 p-5 bg-gray-100">
-        <h1>Our Recruiters</h1>
-      <p>
-        Training and Placement Cell, NIT Kurukshetra conducts all recruitment-related activities of the institute. The placement team works tirelessly to ensure that top-notch opportunities are brought to the students &amp; manages all interactions between the visiting companies and the institute. NIT Kurukshetra assures the best facilities and supports possible to the recruiting companies.
-      </p>
-      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 justify-center list-none m-0 p-0">
+        <h1 class="text-3xl font-bold text-center my-6">Our Recruiters</h1>
+<p class="text-lg leading-relaxed text-gray-700 mx-auto max-w-3xl text-center">
+  The Training and Placement Cell at NIT Kurukshetra conducts all recruitment-related activities for the institute. The placement team works tirelessly to ensure top-notch opportunities are brought to students and manages all interactions between visiting companies and the institute. NIT Kurukshetra assures the best facilities and support possible for the recruiting companies.
+</p>
+
+<ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5 justify-center list-none m-0 p-0">
       <li><a href="https://www.aakash.ac.in/"><img src="https://nitkkr.ac.in/wp-content/uploads/2022/05/akash.jpg" alt="NIT Kurukshetra clients" className="w-full h-auto max-w-[200px] transition-transform transform hover:scale-110 hover:shadow-lg" /></a></li>
 			 <li><a href="https://new.abb.com/power-generation"><img src="https://nitkkr.ac.in/wp-content/uploads/2022/05/abb.jpg" className="w-full h-auto max-w-[200px] transition-transform transform hover:scale-110 hover:shadow-lg" /></a></li>
 			 <li><a href="https://www.adani.com/"> <img src="https://nitkkr.ac.in/wp-content/uploads/2022/05/addani.jpg" alt=""className="w-full h-auto max-w-[200px] transition-transform transform hover:scale-110 hover:shadow-lg" /></a></li>

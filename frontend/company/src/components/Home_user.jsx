@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import { StoreContext } from "../../Context/StoreContext";
+import CompaniesSlider from "./CompaniesSlider";
 import ResultSlider from "./ResultSlider";
 
-function Home() {
-
+function Home_user() {
+  const { companies } = useContext(StoreContext);
   const {result_for_profile} = useContext(StoreContext);
   return (
     <div className="bg-gray-50">
@@ -90,13 +91,12 @@ function Home() {
       <footer className="bg-gray-800 text-white py-6 text-center">
         <p>
           &copy; 2025 Placement Portal. All Rights Reserved.{" "}
-          <a href="/TP_Cell_Guidelines.pdf" target='_blank' rel='noopener noreferrer' className="text-blue-400 hover:underline">TNP Guidelines</a> |{" "}
-          <a href="#" className="text-blue-400 hover:underline">Contact Us</a> |{" "}
-          <a href="/about" className="text-blue-400 hover:underline">About Us</a>
-        </p>  
+          <a href="#" className="text-blue-400 hover:underline">Privacy Policy</a> |{" "}
+          <a href="#" className="text-blue-400 hover:underline">Contact Us</a>
+        </p>
       </footer>
     </div>
   );
 }
 
-export default Home;
+export default Home_user;

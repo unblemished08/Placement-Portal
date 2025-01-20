@@ -274,122 +274,6 @@ const StoreContextProvider = (props) => {
     ];
     
 
-    //   api req for upcoming companies will be made here
-      const UpcomingCompanies=
-    [
-        {
-          companyImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Hero_MotoCorp.svg/270px-Hero_MotoCorp.svg.png",
-            name: "Hero",
-            ctc: "12 LPA",
-            gender: "Both",
-            last_date: "15-01-2025",
-            cgpa: "6.5",
-            backlogs: "No Backlog Allowed",
-            branch: "ME",
-            job_role: "Placement, Intern",
-          },
-          {
-            companyImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/1200px-Visa_Inc._logo.svg.png",
-            name: "Tata Motors",
-            ctc: "15 LPA",
-            gender: "Both",
-            last_date: "15-01-2025",
-            cgpa: "7.0",
-            backlogs: "1 Backlog Allowed",
-            branch: "ME, CE",
-            job_role: "Placement",
-          },
-          {
-            companyImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Mahindra_&_Mahindra_Logo.svg/270px-Mahindra_&_Mahindra_Logo.svg.png",
-            name: "Mahindra & Mahindra",
-            ctc: "10 LPA",
-            gender: "Both",
-            last_date: "15-01-2025",
-            cgpa: "6.8",
-            backlogs: "No Backlog Allowed",
-            branch: "ME, EE",
-            job_role: "Intern",
-          },
-          {
-            companyImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Larsen_%26_Toubro_Logo.svg/270px-Larsen_%26_Toubro_Logo.svg.png",
-            name: "Larsen & Toubro",
-            ctc: "18 LPA",
-            gender: "Both",
-            last_date: "15-01-2025",
-            cgpa: "7.5",
-            backlogs: "No Backlog Allowed",
-            branch: "CE, ME",
-            job_role: "Placement",
-          },
-          {
-            companyImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Infosys_Logo.svg/270px-Infosys_Logo.svg.png",
-            name: "Infosys",
-            ctc: "9 LPA",
-            gender: "Both",
-            last_date: "15-01-2025",
-            cgpa: "6.0",
-            backlogs: "1 Backlog Allowed",
-            branch: "CS, IT",
-            job_role: "Intern",
-          },
-          {
-            companyImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Wipro_logo.svg/270px-Wipro_logo.svg.png",
-            name: "Wipro",
-            ctc: "10 LPA",
-            gender: "Both",
-            last_date: "15-01-2025",
-            cgpa: "6.5",
-            backlogs: "No Backlog Allowed",
-            branch: "CS, IT, ECE",
-            job_role: "Placement",
-          },
-          {
-            companyImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/HCL_Technologies_logo.svg/270px-HCL_Technologies_logo.svg.png",
-            name: "HCL",
-            ctc: "8 LPA",
-            gender: "Both",
-            last_date: "15-01-2025",
-            cgpa: "6.0",
-            backlogs: "1 Backlog Allowed",
-            branch: "IT, ECE",
-            job_role: "Intern, Project",
-          },
-          {
-            companyImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/TCS_Logo.svg/270px-TCS_Logo.svg.png",
-            name: "TCS",
-            ctc: "12 LPA",
-            gender: "Both",
-            last_date: "15-01-2025",
-            cgpa: "7.0",
-            backlogs: "No Backlog Allowed",
-            branch: "CS, IT",
-            job_role: "Placement",
-          },
-          {
-            companyImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Cognizant_Logo.svg/270px-Cognizant_Logo.svg.png",
-            name: "Cognizant",
-            ctc: "10 LPA",
-            gender: "Both",
-            last_date: "15-01-2025",
-            cgpa: "6.3",
-            backlogs: "1 Backlog Allowed",
-            branch: "IT, CS, ECE",
-            job_role: "Intern, Project",
-          },
-          {
-            companyImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Accenture.svg/270px-Accenture.svg.png",
-            name: "Accenture",
-            ctc: "14 LPA",
-            gender: "Both",
-            last_date: "15-01-2025",
-            cgpa: "7.2",
-            backlogs: "No Backlog Allowed",
-            branch: "CS, IT, ME",
-            job_role: "Placement, Intern",
-          },
-    ]
-    
-
     // api req for userProfile
     const [userData,setUserData] = useState({name:"Meetha",
       rollNo:"69",
@@ -436,7 +320,7 @@ const StoreContextProvider = (props) => {
             
         }
     ];
-    
+    //api req for result slider on profile
     const result_for_profile=[
       {
         name: "Harshit Anand",
@@ -526,7 +410,6 @@ const StoreContextProvider = (props) => {
     const contextValue = {
         companies,
         appliedCompanies,
-        UpcomingCompanies,
         resultdata,
         setUserData,
         setIsChange,

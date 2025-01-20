@@ -37,6 +37,36 @@ const StoreContextProvider = (props) => {
       setIsChange(false);
     },[isChange]);
 
+    //result silder data for profile
+    const result_for_profile=[
+        {
+          name: "Siddharth ydv",
+          rollNo: "12213039",
+          studentImage:"/images/sid.jpg",
+          companyImage:"https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg",
+          job_profile: "Placement",
+          role: "SDE",
+          batch:"2022-26",
+      },
+      {
+          name: "Playboi",
+          rollNo: "12213013",
+          studentImage:"/images/ann.jpg",
+          companyImage:"https://upload.wikimedia.org/wikipedia/commons/6/6e/Adobe_Corporate_logo.svg",
+          job_profile: "Placement",
+          role: "SDE",
+          batch:"2022-26",
+      },
+      {
+          name: "Naman",
+          rollNo: "only fans",
+          studentImage:"/images/ran.jpg",
+          companyImage:"https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg",
+          job_profile: "Placement",
+          role: "SDE",
+          batch:"2022-26",
+      },
+      ]
 
     // student applied in particular company
     const appliedStudents = [
@@ -82,7 +112,8 @@ const StoreContextProvider = (props) => {
     const contextValue = {
         appliedStudents,
         studentDetails,  
-        setIsChange,      
+        setIsChange,     
+        result_for_profile, 
         CompanyReq,
         setCompanyReq,
 
