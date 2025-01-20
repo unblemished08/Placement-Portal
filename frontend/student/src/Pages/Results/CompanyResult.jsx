@@ -4,7 +4,7 @@ const CompanyResult = ({ result }) => {
       <div className="bg-white shadow-2xl rounded-lg overflow-hidden w-full max-w-6xl">
         <h1
           className={`text-3xl font-extrabold text-center py-6 tracking-wide ${
-            result.length > 0 ? "bg-green-600 text-white" : "bg-red-600 text-white"
+            result.length > 0 ? "bg-blue-500 text-white" : "bg-red-600 text-white"
           }`}
         >
           {result.length > 0 ? "Selected Students" : "No Students Selected"}

@@ -4,7 +4,7 @@ function Recruiters() {
   return (
     <div className="max-w-full m-0 p-5 bg-gray-100">
         <h1 class="text-3xl font-bold text-center my-6">Our Recruiters</h1>
-<p class="text-lg leading-relaxed text-gray-700 mx-auto max-w-3xl text-center">
+<p class="text-lg leading-relaxed text-gray-700 mx-auto max-w-3xl text-center pb-6">
   The Training and Placement Cell at NIT Kurukshetra conducts all recruitment-related activities for the institute. The placement team works tirelessly to ensure top-notch opportunities are brought to students and manages all interactions between visiting companies and the institute. NIT Kurukshetra assures the best facilities and support possible for the recruiting companies.
 </p>
 

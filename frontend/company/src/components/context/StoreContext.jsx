@@ -19,11 +19,11 @@ const StoreContextProvider = (props) => {
             branch : ["CS", "IT"],
                 // enum: ["CS", "IT", "ECE","EE","MECH","CIVIL","PIE"]
             location : ["Noida", "Banglore"],
-            job_profile : ["Full Time", "Intern"],
-                // enum: ["Full Time", "Project", "Research Intern/Project"]
+            job_profile : ["Full Time", "Research Intern"],
+                // enum: ["Full Time", "Project", "Research Intern"]
             companyImage : "",
             onlyPWD : false, // this feild is to be added in backend company schema
-            last_date : 12-8-2025,
+            last_date : "2025-01-22",
             group_disscussion : true,
             tech_rounds : 2,
             hr_rounds : 1
