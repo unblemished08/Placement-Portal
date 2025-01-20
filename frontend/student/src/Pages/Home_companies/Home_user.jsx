@@ -91,9 +91,10 @@ function Home_user() {
       <footer className="bg-gray-800 text-white py-6 text-center">
         <p>
           &copy; 2025 Placement Portal. All Rights Reserved.{" "}
-          <a href="#" className="text-blue-400 hover:underline">Privacy Policy</a> |{" "}
-          <a href="#" className="text-blue-400 hover:underline">Contact Us</a>
-        </p>
+          <a href="/TP_Cell_Guidelines.pdf" target='_blank' rel='noopener noreferrer' className="text-blue-400 hover:underline">TNP Guidelines</a> |{" "}
+          <a href="#" className="text-blue-400 hover:underline">Contact Us</a> |{" "}
+          <a href="/about" className="text-blue-400 hover:underline">About Us</a>
+        </p>  
       </footer>
     </div>
   );
