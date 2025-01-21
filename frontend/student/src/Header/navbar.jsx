@@ -36,8 +36,8 @@ export const Navbar = () => {
             { name: "Home", href: "/" },
             { name: "Companies", href: "/companies" },
             { name: "Result", href: "/result" },
-            { name: "My Profile", href: "/myprofile" },
             { name: "Our Recruiters", href: "/recruiters" },
+            { name: "Profile", href: "/profile" },
           ].map((item, index) => (
             <li
               key={index}

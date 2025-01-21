@@ -129,7 +129,7 @@ const CompanyRequirements = () => {
     return (
         <>
         <h2 className="text-2xl text-center font-bold mb-4">Role Requirements</h2>
-        <div className="p-6 min-h-screen flex  text-black">
+        <div className="p-6  flex  text-black">
             <div className="flex-row justify-between w-1/4">
                 <div className="flex gap-3">
                     <div>

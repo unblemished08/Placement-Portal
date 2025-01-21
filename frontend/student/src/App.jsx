@@ -11,7 +11,7 @@ import CompanyDetails from "./Pages/Company_Info/Company_detail"
 import Companies from "./Pages/Company_Info/Companies"
 import Signup from "./Pages/Signup"
 import Home_user from "./Pages/Home_companies/Home_user"
-import MyProfile from "./Pages/MyProfile"
+import Profile from "./Pages/Profile"
 import Recruiters from "./Pages/Recruiters"
 import { StoreContext } from "./Context/StoreContext"
 import { useContext } from "react"
@@ -32,7 +32,7 @@ function App() {
       <Route path="/companyResult" element={<DisplayCompanyResult/>}/>
       <Route path="/recruiters" element={<Recruiters/>}/>
       <Route path="/companydetails" element={<CompanyDetails/>}/>
-      <Route path="/myprofile" element={<MyProfile {...userData}/>} />
+      <Route path="/profile" element={<Profile {...userData}/>} />
       </Routes>
     {/* // </BrowserRouter> */}
     </>   
