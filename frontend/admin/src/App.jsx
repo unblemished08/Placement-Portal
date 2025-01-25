@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
-import ReactDOM from 'react-dom/client';
+import React, { useState } from "react";
 
 function App() {
   const [coordinators, setCoordinators] = useState([]);
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
+  const [copiedIndex, setCopiedIndex] = useState(null);
+  const [isBadEmail, setIsBadEmail] = useState(false);
+  const [isEmailAlreadyExists, setIsEmailAlreadyExists] = useState(false);
 
   const generatePassword = () => {
-    const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()';
-    let password = '';
+    const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()";
+    let password = "";
     for (let i = 0; i < 16; i++) {
       password += chars.charAt(Math.floor(Math.random() * chars.length));
     }
@@ -16,19 +18,25 @@ function App() {
 
   const handleAddCoordinator = (e) => {
     e.preventDefault();
-    if (!email.endsWith('@nitkkr.ac.in')) {
-      alert('Email must end with @nitkkr.ac.in');
+    if (!email.endsWith("@nitkkr.ac.in")) {
+      setIsBadEmail(true);
       return;
     }
+    else{
+      setIsBadEmail(false);
+    }
 
-    if (coordinators.some(coordinator => coordinator.email === email)) {
-      alert('Email ID already exists');
+    if (coordinators.some((coordinator) => coordinator.email === email)) {
+      setIsEmailAlreadyExists(true);
       return;
+    }
+    else{
+      setIsEmailAlreadyExists(false);
     }
 
     const password = generatePassword();
     setCoordinators([...coordinators, { email, password }]);
-    setEmail('');
+    setEmail("");
   };
 
   const handleDeleteCoordinator = (index) => {
@@ -37,9 +45,7 @@ function App() {
 
   const handleCopyPassword = (password) => {
     navigator.clipboard.writeText(password);
-    alert('Password copied to clipboard');
   };
-
 
   return (
     <div className="bg-gray-100 min-h-screen flex justify-center items-center">
@@ -49,10 +55,7 @@ function App() {
         {/* Form */}
         <form onSubmit={handleAddCoordinator} className="flex flex-col space-y-4">
           <div>
-            <label
-              htmlFor="email"
-              className="block text-sm font-semibold text-gray-700"
-            >
+            <label htmlFor="email" className="block text-sm font-semibold text-gray-700">
               Email (must end with @nitkkr.ac.in):
             </label>
             <input
@@ -66,10 +69,15 @@ function App() {
             />
           </div>
 
-          <button
-            type="submit"
-            className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
-          >
+          {
+            isBadEmail === true 
+            ? <p className="text-red-500">Email must end with @nitkkr.ac.in</p>
+            : isEmailAlreadyExists === true 
+              ? <p className="text-red-500">Email ID already exists</p>
+              : ""
+          }
+
+          <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
             Add Coordinator
           </button>
         </form>
@@ -89,32 +97,27 @@ function App() {
                     type="password"
                     id={index}
                     value={coordinator.password}
-                    className="password-input border-gray-300 rounded-md shadow-sm  px-2 py-1 w-4/6"
+                    className="password-input border-gray-300 rounded-md shadow-sm px-2 py-1 w-4/6"
                     readOnly
                   />
-                  <button
-                    type="button"
-                    className=" toggle-password text-blue-500 hover:underline"
-                    onClick={(e) => {
-                      const input = e.target.parentElement.querySelector('.password-input');
-                      if (input.type === 'password') {
-                        input.type = 'text';
-                        e.target.textContent = 'Hide';
-                      } else {
-                        input.type = 'password';
-                        e.target.textContent = 'Show';
-                      }
-                    }}
-                  >
-                    Show
-                  </button>
-                  <button
+                  <div>
+                    <button
                       type="button"
-                      className=""
-                      onClick={() => handleCopyPassword(coordinator.password)}
+                      title="Copy"
+                      onClick={() => {
+                        handleCopyPassword(coordinator.password);
+                        setCopiedIndex(index);
+                        setTimeout(() => setCopiedIndex(null), 1500);
+                      }}
+                      className="flex items-center justify-center rounded-md px-3 py-1"
                     >
-                      <img src="/copy.png" alt="Copy" className='w-7'/>
-                  </button>
+                      {copiedIndex === index ? (
+                        <span className="text-green-500 font-medium">Copied</span>
+                      ) : (
+                        <img src="/copy.png" alt="Copy" className="w-7" />
+                      )}
+                    </button>
+                  </div>
                 </div>
               </div>
               <button
@@ -129,7 +132,7 @@ function App() {
         </ul>
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
