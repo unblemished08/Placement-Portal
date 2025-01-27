@@ -22,7 +22,7 @@ function App() {
       setIsBadEmail(true);
       return;
     }
-    else{
+    else {
       setIsBadEmail(false);
     }
 
@@ -30,7 +30,7 @@ function App() {
       setIsEmailAlreadyExists(true);
       return;
     }
-    else{
+    else {
       setIsEmailAlreadyExists(false);
     }
 
@@ -70,11 +70,11 @@ function App() {
           </div>
 
           {
-            isBadEmail === true 
-            ? <p className="text-red-500">Email must end with @nitkkr.ac.in</p>
-            : isEmailAlreadyExists === true 
-              ? <p className="text-red-500">Email ID already exists</p>
-              : ""
+            isBadEmail === true
+              ? <p className="text-red-500">Email must end with @nitkkr.ac.in</p>
+              : isEmailAlreadyExists === true
+                ? <p className="text-red-500">Email ID already exists</p>
+                : ""
           }
 
           <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
@@ -93,13 +93,31 @@ function App() {
                 <p className="font-medium">Email: {coordinator.email}</p>
                 <div className="relative flex items-center space-x-2 mt-1">
                   <label htmlFor={index}>Password: </label>
-                  <input
-                    type="password"
-                    id={index}
-                    value={coordinator.password}
-                    className="password-input border-gray-300 rounded-md shadow-sm px-2 py-1 w-4/6"
-                    readOnly
-                  />
+                  <div className="relative w-4/6">
+                    <input
+                      type="password"
+                      id={index}
+                      value={coordinator.password}
+                      className="password-input border-gray-300 rounded-md shadow-sm px-2 py-1 w-full pr-12"
+                      readOnly
+                    />
+                    <button
+                      type="button"
+                      className="toggle-password absolute inset-y-0 right-2 text-blue-500 hover:underline text-sm"
+                      onClick={(e) => {
+                        const input = e.target.closest('div').querySelector('.password-input');
+                        if (input.type === 'password') {
+                          input.type = 'text';
+                          e.target.textContent = 'Hide';
+                        } else {
+                          input.type = 'password';
+                          e.target.textContent = 'Show';
+                        }
+                      }}
+                    >
+                      Show
+                    </button>
+                  </div>
                   <div>
                     <button
                       type="button"
