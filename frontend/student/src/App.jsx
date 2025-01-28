@@ -13,6 +13,7 @@ import Signup from "./Pages/Signup"
 import Home_user from "./Pages/Home_companies/Home_user"
 import Profile from "./Pages/Profile"
 import Recruiters from "./Pages/Recruiters"
+import ContactUs from "./Pages/ContactUs/ContactUs"
 import { StoreContext } from "./Context/StoreContext"
 import { useContext } from "react"
 function App() {
@@ -33,6 +34,7 @@ function App() {
       <Route path="/recruiters" element={<Recruiters/>}/>
       <Route path="/companydetails" element={<CompanyDetails/>}/>
       <Route path="/profile" element={<Profile {...userData}/>} />
+      <Route path="/contact-us" element={<ContactUs/>} />
       </Routes>
     {/* // </BrowserRouter> */}
     </>   

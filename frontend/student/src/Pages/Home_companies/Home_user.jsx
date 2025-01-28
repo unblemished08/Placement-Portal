@@ -92,7 +92,7 @@ function Home_user() {
         <p>
           &copy; 2025 Placement Portal. All Rights Reserved.{" "}
           <a href="/TP_Cell_Guidelines.pdf" target='_blank' rel='noopener noreferrer' className="text-blue-400 hover:underline">TNP Guidelines</a> |{" "}
-          <a href="#" className="text-blue-400 hover:underline">Contact Us</a> |{" "}
+          <a href="/contact-us" className="text-blue-400 hover:underline">Contact Us</a> |{" "}
           <a href="/about" className="text-blue-400 hover:underline">About Us</a>
         </p>  
       </footer>
