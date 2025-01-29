@@ -405,6 +405,17 @@ const StoreContextProvider = (props) => {
         },
     ];
     
+    const [contactUsInfo, setContactUsInfo] = useState({
+      name:"",
+      email:"",
+      message:"",
+    });
+    useEffect(()=>{
+      // api call for contact us to send email
+      // console.log(contactUsInfo);
+      
+    },[contactUsInfo]);
+
 
     // all the objects which declared in the context must be created into a single object
     const contextValue = {
@@ -417,6 +428,8 @@ const StoreContextProvider = (props) => {
         userData,
         result,
         resultDeclaredCompanies,
+        contactUsInfo,
+        setContactUsInfo,
     }
   return (
     <StoreContext.Provider value={contextValue}>
