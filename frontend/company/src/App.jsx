@@ -4,7 +4,7 @@ import DisplayStudentDetails from "./components/pages/StudentDetails/DisplayStud
 import DisplayFullDetail from "./components/pages/StudentDetails/DisplayFullDetail";
 import CompanyRequirements from "./components/pages/CompanyRequirements/CompanyRequirements";
 import { Navbar } from "./components/Header/navbar";
-
+import About from "./components/pages/about/About";
 function App() {
   return (
     //every route must be added here if we need to render any sort of component to maintain single page
@@ -16,6 +16,7 @@ function App() {
       <Route path="/companyRequirements" element={<CompanyRequirements/>}/>
       <Route path="/studentDetails" element={<DisplayStudentDetails/>}/>
       <Route path="/fullDetails" element={<DisplayFullDetail/>}/>
+      <Route path="/about" element={<About/>}/>
       </Routes>
     </>   
   );
