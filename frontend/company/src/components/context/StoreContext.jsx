@@ -108,6 +108,13 @@ const StoreContextProvider = (props) => {
       isDisabled:"No",
     };
 
+    // api request for result declared by comapny
+    const [result, setResult] = useState([]);
+    if(result.length != 0){
+        // console.log(result); send request
+        
+    }
+
     // all the objects which declared in the context must be created into a single object
     const contextValue = {
         appliedStudents,
@@ -116,6 +123,7 @@ const StoreContextProvider = (props) => {
         result_for_profile, 
         CompanyReq,
         setCompanyReq,
+        setResult
 
     }
     return (
