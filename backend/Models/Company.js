@@ -15,7 +15,6 @@ const CompanySchema = new mongoose.Schema(
         },
         job_id:{ //jobID
             type:String,
-            required:true,
         },
         email:{  //email HR //dont display
             type:String,
@@ -34,7 +33,7 @@ const CompanySchema = new mongoose.Schema(
             enum: ["Only Female" ,"Both"], 
         },
         batch: { //batch eligible
-            type: [String],
+            type: String,
             required:true,
         },
         cgpa:{ //cgpa above
@@ -59,7 +58,7 @@ const CompanySchema = new mongoose.Schema(
         },
         job_profile: { //job profile
             type: [String],
-            enum: ["Full Time", "Project", "Research Intern/Project"],
+            enum: ["Intern + Full Time","Full Time", "Intern", "Research Intern/Project"],
             required: true,
         },
         companyImage: {
@@ -109,6 +108,24 @@ const CompanySchema = new mongoose.Schema(
             enum:["Yes","No"],
             default:"No",
         },
+        onlyPWD:{
+            type:String,
+            enum:["Yes","No"],
+            default:"No",
+        },
+        OA:{
+            type:String,
+            enum:["Yes","No"],
+            default:"No",
+        },
+        aptitude:{
+            type:String,
+            enum:["Yes","No"],
+            default:"No",
+        },
+        description:{
+            type:String,
+        }
     },
     {
         timestamps: true,
