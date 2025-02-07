@@ -1,10 +1,9 @@
 import React, { useContext } from "react";
 import { StoreContext } from "../../Context/StoreContext";
-import CompaniesSlider from "./CompaniesSlider";
 import ResultSlider from "./ResultSlider";
 
 function Home_user() {
-  const { companies } = useContext(StoreContext);
+  
   const {result_for_profile} = useContext(StoreContext);
   return (
     <div className="bg-gray-50">

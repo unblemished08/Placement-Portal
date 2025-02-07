@@ -35,6 +35,8 @@ function App() {
       <Route path="/companydetails" element={<CompanyDetails/>}/>
       <Route path="/profile" element={<Profile {...userData}/>} />
       <Route path="/contact-us" element={<ContactUs/>} />
+      <Route path="/login" element={<Login/>}/>
+      
       </Routes>
     {/* // </BrowserRouter> */}
     </>   

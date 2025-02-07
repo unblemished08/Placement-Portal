@@ -1,63 +1,67 @@
-import React, { useState } from "react";
-import {Link} from "react-router-dom"
+import React from "react";
+
 const Login = () => {
-  const [formData, setFormData] = useState({ email: "", password: "" });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log("Login Data:", formData);
-    // Send login request to the server
-    // Example: await axios.post('/api/login', formData);
-  };
-
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <form
-        className="w-full max-w-md bg-white p-6 rounded-lg shadow-lg"
-        onSubmit={handleSubmit}
-      >
-        <h2 className="text-2xl font-bold mb-4 text-center">Login</h2>
-        <div className="mb-4">
-          <label htmlFor="email" className="block text-gray-700">Email</label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            className="w-full p-2 border border-gray-300 rounded"
-            value={formData.email}
-            onChange={handleChange}
-            required
+    <div className="min-h-screen flex items-center justify-center bg-gray-900 p-6">
+      <div className="flex bg-gray-800 text-white rounded-lg shadow-lg overflow-hidden max-w-4xl w-full">
+        {/* Left Side - Image & Text */}
+        <div className="w-1/2 relative hidden md:block">
+          <img
+            src="https://source.unsplash.com/600x800/?desert,night" // Replace with your image
+            alt="Background"
+            className="h-full w-full object-cover opacity-80"
           />
+          <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center text-center p-6">
+            <h1 className="text-3xl font-semibold">AMU</h1>
+            <p className="mt-4 text-lg">Capturing Moments, Creating Memories</p>
+          </div>
         </div>
-        <div className="mb-4">
-          <label htmlFor="password" className="block text-gray-700">Password</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            className="w-full p-2 border border-gray-300 rounded"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
+
+        {/* Right Side - Login Form */}
+        <div className="w-full md:w-1/2 p-8">
+          <h2 className="text-2xl font-bold text-white">Log in</h2>
+          <p className="text-gray-400 mt-2">
+            Don't have an account?{" "}
+            <a href="#" className="text-purple-400 hover:underline">
+              Sign up
+            </a>
+          </p>
+
+          {/* Form */}
+          <form className="mt-6">
+            <input
+              type="email"
+              placeholder="Email"
+              className="w-full p-3 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:border-purple-400"
+            />
+
+            <input
+              type="password"
+              placeholder="Enter your password"
+              className="w-full mt-4 p-3 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:border-purple-400"
+            />
+
+            {/* Remember Me & Forgot Password */}
+            <div className="mt-4 flex items-center justify-between">
+              <label className="flex items-center text-gray-400">
+                <input
+                  type="checkbox"
+                  className="w-4 h-4 text-purple-400 bg-gray-700 border-gray-600 focus:ring-purple-400"
+                />
+                <span className="ml-2 text-sm">Remember me</span>
+              </label>
+              <a href="#" className="text-sm text-purple-400 hover:underline">
+                Forgot password?
+              </a>
+            </div>
+
+            {/* Submit Button */}
+            <button className="w-full mt-6 bg-purple-500 hover:bg-purple-600 text-white font-semibold py-3 rounded transition">
+              Log in
+            </button>
+          </form>
         </div>
-        <button
-          type="submit"
-          className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
-        >
-          Login
-        </button>
-        <p className="mt-4 text-center">
-          Don't have an account? 
-          <Link to="/signup" className="text-blue-500">Sign up</Link>    
-         
-        </p>
-      </form>
+      </div>
     </div>
   );
 };
