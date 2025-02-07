@@ -13,6 +13,12 @@ const PostHolderSchema = new mongoose.Schema(
             type:String,
             required: true,
             enum:["ICC","PCC"],
+        },
+
+        password: {
+            type: String,
+            required: true,
+            select: false,
         }
     },
     {
