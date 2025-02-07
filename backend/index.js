@@ -32,8 +32,8 @@ app.get('/', (req, res) => {
   });
 
   
-app.use('/api/v1/auth', authenticationRoutes);
-app.use("/api/v1/getdata", stucomRoutes);
+app.use('/auth', authenticationRoutes);
+app.use("/getdata", stucomRoutes);
 
 // Start server
 const PORT = process.env.PORT || 5000;
