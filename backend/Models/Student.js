@@ -63,7 +63,7 @@ const StudentSchema = new mongoose.Schema(
         },
         category: {
             type: String,
-            enum: ["Gen", "OBC", "SC/ST","PWD"],
+            enum: ["Gen", "OBC", "SC/ST"],
             required: true,
         },
         studentImage: {
@@ -76,16 +76,27 @@ const StudentSchema = new mongoose.Schema(
             enum: ["Yes", "No"],
             required:true,
         },
-        password:{
-            type:String,
-            required:true,
+        password: {
+            type: String,
+            required: true,
             select: false,
+            validate: {
+                validator: function (value) {
+                    return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(value);
+                },
+                message: "Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character.",
+            },
         },
         approved:{
             type:String,
             enum:["Yes","No"],
             default:"No",
-        }
+        },
+        isPlaced:{
+            type:String,
+            enum:["Yes","No"],
+            default:"No",
+        },
     },
     {
         timestamps: true,
@@ -110,7 +121,7 @@ StudentSchema.methods.comparePassword = async function (userPassword) {
   //JSON WEBTOKEN
   StudentSchema.methods.createJWT = function () {
     return JWT.sign({ userId: this._id }, process.env.JWT_SECRET_KEY, {
-      expiresIn: "1d",
+      expiresIn: "1m",
     });
   };
   
