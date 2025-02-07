@@ -1,12 +1,11 @@
 import mongoose from "mongoose";
 
-const ResultSchema = new mongoose.Schema(
+const FinalResultSchema = new mongoose.Schema(
     {
         rollNo: {
             type: String,
             required: true,
             ref:"Student",
-            unique: true,
         },
 
         name:{
@@ -21,15 +20,20 @@ const ResultSchema = new mongoose.Schema(
             ref:"Company",
         },
 
-        status:{
+        ctc:{ //ctc/stipend
             type:String,
-            enum:["OA","Interview","Final"],
-        }
-   
+            required:true,
+        },
+
+        job_profile: { //job profile
+            type: [String],
+            enum: ["Intern + Full Time","Full Time", "Intern", "Research Intern/Project"],
+            required: true,
+        },
     },
     {
         timestamps: true,
     }
 );
 
-export default mongoose.model("Result", ResultSchema);
+export default mongoose.model("FinalResult", FinalResultSchema);
