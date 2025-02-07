@@ -97,6 +97,38 @@ const StudentSchema = new mongoose.Schema(
             enum:["Yes","No"],
             default:"No",
         },
+        github:{
+            type:String,
+            match: /^(http|https):\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/,
+        },
+        linkedin:{
+            type:String,
+            match: /^(http|https):\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/,
+        },
+        leetcode:{
+            type:String,
+            match: /^(http|https):\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/,
+        },
+        codechef:{
+            type:String,
+            match: /^(http|https):\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/,
+        },
+        codeforces:{
+            type:String,
+            match: /^(http|https):\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/,
+        },
+        gfg:{
+            type:String,
+            match: /^(http|https):\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/,
+        },
+        codingninja:{
+            type:String,
+            match: /^(http|https):\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/,
+        },
+        resume:{
+            type:String,
+            match: /^(http|https):\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/,
+        },
     },
     {
         timestamps: true,
