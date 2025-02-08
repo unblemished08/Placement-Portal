@@ -16,6 +16,7 @@ const Signup = () => {
     category: "Gen",
     studentImage: "",
     password: "",
+    isDisabled:"",
     resume: "",
     github: "",
     linkedin: "",
@@ -35,8 +36,23 @@ const Signup = () => {
     e.preventDefault();
     console.log("Signup Data:", formData);
 
-    // Example API request: 
-    // await axios.post('/api/signup', formData);
+    const response=await fetch("/api/signup",{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json",
+      },
+      body:JSON.stringify(formData),
+    });
+
+    const data=await response.json();
+
+    if(data.success)
+    {
+      alert("Apka account bann gya hai badai ho")
+    }
+    else{
+      alert("kirpya dubara try kre")
+    }
   };
 
   return (
@@ -116,6 +132,21 @@ const Signup = () => {
               required
             />
           </div>
+
+          <div className="mt-4">
+          <label className="block text-gray-400">Disable</label>
+          <select
+            name="isDisabled"
+            className="w-full p-3 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:border-purple-400"
+            value={formData.isDisabled}
+            onChange={handleChange}
+            required
+          >
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+          </select>
+        </div>
+
 
           {/* Resume Link */}
           <div className="mt-4">
