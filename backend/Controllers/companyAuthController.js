@@ -1,7 +1,7 @@
 import Company from "../Models/Company.js";
 
 export const login1 = async (req, res, next) => {
-  const { name,ctc, job_id,email,phoneNumber,gender,batch,cgpa,backlogs,branch,location,job_profile,companyImage,last_date,password,group_disscussion,tech_rounds,hr_rounds
+  const { name,ctc, job_id,email,phoneNumber,gender,batch,cgpa,backlogs,branch,location,job_profile,companyImage,last_date,password,group_disscussion,tech_rounds,hr_rounds,onlyPWD,OA,aptitude,description
    } = req.body;
 
   //validate fileds
@@ -58,7 +58,19 @@ export const login1 = async (req, res, next) => {
     next("tech_rounds is required");
 
   if (!hr_rounds) 
-    next("last_date is required");
+    next("hr_rounds is required");
+
+  if(!onlyPWD)
+    next("onlyPWD is required");
+
+  if(!OA)
+    next("OA is required");
+
+  if(!aptitude)
+    next("aptitude is required");
+
+  if(!description)
+    next("description is required");
 
   try {
     const companyExist = await Company.findOne({ name,job_id });
@@ -69,7 +81,7 @@ export const login1 = async (req, res, next) => {
     }
 
     const newcompany = await Company.create({
-        name,ctc, job_id,email,phoneNumber,gender,batch,cgpa,backlogs,branch,location,job_profile,companyImage,last_date,password,group_disscussion,tech_rounds,hr_rounds
+        name,ctc, job_id,email,phoneNumber,gender,batch,cgpa,backlogs,branch,location,job_profile,companyImage,last_date,password,group_disscussion,tech_rounds,hr_rounds,onlyPWD,OA,aptitude,description
     });
 
     // user token
@@ -97,7 +109,11 @@ export const login1 = async (req, res, next) => {
         password: newcompany.password,
         group_disscussion: newcompany.group_disscussion,
         tech_rounds: newcompany.tech_rounds,
-        hr_rounds: newcompany.hr_rounds
+        hr_rounds: newcompany.hr_rounds,
+        onlyPWD: newcompany.onlyPWD,
+        OA: newcompany.OA,
+        aptitude: newcompany.aptitude,
+        description: newcompany.description
       },
       token,
     });
