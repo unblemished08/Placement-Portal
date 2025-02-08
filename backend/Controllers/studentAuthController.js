@@ -1,7 +1,7 @@
 import Student from "../Models/Student.js";
 
 export const login = async (req, res, next) => {
-  const { name,rollNo, personal_email,college_email,phoneNumber,gender,batch,cgpa,backlogs,branch,familyIncome,category,studentImage,isDisabled,password } = req.body;
+  const { name,rollNo, personal_email,college_email,phoneNumber,gender,batch,cgpa,backlogs,branch,familyIncome,category,studentImage,isDisabled,password,isPlaced,github,linkedin,leetcode,codechef,codeforces,gfg,codingninja,resume} = req.body;
 
   //validate fileds
 
@@ -50,6 +50,9 @@ export const login = async (req, res, next) => {
   if (!password) 
     next("Password is required");
 
+  if (!resume) 
+    next("Resume is required");
+
   try {
     const studentExist = await Student.findOne({ rollNo });
 
@@ -73,7 +76,16 @@ export const login = async (req, res, next) => {
         category,
         studentImage,
         isDisabled,
-        password
+        password,
+        isPlaced,
+        github,
+        linkedin,
+        leetcode,
+        codechef,
+        codeforces,
+        gfg,
+        codingninja,
+        resume
     });
 
     // user token
@@ -98,7 +110,16 @@ export const login = async (req, res, next) => {
         category: newstudent.category,
         studentImage: newstudent.studentImage,
         isDisabled: newstudent.isDisabled,
-        password: newstudent.password
+        password: newstudent.password,
+        isPlaced: newstudent.isPlaced,
+        github: newstudent.github,
+        linkedin: newstudent.linkedin,
+        leetcode: newstudent.leetcode,
+        codechef: newstudent.codechef,
+        codeforces: newstudent.codeforces,
+        gfg: newstudent.gfg,
+        codingninja: newstudent.codingninja,
+        resume: newstudent.resume
       },
       token,
     });
