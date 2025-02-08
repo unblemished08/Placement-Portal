@@ -7,13 +7,13 @@ const Login = () => {
         {/* Left Side - Image & Text */}
         <div className="w-1/2 relative hidden md:block">
           <img
-            src="https://source.unsplash.com/600x800/?desert,night" // Replace with your image
+            src="./images/placement5.png" 
             alt="Background"
             className="h-full w-full object-cover opacity-80"
           />
-          <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center text-center p-6">
-            <h1 className="text-3xl font-semibold">AMU</h1>
-            <p className="mt-4 text-lg">Capturing Moments, Creating Memories</p>
+          <div className="absolute inset-0 flex flex-col items-center justify-end text-center p-6">
+            {/* <h1 className="text-3xl font-semibold">Placement Portal</h1> */}
+            {/* <p className="mt-4 text-lg">A Step Closer To Your Destination</p> */}
           </div>
         </div>
 
