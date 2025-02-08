@@ -290,7 +290,7 @@ const StoreContextProvider = (props) => {
       studentImage:null,
       isDisabled:"No",
       password:"maimeethahu",
-      approved:"No",});
+      });
 
       // api req for the result of all copnies whose result declared till now
     const result = [

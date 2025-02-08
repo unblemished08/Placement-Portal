@@ -402,7 +402,6 @@ const Profile = ({
                                                 <option value="Gen">Gen</option>
                                                 <option value="OBC">OBC</option>
                                                 <option value="SC/ST">SC/ST</option>
-                                                <option value="PWD">PWD</option>
                                             </select>
                                     }
                                 </div>
@@ -412,7 +411,7 @@ const Profile = ({
                         <div className="flex flex-col">
                             {edit === false ? (
                                 <p className="font-medium text-gray-700">
-                                    <strong>Disability :</strong> {data.disabled}
+                                    <strong>Disability :</strong> {data.isDisabled}
                                 </p>
                             ) : (
                                 <div>

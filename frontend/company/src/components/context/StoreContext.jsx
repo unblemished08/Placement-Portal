@@ -25,8 +25,11 @@ const StoreContextProvider = (props) => {
             onlyPWD : false, // this feild is to be added in backend company schema
             last_date : "2025-01-22",
             group_disscussion : true,
+            OA : "Yes",
+            aptitude : "No",
             tech_rounds : 2,
-            hr_rounds : 1
+            hr_rounds : 1,
+            description : "This is the description field.",
 
     });
     
