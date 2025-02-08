@@ -1,20 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Login = () => {
+  // State for form data
+  const [formData, setFormData] = useState({ email: "", password: "" });
+
+  // Handle input change
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log("Login Data:", formData);
+
+    try {
+      const response = await fetch("http://localhost:5000/auth/student/signUp", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        alert("Apka account bann gya hai, badhai ho!");
+      } else {
+        alert("Kirpya dubara try kare");
+      }
+    } catch (error) {
+      console.error("Error during login:", error);
+      alert("Koi dikkat aayi hai, dubara try kare!");
+    }
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-900 p-6">
       <div className="flex bg-gray-800 text-white rounded-lg shadow-lg overflow-hidden max-w-4xl w-full">
         {/* Left Side - Image & Text */}
         <div className="w-1/2 relative hidden md:block">
           <img
-            src="./images/placement5.png" 
+            src="./images/placement5.png"
             alt="Background"
             className="h-full w-full object-cover opacity-80"
           />
-          <div className="absolute inset-0 flex flex-col items-center justify-end text-center p-6">
-            {/* <h1 className="text-3xl font-semibold">Placement Portal</h1> */}
-            {/* <p className="mt-4 text-lg">A Step Closer To Your Destination</p> */}
-          </div>
         </div>
 
         {/* Right Side - Login Form */}
@@ -28,16 +60,22 @@ const Login = () => {
           </p>
 
           {/* Form */}
-          <form className="mt-6">
+          <form className="mt-6" onSubmit={handleSubmit}>
             <input
               type="email"
+              name="email"
               placeholder="Email"
+              value={formData.email}
+              onChange={handleChange}
               className="w-full p-3 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:border-purple-400"
             />
 
             <input
               type="password"
+              name="password"
               placeholder="Enter your password"
+              value={formData.password}
+              onChange={handleChange}
               className="w-full mt-4 p-3 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:border-purple-400"
             />
 
@@ -56,7 +94,10 @@ const Login = () => {
             </div>
 
             {/* Submit Button */}
-            <button className="w-full mt-6 bg-purple-500 hover:bg-purple-600 text-white font-semibold py-3 rounded transition">
+            <button
+              type="submit"
+              className="w-full mt-6 bg-purple-500 hover:bg-purple-600 text-white font-semibold py-3 rounded transition"
+            >
               Log in
             </button>
           </form>
