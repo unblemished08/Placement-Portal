@@ -1,0 +1,22 @@
+TESTED:
+
+http://localhost:5000/auth/student/login -> for student signup
+http://localhost:5000/auth/student/signUp -> for student login
+http://localhost:5000/auth/company/signup -> for company login
+http://localhost:5000/auth/company/login -> for company signup
+http://localhost:5000/getdata/companydetails -> for company details
+
+
+
+
+PENDING FOR TESTING:
+
+/getdata/student/companies -> getCompaniesByRollNo
+/getdata/slider -> getHighCtcStudents
+/result/save -> save FinalResult and Result 
+
+
+
+TO BE MADE:
+
+/result/fetch -> fetch FinalResult and Result for particular company
