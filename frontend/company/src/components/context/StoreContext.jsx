@@ -113,11 +113,16 @@ const StoreContextProvider = (props) => {
 
     // api request for result declared by comapny
     const [result, setResult] = useState([]);
-    if(result.length != 0){
+    useEffect(()=>{
         // console.log(result); send request
-        
-    }
+    },[result]);
 
+    // notification
+    const [notification,setNotification] = useState({});
+    useEffect(()=>{
+        // console.log(notification); // send req 
+    },[notification])
+        
     // all the objects which declared in the context must be created into a single object
     const contextValue = {
         appliedStudents,
@@ -126,8 +131,8 @@ const StoreContextProvider = (props) => {
         result_for_profile, 
         CompanyReq,
         setCompanyReq,
-        setResult
-
+        setResult,
+        setNotification,
     }
     return (
        <StoreContext.Provider value={contextValue}>

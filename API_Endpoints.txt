@@ -20,3 +20,4 @@ PENDING FOR TESTING:
 TO BE MADE:
 
 /result/fetch -> fetch FinalResult and Result for particular company
+/notification -> to be sent to admin/coordinator/students 
