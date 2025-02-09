@@ -6,6 +6,7 @@ import cookieParser from 'cookie-parser';
 import authenticationRoutes from './Routes/auth.js';
 import stucomRoutes from "./Routes/stucomRoutes.js";
 import errorMiddleware from "./Middlewares/errorMiddleware.js";
+import resultRoutes from "./Routes/result.js";
 
 // Load environment variables
 dotenv.config();
@@ -34,6 +35,7 @@ app.get('/', (req, res) => {
   
 app.use('/auth', authenticationRoutes);
 app.use("/getdata", stucomRoutes);
+app.use("/result",resultRoutes);
 
 // Start server
 const PORT = process.env.PORT || 5000;
