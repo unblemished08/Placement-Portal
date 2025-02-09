@@ -106,29 +106,59 @@ const Notification = () => {
 
 const StyledWrapper = styled.div`
   .form-container {
-    width: 400px;
-    background: linear-gradient(#212121, #212121) padding-box,
-                linear-gradient(145deg, transparent 35%,#e81cff, #40c9ff) border-box;
-    border: 2px solid transparent;
-    padding: 32px 24px;
-    font-size: 14px;
-    font-family: inherit;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    box-sizing: border-box;
-    border-radius: 16px;
-  }
+        position: relative;
+        width: 400px;
+        background: #212121;
+        padding: 2px;
+        font-size: 14px;
+        font-family: inherit;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        box-sizing: border-box;
+        border-radius: 16px;
+        z-index: 1;
+        overflow: hidden; /* Prevents pseudo-element from overflowing */
+    }
+
+    /* Creating the animated border using ::before */
+    .form-container::before {
+        content: "";
+        position: absolute;
+        inset: -10px; /* Extends slightly beyond the main div */
+        z-index: -1;
+        border-radius: inherit;
+        padding: 4px;
+       background: linear-gradient(50deg, 
+        transparent 30%,  /* Most of the area remains transparent */
+        #e81cff 45%, 
+        #40c9ff 50%, 
+        #e81cff 55%, 
+        transparent 70% 
+    );
+        animation: rotateBorder 7s linear infinite;
+}
+
+    /* Smooth Rotation Animation */
+    @keyframes rotateBorder {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+
 
   .form-container button:active {
     scale: 0.95;
   }
 
   .form-container .form {
+    padding: 9px;
     display: flex;
     flex-direction: column;
     gap: 20px;
+    border-radius: 16px;
+    background: #2c2a2d;
   }
 
   .form-container .form-group {
