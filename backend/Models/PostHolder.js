@@ -8,7 +8,11 @@ const PostHolderSchema = new mongoose.Schema(
             ref:"Student",
             unique: true,
         },
-
+        email:{
+            type:String,
+            required: true,
+            unique: true,
+        },
         post:{
             type:String,
             required: true,

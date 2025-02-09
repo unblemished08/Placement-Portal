@@ -22,3 +22,5 @@ PENDING FOR TESTING:
 TO BE MADE:
 
 /notification -> to be sent to admin/coordinator/students 
+/coordinator/register -> to register coordinator
+/coordinator/delete -> to delete coordinator
