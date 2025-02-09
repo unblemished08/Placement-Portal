@@ -14,7 +14,6 @@ const Search = () => {
   const [branch, setBranch] = useState("");
 
   const handleCompany = (company) => {
-    // Navigate to the details page and pass company data
     navigate("/companydetails", { state: { company } });
   };
 
@@ -53,12 +52,12 @@ const Search = () => {
   });
 
   return (
-    <div className="p-4 bg-gray-100">
+    <div className="p-4 bg-gray-900 text-white min-h-screen">
       <div className="flex flex-wrap items-center m-3 p-2 space-y-4 md:space-y-0 md:space-x-4">
         {/* Search Input */}
         <input
           type="text"
-          className="flex-grow p-3 border border-gray-300 rounded-lg w-full md:w-6/12 h-12"
+          className="flex-grow p-3 border border-gray-600 rounded-lg w-full md:w-6/12 h-12 bg-gray-800 text-white placeholder-gray-400"
           placeholder="Search Companies, Projects, or Internships"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
@@ -93,7 +92,7 @@ const Search = () => {
         {/* Select Dropdown */}
         <div>
           <select
-            className="p-3 border border-gray-300 rounded-lg w-full md:w-auto h-12"
+            className="p-3 border border-gray-600 rounded-lg w-full md:w-auto h-12 bg-gray-800 text-white"
             value={type}
             onChange={(e) => setType(e.target.value)}
           >
@@ -109,7 +108,7 @@ const Search = () => {
         {isApplied ? (
           filteredAppliedCompanies.length > 0 ? (
             filteredAppliedCompanies.map((company, index) => (
-              <div key={index} onClick={() => handleCompany(company)}>
+              <div key={index} onClick={() => handleCompany(company)} className="cursor-pointer">
                 <Company
                   key={index}
                   companyImage={company.companyImage}
@@ -125,11 +124,11 @@ const Search = () => {
               </div>
             ))
           ) : (
-            <h1>You have not applied in any company.</h1>
+            <h1 className="text-gray-400">You have not applied in any company.</h1>
           )
         ) : filteredCompanies.length > 0 ? (
           filteredCompanies.map((company, index) => (
-            <div key={index} onClick={() => handleCompany(company)}>
+            <div key={index} onClick={() => handleCompany(company)} className="cursor-pointer">
               <Company
                 key={index}
                 companyImage={company.companyImage}
@@ -145,7 +144,7 @@ const Search = () => {
             </div>
           ))
         ) : (
-          <h1>There is no company at current.</h1>
+          <h1 className="text-gray-400">There is no company at current.</h1>
         )}
       </div>
     </div>
