@@ -8,6 +8,7 @@ import stucomRoutes from "./Routes/stucomRoutes.js";
 import errorMiddleware from "./Middlewares/errorMiddleware.js";
 import resultRoutes from "./Routes/result.js";
 import saveDataRoutes from "./Routes/saveData.js";
+import coordinatorRoutes from "./Routes/coordinator.js";
 
 // Load environment variables
 dotenv.config();
@@ -38,6 +39,7 @@ app.use('/auth', authenticationRoutes);
 app.use("/getdata", stucomRoutes);
 app.use("/result",resultRoutes);
 app.use("/savedata", saveDataRoutes);
+app.use("/coordinator",coordinatorRoutes);
 
 // Start server
 const PORT = process.env.PORT || 5000;
