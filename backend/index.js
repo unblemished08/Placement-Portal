@@ -7,6 +7,7 @@ import authenticationRoutes from './Routes/auth.js';
 import stucomRoutes from "./Routes/stucomRoutes.js";
 import errorMiddleware from "./Middlewares/errorMiddleware.js";
 import resultRoutes from "./Routes/result.js";
+import saveDataRoutes from "./Routes/saveData.js";
 
 // Load environment variables
 dotenv.config();
@@ -36,6 +37,7 @@ app.get('/', (req, res) => {
 app.use('/auth', authenticationRoutes);
 app.use("/getdata", stucomRoutes);
 app.use("/result",resultRoutes);
+app.use("/savedata", saveDataRoutes);
 
 // Start server
 const PORT = process.env.PORT || 5000;

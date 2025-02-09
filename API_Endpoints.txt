@@ -15,6 +15,7 @@ PENDING FOR TESTING:
 /getdata/slider -> getHighCtcStudents
 /result/save -> save FinalResult and Result 
 /result/fetch -> fetch FinalResult and Result for particular company
+/savedata/student/company -> save student applied in which company
 
 
 
