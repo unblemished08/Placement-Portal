@@ -27,13 +27,13 @@ const Login = () => {
       const data = await response.json();
 
       if (data.success) {
-        alert("Apka account bann gya hai, badhai ho!");
+        alert("Your account is successfully created");
       } else {
-        alert("Kirpya dubara try kare");
+        alert("You may try once again");
       }
     } catch (error) {
-      console.error("Error during login:", error);
-      alert("Koi dikkat aayi hai, dubara try kare!");
+      console.error("Error", error);
+      alert("There is an error in filling the details");
     }
   };
 
@@ -43,7 +43,7 @@ const Login = () => {
         {/* Left Side - Image & Text */}
         <div className="w-1/2 relative hidden md:block">
           <img
-            src="./images/placement5.png"
+            src="./images/logo.png"
             alt="Background"
             className="h-full w-full object-cover opacity-80"
           />
