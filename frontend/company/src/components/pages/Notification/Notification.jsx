@@ -131,11 +131,11 @@ const StyledWrapper = styled.div`
         border-radius: inherit;
         padding: 4px;
        background: linear-gradient(50deg, 
-        transparent 30%,  /* Most of the area remains transparent */
+        transparent 40%,  /* Most of the area remains transparent */
         #e81cff 45%, 
         #40c9ff 50%, 
         #e81cff 55%, 
-        transparent 70% 
+        transparent 60% 
     );
         animation: rotateBorder 7s linear infinite;
 }

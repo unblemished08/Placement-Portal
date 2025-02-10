@@ -8,17 +8,17 @@ const Result = ({ companies }) => {
   };
 
   return (
-    <div className="container mx-auto p-6 bg-gray-50 rounded-lg shadow-lg">
-      <h1 className="text-3xl font-extrabold mb-6 text-center text-gray-800">
+    <div className="container mx-auto p-6 bg-gray-800 rounded-lg shadow-lg">
+      <h1 className="text-3xl font-extrabold mb-6 text-center text-white">
         Job Results
       </h1>
       <div className="overflow-x-auto">
-        <table className="min-w-full bg-white border border-gray-300 rounded-lg">
-          <thead className="bg-gray-200">
+        <table className="min-w-full bg-gray-400 border border-gray-300 rounded-lg">
+          <thead className="bg-gray-600">
             <tr>
-              <th className="py-3 px-5 border-b font-semibold text-left text-gray-700">Job ID</th>
-              <th className="py-3 px-5 border-b font-semibold text-left text-gray-700">Company</th>
-              <th className="py-3 px-5 border-b font-semibold text-center text-gray-700">Result</th>
+              <th className="py-3 px-5 border-b font-semibold text-left text-white">Job ID</th>
+              <th className="py-3 px-5 border-b font-semibold text-left text-white">Company</th>
+              <th className="py-3 px-5 border-b font-semibold text-center text-white">Result</th>
             </tr>
           </thead>
           <tbody>
@@ -26,10 +26,10 @@ const Result = ({ companies }) => {
               <tr
                 key={index}
                 className={`hover:bg-gray-100 ${
-                  index % 2 === 0 ? "bg-gray-50" : "bg-white"
+                  index % 2 === 0 ? "bg-gray-700" : "bg-gray-600"
                 }`}
               >
-                <td className="py-3 px-5 border-b text-gray-600">
+                <td className="py-3 px-5 border-b text-white">
                   {company.job_id}
                 </td>
                 <td className="py-3 px-5 border-b">
@@ -39,7 +39,7 @@ const Result = ({ companies }) => {
                       alt={`${company.name} logo`}
                       className="h-12 w-12 object-contain rounded-full border border-gray-300"
                     />
-                    <div className="text-gray-800 font-medium">
+                    <div className="text-white font-medium">
                       {company.name}
                     </div>
                   </div>

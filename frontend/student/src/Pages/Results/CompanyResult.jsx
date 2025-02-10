@@ -1,19 +1,19 @@
 const CompanyResult = ({ result }) => {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-50 to-gray-100">
-      <div className="bg-white shadow-2xl rounded-lg overflow-hidden w-full max-w-6xl">
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-gray-900 to-black p-6">
+      <div className="bg-gray-900 shadow-2xl rounded-2xl overflow-hidden w-full max-w-6xl border border-gray-700">
         <h1
-          className={`text-3xl font-extrabold text-center py-6 tracking-wide ${
-            result.length > 0 ? "bg-blue-500 text-white" : "bg-red-600 text-white"
+          className={`text-4xl font-extrabold text-center py-6 tracking-wide uppercase shadow-md ${
+            result.length > 0 ? "bg-blue-700 text-white" : "bg-red-700 text-white"
           }`}
         >
           {result.length > 0 ? "Selected Students" : "No Students Selected"}
         </h1>
         {result.length > 0 ? (
           <div className="overflow-x-auto">
-            <table className="min-w-full table-auto text-sm bg-white">
+            <table className="min-w-full table-auto text-md bg-gray-800 text-white">
               <thead>
-                <tr className="bg-gray-200 text-gray-800">
+                <tr className="bg-gray-700 text-gray-300 border-b border-gray-600">
                   <th className="py-4 px-6 text-left font-semibold">Name</th>
                   <th className="py-4 px-6 text-left font-semibold">Roll No</th>
                   <th className="py-4 px-6 text-left font-semibold">Branch</th>
@@ -26,25 +26,25 @@ const CompanyResult = ({ result }) => {
                 {result.map((student, index) => (
                   <tr
                     key={index}
-                    className={`border-b ${
-                      index % 2 === 0 ? "bg-gray-50" : "bg-white"
-                    } hover:bg-blue-100`}
+                    className={`border-b border-gray-600  ${
+                      index % 2 === 0 ? "bg-gray-800" : "bg-gray-800"
+                    } hover:bg-gray-600`}
                   >
-                    <td className="py-4 px-6 text-gray-700">{student.name}</td>
-                    <td className="py-4 px-6 text-gray-700">{student.rollNo}</td>
-                    <td className="py-4 px-6 text-gray-700">{student.branch}</td>
-                    <td className="py-4 px-6 text-gray-700">{student.job_profile}</td>
-                    <td className="py-4 px-6 text-gray-700">{student.role}</td>
-                    <td className="py-4 px-6 text-gray-700">{student.location}</td>
+                    <td className="py-4 px-6 text-gray-300">{student.name}</td>
+                    <td className="py-4 px-6 text-gray-300">{student.rollNo}</td>
+                    <td className="py-4 px-6 text-gray-300">{student.branch}</td>
+                    <td className="py-4 px-6 text-gray-300">{student.job_profile}</td>
+                    <td className="py-4 px-6 text-gray-300">{student.role}</td>
+                    <td className="py-4 px-6 text-gray-300">{student.location}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
         ) : (
-          <div className="p-12 text-center text-gray-700">
-            <p className="text-xl font-semibold text-red-500">No students were selected.</p>
-            <p className="mt-2">Please check back later for updates.</p>
+          <div className="p-12 text-center text-gray-300">
+            <p className="text-2xl font-semibold text-red-400">No students were selected.</p>
+            <p className="mt-2 text-lg">Please check back later for updates.</p>
           </div>
         )}
       </div>
