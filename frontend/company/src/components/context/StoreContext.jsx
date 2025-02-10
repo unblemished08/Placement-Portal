@@ -117,11 +117,19 @@ const StoreContextProvider = (props) => {
         // console.log(result); send request
     },[result]);
 
-    // notification
+    // send notification
     const [notification,setNotification] = useState({});
     useEffect(()=>{
-        // console.log(notification); // send req 
+        // console.log(notification); // send req {from,to[], message}
     },[notification])
+
+    // received Notification
+    // const recNotis = [
+    //     {
+    //         from : "Admin",
+            
+    //     }
+    // ]
         
     // all the objects which declared in the context must be created into a single object
     const contextValue = {

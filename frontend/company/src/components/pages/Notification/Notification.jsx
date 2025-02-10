@@ -3,10 +3,14 @@ import { StoreContext } from '../../context/StoreContext';
 import styled from 'styled-components';
 
 const Notification = () => {
-    const [persons, setPersons] = useState([]);
+    const [to, setPersons] = useState([]);
     const [message, setMessage] = useState('');
-    const { setNotification } = useContext(StoreContext);
+    const { setNotification, CompanyReq } = useContext(StoreContext);
 
+    // useEffect(()=>{
+    //     console.log(message);
+    // },message)
+    
     const handlePersonSelection = (e, person) => {
         setPersons((prevPersons) => {
             const arr = [...prevPersons];
@@ -24,8 +28,9 @@ const Notification = () => {
         });
     };
 
-    const handleClick = () => {
-        if (persons.length === 0) {
+    const handleClick = (e) => {
+        e.preventDefault();
+        if (to.length === 0) {
             alert("Please select whom to send the notification.");
             return;
         }
@@ -34,7 +39,8 @@ const Notification = () => {
             return;
         }
         setNotification({
-            persons: persons,
+            from: CompanyReq.name,
+            to: to,
             message: message,
         });
         setPersons([]);
@@ -50,57 +56,76 @@ const Notification = () => {
         }
     }, [isActive]);
     return (
-        <StyledWrapper>
-            <div className='h-screen bg-black flex justify-center items-center'>
-                <div className="form-container">
-                    <form className="form">
-                        <div className="form-group">
-                            <div className="mb-4 ">
-                                <label >Send To:</label>
-                                <div className={`justify-around border  rounded-lg 
+        <div className='h-screen bg-black text-white flex justify-around items-center'>
+            <StyledWrapper>
+                <div className='form-container'>
+                    <div className='form'>
+                        <h1>Notification</h1>
+                        <div>
+                            <div>
+                                <h2>From Admin:</h2>
+                            </div>
+                            <div>
+                                <h2>From Coordinator:</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </StyledWrapper>
+            <div>
+                <StyledWrapper>
+                    <div className='h-screen bg-black flex justify-center items-center'>
+                        <div className="form-container">
+                            <form className="form">
+                                <div className="form-group">
+                                    <div className="mb-4 ">
+                                        <label >Send To:</label>
+                                        <div className={`justify-around border  rounded-lg 
                                 p-3 items-center gap-2 outline-none transition-all duration-300
                                 ${isActive ? "border-[#e81cff]" : "border-gray-700"}`}>
-                                    {["Admin", "Coordinator", "Selected Students", "All Students"].map((person) => (
-                                        <label key={person} className="flex items-center gap-x-3 p-2 mb-2">
-                                            <input
-                                                type="checkbox"
-                                                value={person}
-                                                checked={persons.includes(person)}
-                                                onChange={(e) => handlePersonSelection(e, person)}
-                                                onClick={() => setIsActive(true)}
-                                                className="w-5 h-4"
-                                            />
-                                            {person}
-                                        </label>
-                                    ))}
+                                            {["Admin", "Coordinator", "Selected Students", "All Students"].map((person) => (
+                                                <label key={person} className="flex items-center gap-x-3 p-2 mb-2">
+                                                    <input
+                                                        type="checkbox"
+                                                        value={person}
+                                                        checked={to.includes(person)}
+                                                        onChange={(e) => handlePersonSelection(e, person)}
+                                                        onClick={() => setIsActive(true)}
+                                                        className="w-5 h-4"
+                                                    />
+                                                    {person}
+                                                </label>
+                                            ))}
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                                <div className="form-group">
+                                    <div className="mb-4">
+                                        <label>Enter Message:</label>
+                                        <textarea
+                                            id="msg"
+                                            rows={5}
+                                            value={message}
+                                            onChange={(e) => setMessage(e.target.value)}
+                                            placeholder="Enter notification here..."
+                                        ></textarea>
+                                    </div>
+                                </div>
+                                <div className="flex justify-center">
+                                    <button
+                                        type="submit"
+                                        onClick={handleClick}
+                                        className="form-submit-btn"
+                                    >
+                                        Send
+                                    </button>
+                                </div>
+                            </form>
                         </div>
-                        <div className="form-group">
-                            <div className="mb-4">
-                                <label>Enter Message:</label>
-                                <textarea
-                                    id="msg"
-                                    rows={5}
-                                    value={message}
-                                    onChange={(e) => setMessage(e.target.value)}
-                                    placeholder="Enter notification here..."
-                                ></textarea>
-                            </div>
-                        </div>
-                        <div className="flex justify-center">
-                            <button
-                                type="submit"
-                                onClick={handleClick}
-                                className="form-submit-btn"
-                            >
-                                Send
-                            </button>
-                        </div>
-                    </form>
-                </div>
+                    </div>
+                </StyledWrapper>
             </div>
-        </StyledWrapper>
+        </div>
     );
 }
 
@@ -109,7 +134,7 @@ const StyledWrapper = styled.div`
         position: relative;
         width: 400px;
         background: #212121;
-        padding: 2px;
+        padding: 3px;
         font-size: 14px;
         font-family: inherit;
         color: white;
@@ -126,18 +151,16 @@ const StyledWrapper = styled.div`
     .form-container::before {
         content: "";
         position: absolute;
-        inset: -10px; /* Extends slightly beyond the main div */
+        inset: -150%; /* Extends slightly beyond the main div */
         z-index: -1;
         border-radius: inherit;
         padding: 4px;
        background: linear-gradient(50deg, 
-        transparent 40%,  /* Most of the area remains transparent */
-        #e81cff 45%, 
-        #40c9ff 50%, 
-        #e81cff 55%, 
-        transparent 60% 
+        transparent 0%,  /* Most of the area remains transparent */
+       #8a2be2 40%, #ff69b4 55%, #1e90ff 30%,
+        transparent 100% 
     );
-        animation: rotateBorder 7s linear infinite;
+        animation: rotateBorder 4s linear infinite;
 }
 
     /* Smooth Rotation Animation */
