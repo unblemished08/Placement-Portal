@@ -27,13 +27,13 @@ const Login = () => {
       const data = await response.json();
 
       if (data.success) {
-        alert("Apka account bann gya hai, badhai ho!");
+        alert("Your account is successfully created");
       } else {
-        alert("Kirpya dubara try kare");
+        alert("You may try once again");
       }
     } catch (error) {
-      console.error("Error during login:", error);
-      alert("Koi dikkat aayi hai, dubara try kare!");
+      console.error("Error", error);
+      alert("There is an error in filling the details");
     }
   };
 

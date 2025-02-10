@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 const Login = () => {
   // State for form data
-  const [formData, setFormData] = useState({ name: "",job_id:"", password: "" });
+  const [formData, setFormData] = useState({ email: "", password: "" });
 
   // Handle input change
   const handleChange = (e) => {
@@ -16,7 +16,7 @@ const Login = () => {
     console.log("Login Data:", formData);
 
     try {
-      const response = await fetch("http://localhost:5000/auth/company/login", {
+      const response = await fetch("http://localhost:5000/auth/student/signUp", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -27,13 +27,13 @@ const Login = () => {
       const data = await response.json();
 
       if (data.success) {
-        alert("Your account is successfully created");
+        alert("login successfull");
       } else {
-        alert("You may try once again");
+        alert("error");
       }
     } catch (error) {
       console.error("Error", error);
-      alert("There is an error in filling the details");
+      alert("there is an error in filling the details");
     }
   };
 
@@ -43,7 +43,7 @@ const Login = () => {
         {/* Left Side - Image & Text */}
         <div className="w-1/2 relative hidden md:block">
           <img
-            src="./images/logo.png"
+            src="./logo.png"
             alt="Background"
             className="h-full w-full object-cover opacity-80"
           />
@@ -62,20 +62,12 @@ const Login = () => {
           {/* Form */}
           <form className="mt-6" onSubmit={handleSubmit}>
             <input
-              type="name"
-              name="name"
-              placeholder="Enter Company Name"
-              value={formData.name}
+              type="email"
+              name="email"
+              placeholder="email"
+              value={formData.email}
               onChange={handleChange}
               className="w-full p-3 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:border-purple-400"
-            />
-            <input
-              type="job_id"
-              name="job_id"
-              placeholder="Enter Job ID"
-              value={formData.job_id}
-              onChange={handleChange}
-              className="w-full mt-4 p-3 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:border-purple-400"
             />
 
             <input
