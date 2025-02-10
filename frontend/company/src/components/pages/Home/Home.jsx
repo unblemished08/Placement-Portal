@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { StoreContext } from "../../context/StoreContext";
+import { StoreContext } from "../../Context/StoreContext";
 import ResultSlider from "./ResultSlider";
 
 function Home() {

@@ -8,6 +8,7 @@ import Notification from "./components/pages/Notification/Notification";
 import { Navbar } from "./components/Header/navbar";
 import About from "./components/pages/about/About";
 import Login from "./components/pages/Login_Signup/login";
+import ContactUs from "./components/pages/ContactUs/ContactUs";
 function App() {
   return (
     //every route must be added here if we need to render any sort of component to maintain single page
@@ -22,6 +23,7 @@ function App() {
       <Route path="/uploadResult" element={<AddResult/>} />
       <Route path="/sendNotification" element={<Notification/>}/>
       <Route path="/login" element={<Login/>}/>
+      <Route path="/contact-us" element={<ContactUs/>}/>
       </Routes>
     </>   
   );
