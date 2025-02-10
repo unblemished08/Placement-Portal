@@ -21,6 +21,7 @@ PENDING FOR TESTING:
 /auth/coordinator/login -> to login coordinator
 /auth/admin/login
 /auth/admin/signUp
+/auth/admin/presignup -> superadmin
 
 
 

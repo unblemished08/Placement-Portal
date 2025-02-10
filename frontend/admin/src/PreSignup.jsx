@@ -1,50 +1,39 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import PreSignup from "./PreSignup";
 
-const Signup = () => {
+function PreSignup({ setAuth }) {
+  const [superpassword, setSuperPassword] = useState("");
   const navigate = useNavigate();
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  // Show PreSignup first, then allow access to Signup
-  if (!isAuthenticated) {
-    return <PreSignup setAuth={setIsAuthenticated} />;
-  }
-
-  // State for form data
-  const [formData, setFormData] = useState({ email: "", password: "" });
 
   // Handle input change
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setSuperPassword(e.target.value);
   };
 
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Signup Data:", formData);
 
     try {
-      const response = await fetch("http://localhost:5000/auth/student/signUp", {
+      const response = await fetch("http://localhost:5000/auth/admin/presignup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ superpassword }),
       });
 
       const data = await response.json();
 
       if (data.success) {
-        alert("Your account is successfully created");
-        navigate("/login"); // Redirect to login page
+        setAuth(true); // Update authentication state in `Signup`
+        navigate("/signup"); // Redirect to Signup
       } else {
-        alert("Signup failed. Please try again.");
+        alert("Incorrect password, try again.");
       }
     } catch (error) {
       console.error("Error:", error);
-      alert("There was an error during signup.");
+      alert("Error verifying password");
     }
   };
 
@@ -56,9 +45,9 @@ const Signup = () => {
           <img src="./logo.png" alt="Background" className="h-full w-full object-cover opacity-80" />
         </div>
 
-        {/* Right Side - Signup Form */}
+        {/* Right Side - Super Admin Password Form */}
         <div className="w-full md:w-1/2 p-8">
-          <h2 className="text-2xl font-bold text-white">Sign Up</h2>
+          <h2 className="text-2xl font-bold text-white">Super Admin Password</h2>
           <p className="text-gray-400 mt-2">
             Already have an account?{" "}
             <a href="/login" className="text-purple-400 hover:underline">
@@ -68,19 +57,10 @@ const Signup = () => {
 
           <form className="mt-6" onSubmit={handleSubmit}>
             <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              value={formData.email}
-              onChange={handleChange}
-              className="w-full p-3 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:border-purple-400"
-            />
-
-            <input
               type="password"
-              name="password"
-              placeholder="Enter your password"
-              value={formData.password}
+              name="superpassword"
+              placeholder="Enter super admin password"
+              value={superpassword}
               onChange={handleChange}
               className="w-full mt-4 p-3 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:border-purple-400"
             />
@@ -89,13 +69,13 @@ const Signup = () => {
               type="submit"
               className="w-full mt-6 bg-purple-500 hover:bg-purple-600 text-white font-semibold py-3 rounded transition"
             >
-              Sign Up
+              Submit Password
             </button>
           </form>
         </div>
       </div>
     </div>
   );
-};
+}
 
-export default Signup;
+export default PreSignup;
