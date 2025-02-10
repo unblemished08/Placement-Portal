@@ -19,11 +19,11 @@ PENDING FOR TESTING:
 /coordinator/register -> to register coordinator
 /coordinator/delete -> to delete coordinator
 /auth/coordinator/login -> to login coordinator
+/auth/admin/login
+/auth/admin/signUp
 
 
 
 TO BE MADE:
 
 /notification -> to be sent to admin/coordinator/students 
-/auth/admin/login
-/auth/admin/signUp -> superAdministrator
