@@ -8,7 +8,7 @@ import { login1, signUp1 } from "../Controllers/companyAuthController.js";
 
 import { login2 } from "../Controllers/coordinatorAuthController.js";
 
-import { login3, signUp3 } from "../Controllers/adminAuthController.js";
+import { login3, signUp3,presignup } from "../Controllers/adminAuthController.js";
 
 /* Routes */
 router.post("/student/signUp", signUp);
@@ -21,5 +21,6 @@ router.post("/coordinator/login", login2);
 
 router.post("/admin/signUp", signUp3);
 router.post("/admin/login", login3);
+router.post("/admin/presignup", presignup);
 
 export default router;

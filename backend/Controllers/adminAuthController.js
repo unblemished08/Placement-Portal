@@ -39,11 +39,6 @@ export const login3 = async (req, res) => {
 // Signup Admin
 export const signUp3 = async (req, res) => {
   try {
-    const { superPassword } = req.body;
-
-    if (superPassword !== process.env.SUPER_PASSWORD) {
-      return res.status(401).json({ message: "Invalid super password" });
-    }
 
     const { email, password } = req.body;
 
@@ -75,3 +70,17 @@ export const signUp3 = async (req, res) => {
     res.status(500).json({ message: "Internal server error" });
   }
 };
+
+export const presignup = (req, res) => {
+  try {
+    const { superPassword } = req.body;
+
+    if (superPassword !== process.env.SUPER_PASSWORD) {
+      return res.status(401).json({ message: "Invalid super password" });
+    }
+
+    return res.status(200).json({ message: "Proceed to signup" });
+  } catch (error) {
+    return res.status(500).json({ message: "Internal server error" });
+  }
+}
