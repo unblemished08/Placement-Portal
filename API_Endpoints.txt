@@ -5,6 +5,13 @@ http://localhost:5000/auth/student/signUp -> for student login
 http://localhost:5000/auth/company/signUp -> for company login
 http://localhost:5000/auth/company/login -> for company signup
 http://localhost:5000/getdata/companydetails -> for company details
+http://localhost:5000/coordinator/register -> to register coordinator
+http://localhost:5000/coordinator/delete -> to delete coordinator
+http://localhost:5000/auth/coordinator/login -> to login coordinator
+http://localhost:5000/auth/admin/login
+http://localhost:5000/auth/admin/signUp
+http://localhost:5000/auth/admin/presignup -> superadmin
+
 
 
 
@@ -16,12 +23,6 @@ PENDING FOR TESTING:
 /result/save -> save FinalResult and Result 
 /result/fetch -> fetch FinalResult and Result for particular company
 /savedata/student/company -> save student applied in which company
-/coordinator/register -> to register coordinator
-/coordinator/delete -> to delete coordinator
-/auth/coordinator/login -> to login coordinator
-/auth/admin/login
-/auth/admin/signUp
-/auth/admin/presignup -> superadmin
 
 
 

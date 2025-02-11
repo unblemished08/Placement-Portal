@@ -1,4 +1,7 @@
 import StuCom from "../Models/StuCom.js"; // Import the StuCom model
+import Student from "../Models/Student.js";
+import Company from "../Models/Company.js";
+
 
 // Controller to get all companies for a given rollNo
 export const getCompaniesByRollNo = async (req, res) => {
@@ -34,6 +37,7 @@ export const getCompaniesByRollNo = async (req, res) => {
   }
 };
 
+
 export const saveData = async (req, res) => {
   try {
     const { rollNo, name, job_id } = req.body;
@@ -47,13 +51,20 @@ export const saveData = async (req, res) => {
     if (!job_id)
       return res.status(400).json({ message: "Job ID is required." });
 
-    const newEntry = new StuCom({
-      rollNo,
-      name,
-      job_id,
-    });
+    // Check if rollNo exists in Student collection
+    const studentExists = await Student.findOne({ rollNo });
+    if (!studentExists)
+      return res.status(404).json({ message: "Student not found." });
 
+    // Check if { name, job_id } exists in Company collection
+    const companyExists = await Company.findOne({ name, job_id });
+    if (!companyExists)
+      return res.status(404).json({ message: "Company or Job ID not found." });
+
+    // Save data
+    const newEntry = new StuCom({ rollNo, name, job_id });
     await newEntry.save();
+
     return res.status(201).json({ message: "Data saved successfully." });
   } catch (error) {
     console.error("Error saving data:", error);
