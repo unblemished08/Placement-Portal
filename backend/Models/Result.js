@@ -6,7 +6,6 @@ const ResultSchema = new mongoose.Schema(
             type: String,
             required: true,
             ref:"Student",
-            unique: true,
         },
 
         name:{
@@ -31,5 +30,7 @@ const ResultSchema = new mongoose.Schema(
         timestamps: true,
     }
 );
+
+ResultSchema.index({ rollNo: 1, name: 1, job_id: 1 }, { unique: true });
 
 export default mongoose.model("Result", ResultSchema);

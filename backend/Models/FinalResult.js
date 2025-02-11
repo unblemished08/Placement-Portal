@@ -36,4 +36,6 @@ const FinalResultSchema = new mongoose.Schema(
     }
 );
 
+FinalResultSchema.index({ rollNo: 1, name: 1, job_id: 1 }, { unique: true });
+
 export default mongoose.model("FinalResult", FinalResultSchema);
