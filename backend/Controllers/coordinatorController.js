@@ -1,4 +1,4 @@
-import PostHolder from "../Models/PostHolder";
+import PostHolder from "../Models/PostHolder.js";
 
 // Save Coordinator
 export const saveCoordinator = async (req, res) => {
