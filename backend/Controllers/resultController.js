@@ -1,9 +1,22 @@
 import FinalResult from "../Models/FinalResult.js";
 import Result from "../Models/Result.js";
+import Student from "../Models/Student.js";
+import Company from "../Models/Company.js";
 
 export const saveResult = async (req, res) => {
   try {
     const { name, rollNo, job_id, status } = req.body;
+
+    // Check if rollNo exists in Student collection
+    const studentExists = await Student.findOne({ rollNo });
+    if (!studentExists)
+      return res.status(404).json({ message: "Student not found." });
+
+    // Check if { name, job_id } exists in Company collection
+    const companyExists = await Company.findOne({ name, job_id });
+    if (!companyExists)
+      return res.status(404).json({ message: "Company or Job ID not found." });
+
 
     if (status === "Final") {
       // Final result save
