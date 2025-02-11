@@ -132,6 +132,7 @@ const CompanySchema = new mongoose.Schema(
     }
 );
 
+CompanySchema.index({ name: 1, job_id: 1 }, { unique: true });
 // middelwares
 CompanySchema.pre("save", async function (next) {
     if (!this.isModified("password")) return next();

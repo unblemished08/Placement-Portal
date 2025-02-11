@@ -29,3 +29,4 @@ PENDING FOR TESTING:
 TO BE MADE:
 
 /notification -> to be sent to admin/coordinator/students 
+/getdata/isStudentApllied -> apply/applied
