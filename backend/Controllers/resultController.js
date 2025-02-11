@@ -56,7 +56,11 @@ export const saveResult = async (req, res) => {
 
 export const getResult = async (req, res) => {
   try {
-    const { name, job_id } = req.query;
+    const { name, job_id } = req.body;
+
+    const companyExists = await Company.findOne({ name, job_id });
+    if (!companyExists)
+      return res.status(404).json({ message: "Company or Job ID not found." });
     
     const finalResults = (await FinalResult.find({ name, job_id })) || null;
     const results = (await Result.find({ name, job_id })) || null;
