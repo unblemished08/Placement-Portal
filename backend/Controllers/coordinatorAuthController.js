@@ -12,7 +12,7 @@ export const login2 = async (req, res, next) => {
         if (!password)  
             next("Password is required");
 
-        const ph = await PostHolder.findOne({ rollNo: new mongoose.Types.ObjectId(rollNo) }).select("+password");
+        const ph = await PostHolder.findOne({ rollNo }).select("+password");
 
         if (!ph) {
             next("Invalid rollNo or password");

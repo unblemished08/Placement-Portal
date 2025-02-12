@@ -3,17 +3,17 @@ import mongoose from "mongoose";
 const StuComSchema = new mongoose.Schema(
     {
       rollNo: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: String,
         required: true,
         ref: "Student",
       },
       name: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: String,
         required: true,
         ref: "Company",
       },
       job_id: { 
-        type: mongoose.Schema.Types.ObjectId,
+        type: String,
         required: true,
         ref: "Company",
       },
