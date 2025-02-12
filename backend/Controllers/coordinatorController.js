@@ -25,7 +25,7 @@ export const saveCoordinator = async (req, res) => {
     }
 
     const coordinator = new PostHolder({
-      rollNo,
+      rollNo: new mongoose.Types.ObjectId(rollNo) ,
       email,
       post,
       password, 
@@ -47,7 +47,7 @@ export const deleteCoordinator = async (req, res) => {
       return res.status(400).json({ message: "Roll No is required" });
 
     // Find and delete the coordinator
-    const deletedCoordinator = await PostHolder.findOneAndDelete({ rollNo });
+    const deletedCoordinator = await PostHolder.findOneAndDelete({ rollNo: new mongoose.Types.ObjectId(rollNo) });
     if (!deletedCoordinator) {
       return res.status(404).json({ message: "Coordinator not found" });
     }
