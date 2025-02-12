@@ -5,7 +5,7 @@ import JWT from "jsonwebtoken";
 const PostHolderSchema = new mongoose.Schema(
     {
         rollNo: {
-            type: String,
+            type: mongoose.Schema.Types.ObjectId,
             required: true,
             ref:"Student",
             unique: true,

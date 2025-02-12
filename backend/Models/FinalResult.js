@@ -3,19 +3,19 @@ import mongoose from "mongoose";
 const FinalResultSchema = new mongoose.Schema(
     {
         rollNo: {
-            type: String,
+            type: mongoose.Schema.Types.ObjectId,
             required: true,
             ref:"Student",
         },
 
         name:{
-            type:String,
+           type: mongoose.Schema.Types.ObjectId,
             required: true,
             ref:"Company",
         },
 
         job_id:{ 
-            type:String,
+            type: mongoose.Schema.Types.ObjectId,
             required:true,
             ref:"Company",
         },
