@@ -16,6 +16,7 @@ import Recruiters from "./Pages/Recruiters"
 import ContactUs from "./Pages/ContactUs/ContactUs"
 import { StoreContext } from "./Context/StoreContext"
 import { useContext } from "react"
+import PlacementStats from "./Pages/statistics/Stats"
 function App() {
   const {userData} = useContext(StoreContext);
   return (
@@ -36,7 +37,7 @@ function App() {
       <Route path="/profile" element={<Profile {...userData}/>} />
       <Route path="/contact-us" element={<ContactUs/>} />
       <Route path="/login" element={<Login/>}/>
-      
+      <Route path="/stats" element={<PlacementStats/>}/>
       </Routes>
     {/* // </BrowserRouter> */}
     </>   
