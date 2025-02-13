@@ -14,6 +14,7 @@ http://localhost:5000/auth/admin/presignup -> superadmin
 http://localhost:5000/savedata/student/company -> save student applied in which company
 http://localhost:5000/result/save -> save FinalResult and Result 
 http://localhost:5000/result/fetch -> fetch FinalResult and Result for particular company
+http://localhost:5000/getdata/slider -> getHighCtcStudents
 
 
 
@@ -27,7 +28,6 @@ TO BE MADE:
 
 /notification -> to be sent to admin/coordinator/students 
 /getdata/student/companies -> getCompaniesByRollNo (error)
-/getdata/slider -> getHighCtcStudents (error)
 
 
 my own result for each student
