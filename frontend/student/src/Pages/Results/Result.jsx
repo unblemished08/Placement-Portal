@@ -25,7 +25,7 @@ const Result = ({ companies }) => {
             {companies.map((company, index) => (
               <tr
                 key={index}
-                className={`hover:bg-gray-100 ${
+                className={`hover:bg-gray-500 ${
                   index % 2 === 0 ? "bg-gray-700" : "bg-gray-600"
                 }`}
               >
