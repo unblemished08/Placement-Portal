@@ -2,8 +2,11 @@ import React, { createContext, useState, useEffect } from 'react'
 
 export const StoreContext = createContext(null);
 
+
+// all the api class are in Companies, students and resutl folder
+
 const StoreContextProvider = (props) => {
-    const [company, setcompany] = useState({});
+    const [data, setData] = useState({});
 
     const companies = [
         {   
@@ -202,11 +205,89 @@ const StoreContextProvider = (props) => {
         },
     ];
 
+    const students = [
+        {
+            name: "Sameer Khobra",
+            rollNo: "12213054",
+            personal_email: "sameerkhobra474@gmail.com",
+            college_email: "12213054@nitkkr.ac.in",
+            phoneNumber: "0123456789",
+            gender: "Male",
+            batch: "2022-26",
+            cgpa: 8.5,
+            backlogs: "Nil",
+            branch: "IT",
+            familyIncome: ">=1Lac",
+            category: "SC/ST",
+            studentImage: "google.com",
+            isDisabled: "No",
+            approved: "No",
+            github: "google.com",
+            linkedin:"google.com",
+            leetcode:"google.com",
+            codechef:"google.com",
+            codeforces:"google.com",
+            gfg:"google.com",
+            codingninja:"google.com",
+            resume:"google.com",
+        },
+        {
+            name: "Sameer",
+            rollNo: "12213055",
+            personal_email: "sameerkhobra474@gmail.com",
+            college_email: "12213055@nitkkr.ac.in",
+            phoneNumber: "0123456789",
+            gender: "Male",
+            batch: "2022-26",
+            cgpa: 8.5,
+            backlogs: "Nil",
+            branch: "IT",
+            familyIncome: ">=1Lac",
+            category: "SC/ST",
+            studentImage: "google.com",
+            isDisabled: "No",
+            approved: "No",
+            github: "google.com",
+            linkedin:"google.com",
+            leetcode:"google.com",
+            codechef:"google.com",
+            codeforces:"google.com",
+            gfg:"google.com",
+            codingninja:"google.com",
+            resume:"google.com",
+        },
+        {
+            name: "Harshit Anand",
+            rollNo: "12213053",
+            personal_email: "sameerkhobra474@gmail.com",
+            college_email: "12213053@nitkkr.ac.in",
+            phoneNumber: "0123456789",
+            gender: "Male",
+            batch: "2022-26",
+            cgpa: 8.5,
+            backlogs: "Nil",
+            branch: "IT",
+            familyIncome: ">=1Lac",
+            category: "SC/ST",
+            studentImage: "google.com",
+            isDisabled: "No",
+            approved: "No",
+            github: "google.com",
+            linkedin:"google.com",
+            leetcode:"google.com",
+            codechef:"google.com",
+            codeforces:"google.com",
+            gfg:"google.com",
+            codingninja:"google.com",
+            resume:"google.com",
+        },
+    ]
 
     const contextValue = {
         companies,
-        company,
-        setcompany
+        students,
+        data,
+        setData
 
     }
     return (

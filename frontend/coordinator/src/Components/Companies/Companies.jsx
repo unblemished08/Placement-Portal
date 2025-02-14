@@ -3,11 +3,11 @@ import { StoreContext } from "../Context/StoreContext";
 import { useNavigate } from "react-router-dom";
 
 const Companies = () => {
-  const { companies, setcompany } = useContext(StoreContext);
+  const { companies, setData } = useContext(StoreContext);
   const navigate = useNavigate();
 
   const handleClick = (company) => {
-    setcompany(company);
+    setData(company);
     navigate("/company-detail");
   };
 

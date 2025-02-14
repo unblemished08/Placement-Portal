@@ -28,6 +28,10 @@ TO BE MADE:
 
 /notification -> to be sent to admin/coordinator/students 
 /getdata/student/companies -> getCompaniesByRollNo (error)
+/getData/companyfulldetails -> for coordinator approval
+/update/companydetail -> to update details if coordinator has approved
 
+
+update isPlaced in student if placed
 
 my own result for each student
