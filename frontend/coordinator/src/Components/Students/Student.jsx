@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { StoreContext } from "../Context/StoreContext";
 import { useNavigate } from "react-router-dom";
 
-const CompanyDetail = () => {
+const Student = () => {
   const { data, setData } = useContext(StoreContext);
   const navigate = useNavigate();
 
@@ -11,7 +11,7 @@ const CompanyDetail = () => {
   };
 
   const handleSubmit = () => {
-    // send api req to change the company details
+    // send api req to change the student details
     alert("Changes saved");
     setData({});
     navigate(-1);
@@ -21,7 +21,7 @@ const CompanyDetail = () => {
     <div className="min-h-screen flex items-center justify-center bg-gray-900 text-gray-200 p-6">
       <div className="w-full max-w-3xl bg-gray-800 shadow-lg rounded-lg p-6">
         <h2 className="text-3xl font-bold mb-6 text-white text-center">
-          Company Details
+          Student Details
         </h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -30,7 +30,7 @@ const CompanyDetail = () => {
               <span className="font-semibold text-gray-300 capitalize">
                 {key.replace("_", " ")}:
               </span>
-              {key === "companyImage" ? (
+              {["studentImage","github","linkedin","leetcode","codechef","codeforces","gfg","codingninja","resume"].includes(key) ? (
                 <a
                   href={value}
                   target="_blank"
@@ -51,8 +51,6 @@ const CompanyDetail = () => {
         {/* Radio Input Sections */}
         {[
           { label: "Approve", field: "approved" },
-          { label: "Result Declared", field: "result" },
-          { label: "Is Bonus", field: "isBonus" },
         ].map(({ label, field }) => (
           <div key={field} className="mt-4">
             <label className="font-semibold text-gray-300">{label}:</label>
@@ -89,4 +87,5 @@ const CompanyDetail = () => {
   );
 };
 
-export default CompanyDetail;
+export default Student;
+
