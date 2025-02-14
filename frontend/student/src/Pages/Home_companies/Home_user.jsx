@@ -1,27 +1,58 @@
 import React, { useContext } from "react";
 import { StoreContext } from "../../Context/StoreContext";
 import ResultSlider from "./ResultSlider";
+import {useNavigate} from "react-router-dom"
 
 function Home_user() {
+  const navigate=useNavigate()
   const { result_for_profile } = useContext(StoreContext);
-
+  const gotoProfile=()=>{
+    navigate("/profile")
+  }
   return (
     <div className="bg-gray-900 text-white">
       {/* Hero Section */}
       <header
-        className="bg-cover bg-center bg-no-repeat text-white py-10"
-        style={{ backgroundImage: "url('https://source.unsplash.com/1600x900/?career,technology')" }}
+  className="bg-cover bg-center bg-no-repeat text-white py-10"
+  style={{ backgroundImage: "url('https://source.unsplash.com/1600x900/?career,technology')" }}
+>
+  <div className="flex items-center justify-between px-10">
+    {/* Logo */}
+    <div className="w-2/12">
+      <img src="/images/placement7.png" alt="Logo" className="h-4/5" />
+    </div>
+
+    {/* Title and Description */}
+    <div className="text-center w-3/5">
+      <h1 className="text-4xl font-bold">Welcome to the Placement Portal</h1>
+      <p className="text-lg mt-4">Your path to a successful career begins here.</p>
+    </div>
+
+    {/* Profile Shortcut */}
+    <div className="relative">
+      <button className="flex items-center space-x-2 focus:outline-none"           
+      onClick={()=>gotoProfile()}
       >
-        <div className="flex items-center justify-center">
-          <div className="w-2/12">
-            <img src="/images/placement7.png" alt="Logo" className="h-4/5" />
-          </div>
-          <div className="text-center w-4/5">
-            <h1 className="text-4xl font-bold">Welcome to the Placement Portal</h1>
-            <p className="text-lg mt-4">Your path to a successful career begins here.</p>
-          </div>
-        </div>
-      </header>
+        <img
+          src="/images/profle.jpg" // Replace with actual user profile image
+          alt="Profile"
+          className="h-32 w-32 rounded-full border-2 border-white shadow-lg transition-all duration-300 ease-in-out hover:shadow-blue-500 hover:shadow-2xl hover:border-blue-500"
+          />
+      </button>
+
+      {/* Dropdown Menu (Optional) */}
+      <div className="absolute right-0 mt-2 w-48 bg-white text-black rounded-lg shadow-lg hidden group-hover:block">
+        <ul className="py-2">
+          <li className="px-4 py-2 hover:bg-gray-200 cursor-pointer">View Profile</li>
+          <li className="px-4 py-2 hover:bg-gray-200 cursor-pointer">Settings</li>
+          <li className="px-4 py-2 hover:bg-gray-200 cursor-pointer">Logout</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</header>
+
 
       <main className="container mx-auto px-4 py-10">
         {/* Statistics Section */}
