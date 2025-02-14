@@ -37,6 +37,7 @@ export const Navbar = () => {
             { name: "Requirements", href: "/companyRequirements" },
             { name: "Students", href: "/StudentDetails" },
             { name: "Upload Result", href: "/uploadResult" },
+            {name:"Stats"  ,href:"/stats"}
           ].map((item, index) => (
             <li
               key={index}
