@@ -1,0 +1,98 @@
+/* General Styling */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #1a202c; /* bg-gray-900 */
+    color: white;
+  }
+  
+  .container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem; /* p-6 */
+  }
+  
+  .header {
+    display: flex;
+    flex-direction: column; /* Change to column */
+    align-items: center;
+    text-align: center;
+    gap: 1rem; /* gap-4 */
+    margin-bottom: 1.5rem; /* mb-6 */
+  }
+  
+  .logo {
+    border-radius: 1rem; /* rounded-2xl */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* shadow-lg */
+    /* width: 15rem; w-24 */
+    /* height: 20rem; h-24 */
+    opacity: 0;
+    transform: scale(0.8);
+    animation: fadeInLogo 0.5s forwards;
+}
+
+  
+  .title {
+    font-size: 2rem; /* text-4xl */
+    font-weight: bold;
+    color: #e2e8f0; /* text-gray-100 */
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeInTitle 0.5s forwards;
+  }
+  
+  .description {
+    color: #cbd5e0; /* text-gray-400 */
+    font-size: 1.125rem; /* text-lg */
+    margin-bottom: 1.5rem; /* mb-6 */
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInDescription 0.5s forwards;
+  }
+  
+  .roles {
+    display: flex;
+    gap: 1.5rem; /* gap-6 */
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .role {
+    padding: 0.75rem 1.5rem; /* px-6 py-3 */
+    border-radius: 9999px; /* rounded-full */
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6); /* from-blue-500 to-purple-500 */
+    color: white;
+    font-size: 1.125rem; /* text-lg */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* shadow-lg */
+    text-decoration: none;
+    transition: background 0.3s;
+  }
+  
+  .role:hover {
+    background: linear-gradient(90deg, #2563eb, #7c3aed); /* hover:from-blue-600 hover:to-purple-600 */
+  }
+  
+  @keyframes fadeInLogo {
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes fadeInTitle {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeInDescription {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
