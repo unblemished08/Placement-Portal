@@ -60,6 +60,7 @@ const AddResult = () => {
   };
 
   const handleFileUpload = (e) => {
+    //sample sheet in public/result.xlsx
     const reader=new FileReader();
     reader.readAsBinaryString(e.target.files[0]);
     reader.onload=(e)=>{
