@@ -5,7 +5,7 @@ import { useContext } from "react";
 const DisplayResult=()=>{
   const {resultDeclaredCompanies} = useContext(StoreContext);
   return(
-      <div className="h-screen bg-gray-700">
+      <div className="h-screen bg-gray-900 py-8">
         <Result companies={resultDeclaredCompanies}/>
       </div>
     );

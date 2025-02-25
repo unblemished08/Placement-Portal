@@ -11,10 +11,10 @@ function Home_user() {
     navigate("/profile")
   }
   return (
-    <div className="bg-gray-900 text-white">
+    <div className="bg-gray-900 text-white ">
       {/* Hero Section */}
       <header
-        className="bg-cover bg-center bg-no-repeat text-white py-10"
+        className="bg-cover bg-center bg-no-repeat text-white py-10 animate-slideInUp"
         style={{ backgroundImage: "url('https://source.unsplash.com/1600x900/?career,technology')" }}
       >
         <div className="flex items-center justify-between px-10">
@@ -24,7 +24,7 @@ function Home_user() {
           </div>
 
           {/* Title and Description */}
-          <div className="text-center w-3/5">
+          <div className="text-center w-3/5 ">
             <h1 className="text-4xl font-bold">Welcome to the Placement Portal</h1>
             <p className="text-lg mt-4">Your path to a successful career begins here.</p>
           </div>
@@ -39,7 +39,7 @@ function Home_user() {
       <main className="container mx-auto px-4 py-10">
         {/* Statistics Section */}
         <section className="grid md:grid-cols-3 gap-6 text-center h-56">
-          <div className="bg-gray-800 shadow-lg rounded-lg p-6 hover:scale-105 hover:rotate-1 hover:shadow-2xl transition-all duration-500 ease-in-out shadow-blue-400 relative overflow-hidden group">
+          <div className="bg-gray-800 shadow-lg rounded-lg p-6 hover:scale-105 hover:rotate-1 hover:shadow-2xl transition-all duration-500 ease-in-out shadow-blue-400 relative overflow-hidden group animate-slideInLeft">
             <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-transparent opacity-20 group-hover:opacity-40 transition-all duration-500"></div>
             <h2 className="text-4xl mt-14 font-bold text-blue-300 transition-all duration-500 ease-in-out group-hover:text-blue-400 group-hover:drop-shadow-lg">
               500+
@@ -48,7 +48,7 @@ function Home_user() {
               Offer made
             </p>
           </div>
-          <div className="bg-gray-800 shadow-lg rounded-lg p-6 hover:scale-105 hover:rotate-1 hover:shadow-2xl transition-all duration-500 ease-in-out shadow-blue-400 relative overflow-hidden group">
+          <div className="bg-gray-800 shadow-lg rounded-lg p-6 hover:scale-105 hover:rotate-1 hover:shadow-2xl transition-all duration-500 ease-in-out shadow-blue-400 relative overflow-hidden group animate-slideInUp">
             <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-transparent opacity-20 group-hover:opacity-40 transition-all duration-500"></div>
             <h2 className="text-4xl mt-14 font-bold text-blue-300 transition-all duration-500 ease-in-out group-hover:text-blue-400 group-hover:drop-shadow-lg">
               75 LPA
@@ -57,7 +57,7 @@ function Home_user() {
               Highest CTC
             </p>
           </div>
-          <div className="bg-gray-800 shadow-lg rounded-lg p-6 hover:scale-105 hover:rotate-1 hover:shadow-2xl transition-all duration-500 ease-in-out shadow-blue-400 relative overflow-hidden group">
+          <div className="bg-gray-800 shadow-lg rounded-lg p-6 hover:scale-105 hover:rotate-1 hover:shadow-2xl transition-all duration-500 ease-in-out shadow-blue-400 relative overflow-hidden group animate-slideInRight">
             <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-transparent opacity-20 group-hover:opacity-40 transition-all duration-500"></div>
             <h2 className="text-4xl mt-14 font-bold text-blue-300 transition-all duration-500 ease-in-out group-hover:text-blue-400 group-hover:drop-shadow-lg">
               200+
@@ -70,7 +70,7 @@ function Home_user() {
         </section>
 
         {/* About College Section */}
-        <section className="py-20 bg-gradient-to-b from-gray-900 to-gray-800 relative overflow-hidden my-10">
+        <section className="py-20 bg-gradient-to-b from-gray-900 to-gray-800 relative overflow-hidden my-10 animate-fadeIn">
           {/* Background animated overlay */}
           <div className="absolute inset-0 bg-[url('/images/overlay-pattern.png')] opacity-10 animate-pulse"></div>
 
@@ -106,10 +106,10 @@ function Home_user() {
 
 
         {/* Slider Section */}
-        <header className="text-center py-10">
+        <header className="text-center py-10 animate-fadeInUp">
           <h1 className="text-4xl font-bold">Some Best Offers</h1>
         </header>
-        <div className="h-96 flex items-center justify-center">
+        <div className="h-96 flex items-center justify-center animate-slideInDown">
           <ResultSlider student={result_for_profile} />
         </div>
 
