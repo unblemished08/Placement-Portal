@@ -315,6 +315,12 @@ const Profile = ({
                         ) : (
                             <div className="overflow-x-auto">
                                 <table className="w-full border-collapse border border-gray-600">
+                                    <thead>
+                                        <tr>
+                                            <th className="border border-gray-600 px-4 py-2">Field</th>
+                                            <th className="border border-gray-600 px-4 py-2">Value</th>
+                                        </tr>
+                                    </thead>
                                     <tbody>
                                         {[
                                             "name",
@@ -332,7 +338,7 @@ const Profile = ({
                                             "isDisabled",
                                         ].map((field) => (
                                             <tr key={field} className="border-b border-gray-600">
-                                                <td className="px-4 py-2 font-semibold text-gray-300 w-1/3">
+                                                <td className="px-4 py-2 font-semibold text-gray-300 w-1/3 border-r border-gray-600">
                                                     {field === "isDisabled"
                                                         ? "Disability"
                                                         : field === "phoneNumber"
@@ -344,7 +350,7 @@ const Profile = ({
                                                                     : field.charAt(0).toUpperCase() + field.slice(1)}
                                                     :
                                                 </td>
-                                                <td className="px-4 py-2 pl-20 text-gray-400">{data[field]}</td>
+                                                <td className="px-4 py-2 pl-20 text-gray-400 border-r border-gray-600">{data[field]}</td>
                                             </tr>
                                         ))}
                                     </tbody>
