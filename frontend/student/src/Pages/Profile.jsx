@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { StoreContext } from "../Context/StoreContext";
 
 const Profile = ({
@@ -22,22 +22,22 @@ const Profile = ({
     const { setUserData, setIsChange } = useContext(StoreContext);
 
     const [data, setData] = useState({
-        name: name,
-        rollNo: rollNo,
-        personal_email: personal_email,
-        college_email: college_email,
-        phoneNumber: phoneNumber,
-        gender: gender,
-        batch: batch,
-        cgpa: cgpa,
-        backlogs: backlogs,
-        branch: branch,
-        familyIncome: familyIncome,
-        category: category,
-        studentImage: studentImage,
-        isDisabled: isDisabled,
-        password: password,
-        approved: approved,
+        name,
+        rollNo,
+        personal_email,
+        college_email,
+        phoneNumber,
+        gender,
+        batch,
+        cgpa,
+        backlogs,
+        branch,
+        familyIncome,
+        category,
+        studentImage,
+        isDisabled,
+        password,
+        approved,
     });
     const [edit, setEdit] = useState(false);
 
@@ -55,19 +55,20 @@ const Profile = ({
         setEdit(false);
         setIsChange(true);
     };
+
     const handleImage = (event) => {
         setData((prevData) => ({
             ...prevData,
-            [event.target.name]: event.target.files[0]
-        }))
-    }
+            studentImage: event.target.files[0],
+        }));
+    };
 
     return (
-        <>
-            <h2 className="text-2xl text-center font-bold mb-4">My Profile</h2>
-            <div className="p-6 flex text-black">
-                <div className="flex-row justify-between w-1/4">
-                    <div className="flex gap-3">
+        <div className="min-h-screen bg-black text-white flex flex-col items-center py-8">
+            <h2 className="text-3xl font-bold mb-6">My Profile</h2>
+            <div className="bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-4xl">
+                <div className="flex flex-col md:flex-row items-center md:items-start">
+                    <div className="relative">
                         <div>
                             <label htmlFor="studentImage">
                                 <img src={data.studentImage
@@ -79,377 +80,290 @@ const Profile = ({
                             </label>
                             <input onChange={handleImage} type="file" name="studentImage" id='studentImage' hidden required />
                         </div>
-                        <button
-                            className={edit === false ? "h-8 w-8 text-slate-500" : "px-4 py-2 h-10 bg-blue-500 text-white rounded hover:bg-blue-600"}
-                            onClick={() => setEdit((prev) => !prev)}
-                            title="Edit Details"
-                        >
-                            {
-                                edit === false ?
-                                    <svg
-                                        className="h-8 w-8"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        stroke="currentColor"
-                                    >
-                                        <path
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            strokeWidth="2"
-                                            d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
-                                        />
-                                    </svg>
-                                    : "Cancel Edit"
-                            }
-                        </button>
 
+                        {edit && (
+                            <input
+                                onChange={handleImage}
+                                type="file"
+                                name="studentImage"
+                                id="studentImage"
+                                hidden
+                                required
+                            />
+                        )}
+                    </div>
+                    <div className="mt-4 md:mt-0 md:ml-6 flex-1">
+                        {edit ? (
+                            <form onSubmit={handleSubmit} className="space-y-4">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    {["name", "rollNo", "phoneNumber", "batch"].map((field) => (
+                                        <div key={field} className="flex flex-col">
+                                            <label
+                                                htmlFor={field}
+                                                className="block font-semibold text-gray-300 mb-1"
+                                            >
+                                                {field.charAt(0).toUpperCase() + field.slice(1)}:
+                                            </label>
+                                            <input
+                                                type="text"
+                                                value={data[field]}
+                                                name={field}
+                                                id={field}
+                                                required
+                                                onChange={handleChange}
+                                                className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                            />
+                                        </div>
+                                    ))}
+                                    <div className="flex flex-col">
+                                        <label
+                                            htmlFor="personal_email"
+                                            className="block font-semibold text-gray-300 mb-1"
+                                        >
+                                            Personal Email:
+                                        </label>
+                                        <input
+                                            type="email"
+                                            value={data.personal_email}
+                                            name="personal_email"
+                                            id="personal_email"
+                                            required={edit}
+                                            onChange={handleChange}
+                                            className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                        />
+                                    </div>
+                                    <div className="flex flex-col">
+                                        <label
+                                            htmlFor="college_email"
+                                            className="block font-semibold text-gray-300 mb-1"
+                                        >
+                                            College Email:
+                                        </label>
+                                        <input
+                                            type="email"
+                                            value={data.college_email}
+                                            name="college_email"
+                                            id="college_email"
+                                            required={edit}
+                                            onChange={handleChange}
+                                            className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                        />
+                                    </div>
+                                    <div className="flex flex-col">
+                                        <label
+                                            htmlFor="cgpa"
+                                            className="block font-semibold text-gray-300 mb-1"
+                                        >
+                                            CGPA:
+                                        </label>
+                                        <input
+                                            type="number"
+                                            value={data.cgpa}
+                                            name="cgpa"
+                                            id="cgpa"
+                                            required={edit}
+                                            onChange={handleChange}
+                                            className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                        />
+                                    </div>
+                                    <div className="flex flex-col">
+                                        <label
+                                            htmlFor="gender"
+                                            className="block font-semibold text-gray-300 mb-1"
+                                        >
+                                            Gender:
+                                        </label><select
+                                            value={data.gender}
+                                            name="gender"
+                                            id="gender"
+                                            required={edit}
+                                            onChange={handleChange}
+                                            className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                        >
+                                            <option value="" disabled>Select Gender</option>
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+
+                                    <div className="flex flex-col">
+                                        <label
+                                            htmlFor="backlogs"
+                                            className="block font-semibold text-gray-300 mb-1"
+                                        >
+                                            Backlog:
+                                        </label><select
+                                            value={data.backlogs}
+                                            name="backlogs"
+                                            id="backlogs"
+                                            required={edit}
+                                            onChange={handleChange}
+                                            className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                        >
+                                            <option value="" disabled>Select</option>
+                                            <option value="Nil">Nil</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value=">=4">{">"}=4</option>
+                                        </select>
+                                    </div>
+
+                                    <div className="flex flex-col">
+                                        <label
+                                            htmlFor="branch"
+                                            className="block font-semibold text-gray-300 mb-1"
+                                        >
+                                            Branch:
+                                        </label><select
+                                            value={data.branch}
+                                            name="branch"
+                                            id="branch"
+                                            required={edit}
+                                            onChange={handleChange}
+                                            className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                        >
+                                            <option value="" disabled>Select Branch</option>
+                                            <option value="CS">CS</option>
+                                            <option value="IT">IT</option>
+                                            <option value="ECE">ECE</option>
+                                            <option value="EE">EE</option>
+                                            <option value="CIVIL">CIVIL</option>
+                                            <option value="MECH">MECH</option>
+                                            <option value="PIE">PIE</option>
+                                        </select>
+                                    </div>
+
+                                    <div className="flex flex-col">
+                                        <label
+                                            htmlFor="familyIncome"
+                                            className="block font-semibold text-gray-300 mb-1"
+                                        >
+                                            Family Income:
+                                        </label><select
+                                            value={data.familyIncome}
+                                            name="familyIncome"
+                                            id="familyIncome"
+                                            required={edit}
+                                            onChange={handleChange}
+                                            className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                        >
+                                            <option value="" disabled>Select Income</option>
+                                            <option value="1Lac">{"<"}1Lac</option>
+                                            <option value=">=1Lac">{">"}=1Lac</option>
+                                            <option value=">=5Lac">{">="}5Lac</option>
+                                        </select>
+                                    </div>
+
+                                    <div className="flex flex-col">
+                                        <label
+                                            htmlFor="category"
+                                            className="block font-semibold text-gray-300 mb-1"
+                                        >
+                                            Category:
+                                        </label><select
+                                            value={data.category}
+                                            name="category"
+                                            id="category"
+                                            required={edit}
+                                            onChange={handleChange}
+                                            className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                        >
+                                            <option value="" disabled>Select Category</option>
+                                            <option value="Gen">Gen</option>
+                                            <option value="OBC">OBC</option>
+                                            <option value="SC/ST">SC/ST</option>
+                                        </select>
+                                    </div>
+
+                                    <div className="flex flex-col">
+                                        <label
+                                            htmlFor="isDisabled"
+                                            className="block font-semibold text-gray-300 mb-1"
+                                        >
+                                            Disability:
+                                        </label><select
+                                            value={data.isDisabled}
+                                            name="isDisabled"
+                                            id="isDisabled"
+                                            required={edit}
+                                            onChange={handleChange}
+                                            className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                        >
+                                            <option value="No">No</option>
+                                            <option value="Yes">Yes</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="flex justify-end space-x-4">
+                                    <button
+                                        type="button"
+                                        onClick={() => setEdit(false)}
+                                        className="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700"
+                                    >
+                                        Cancel
+                                    </button>
+                                    <button
+                                        type="submit"
+                                        className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                                    >
+                                        Save
+                                    </button>
+                                </div>
+                            </form>
+                        ) : (
+                            <div className="overflow-x-auto">
+                                <table className="w-full border-collapse border border-gray-600">
+                                    <tbody>
+                                        {[
+                                            "name",
+                                            "rollNo",
+                                            "personal_email",
+                                            "college_email",
+                                            "phoneNumber",
+                                            "gender",
+                                            "batch",
+                                            "cgpa",
+                                            "backlogs",
+                                            "branch",
+                                            "familyIncome",
+                                            "category",
+                                            "isDisabled",
+                                        ].map((field) => (
+                                            <tr key={field} className="border-b border-gray-600">
+                                                <td className="px-4 py-2 font-semibold text-gray-300 w-1/3">
+                                                    {field === "isDisabled"
+                                                        ? "Disability"
+                                                        : field === "phoneNumber"
+                                                            ? "Phone Number"
+                                                            : field === "rollNo"
+                                                                ? "Roll No"
+                                                                : field === "familyIncome"
+                                                                    ? "Family Income"
+                                                                    : field.charAt(0).toUpperCase() + field.slice(1)}
+                                                    :
+                                                </td>
+                                                <td className="px-4 py-2 pl-20 text-gray-400">{data[field]}</td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+
+                                <div className="flex justify-end mt-4">
+                                    <button
+                                        onClick={() => setEdit(true)}
+                                        className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                                    >
+                                        Edit Profile
+                                    </button>
+                                </div>
+                            </div>
+                        )}
                     </div>
                 </div>
-
-                <form onSubmit={handleSubmit} className="space-y-6 w-3/4  bg-slate-50 shadow-gray-500 rounded-lg p-6 hover:shadow-lg hover:shadow-gray-600 transition-shadow duration-300">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-
-                        <div className="flex flex-col">
-                            {edit === false ? (
-                                <p className="font-medium text-gray-700">
-                                    <strong>Name:</strong> {data.name}
-                                </p>
-                            ) : (
-                                <div>
-                                    <label htmlFor="name" className="block font-semibold text-gray-800 mb-1">Name:</label>
-                                    <input
-                                        type="text"
-                                        value={data.name}
-                                        name="name"
-                                        id="name"
-                                        required={edit}
-                                        onChange={handleChange}
-                                        className="w-full px-3 py-2 border rounded border-gray-400 "
-                                    />
-                                </div>
-                            )}
-                        </div>
-
-                        <div className="flex flex-col">
-                            {edit === false ? (
-                                <p className="font-medium text-gray-700">
-                                    <strong>Roll No:</strong> {data.rollNo}
-                                </p>
-                            ) : (
-                                <div>
-                                    <label htmlFor="rollNo" className="block font-semibold text-gray-800 mb-1">Roll No:</label>
-                                    <input
-                                        type="text"
-                                        value={data.rollNo}
-                                        name="rollNo"
-                                        id="rollNo"
-                                        required={edit}
-                                        onChange={handleChange}
-                                        className="w-full px-3 py-2 border rounded border-gray-400 "
-                                    />
-                                </div>
-                            )}
-                        </div>
-
-                        <div className="flex flex-col">
-                            {edit === false ? (
-                                <p className="font-medium text-gray-700">
-                                    <strong>Personal Email :</strong> {data.personal_email}
-                                </p>
-                            ) : (
-                                <div>
-                                    <label htmlFor="personal_email" className="block font-semibold text-gray-800 mb-1">Personal Email:</label>
-                                    <input
-                                        type="email"
-                                        value={data.personal_email}
-                                        name="personal_email"
-                                        id="personal_email"
-                                        required={edit}
-                                        onChange={handleChange}
-                                        className="w-full px-3 py-2 border rounded border-gray-400 "
-                                    />
-                                </div>
-                            )}
-                        </div>
-
-                        <div className="flex flex-col">
-                            {edit === false ? (
-                                <p className="font-medium text-gray-700">
-                                    <strong>College Email :</strong> {data.college_email}
-                                </p>
-                            ) : (
-                                <div>
-                                    <label htmlFor="college_email" className="block font-semibold text-gray-800 mb-1">College Email:</label>
-                                    <input
-                                        type="email"
-                                        value={data.college_email}
-                                        name="college_email"
-                                        id="college_email"
-                                        required={edit}
-                                        onChange={handleChange}
-                                        className="w-full px-3 py-2 border rounded border-gray-400 "
-                                    />
-                                </div>
-                            )}
-                        </div>
-
-                        <div className="flex flex-col">
-                            {edit === false ? (
-                                <p className="font-medium text-gray-700">
-                                    <strong>Phone Number :</strong> {data.phoneNumber}
-                                </p>
-                            ) : (
-                                <div>
-                                    <label htmlFor="phoneNumber" className="block font-semibold text-gray-800 mb-1">Phone Number:</label>
-                                    <input
-                                        type="text"
-                                        value={data.phoneNumber}
-                                        name="phoneNumber"
-                                        id="phoneNumber"
-                                        required={edit}
-                                        readOnly={!edit}
-                                        onChange={handleChange}
-                                        className="w-full px-3 py-2 border rounded border-gray-400 "
-                                    />
-                                </div>
-                            )}
-                        </div>
-
-                        <div className="flex flex-col">
-                            {edit === false ? (
-                                <p className="font-medium text-gray-700">
-                                    <strong>Gender :</strong> {data.gender}
-                                </p>
-                            ) : (
-                                <div>
-                                    <label htmlFor="gender" className="block font-semibold text-gray-800 mb-1">Gender:</label>
-                                    {
-                                        edit === false
-                                            ? <p className="font-medium text-gray-700">{data.gender}</p>
-                                            : <select
-                                                value={data.gender}
-                                                name="gender"
-                                                id="gender"
-                                                required={edit}
-                                                onChange={handleChange}
-                                                className="w-full px-3 py-2 border rounded border-gray-400 "
-                                            >
-                                                <option value="" disabled>Select Gender</option>
-                                                <option value="Male">Male</option>
-                                                <option value="Female">Female</option>
-                                                <option value="Other">Other</option>
-                                            </select>
-                                    }
-                                </div>
-                            )}
-                        </div>
-
-                        <div className="flex flex-col">
-                            {edit === false ? (
-                                <p className="font-medium text-gray-700">
-                                    <strong>Batch :</strong> {data.batch}
-                                </p>
-                            ) : (
-                                <div>
-                                    <label htmlFor="batch" className="block font-semibold text-gray-800 mb-1">Batch:</label>
-                                    <input
-                                        type="text"
-                                        value={data.batch}
-                                        name="batch"
-                                        id="batch"
-                                        required={edit}
-                                        onChange={handleChange}
-                                        className="w-full px-3 py-2 border rounded border-gray-400 "
-                                    />
-                                </div>
-                            )}
-                        </div>
-
-                        <div className="flex flex-col">
-                            {edit === false ? (
-                                <p className="font-medium text-gray-700">
-                                    <strong>CGPA :</strong> {data.cgpa}
-                                </p>
-                            ) : (
-                                <div>
-                                    <label htmlFor="cgpa" className="block font-semibold text-gray-800 mb-1">CGPA:</label>
-                                    <input
-                                        type="number"
-                                        value={data.cgpa}
-                                        name="cgpa"
-                                        id="cgpa"
-                                        required={edit}
-                                        onChange={handleChange}
-                                        className="w-full px-3 py-2 border rounded border-gray-400 "
-                                    />
-                                </div>
-                            )}
-                        </div>
-
-                        <div className="flex flex-col">
-                            {edit === false ? (
-                                <p className="font-medium text-gray-700">
-                                    <strong>Backlog :</strong> {data.backlogs}
-                                </p>
-                            ) : (
-                                <div>
-                                    <label htmlFor="backlogs" className="block font-semibold text-gray-800 mb-1">Backlog:</label>
-                                    {
-                                        edit === false
-                                            ? <p className="block font-semibold text-gray-800 mb-1">{data.backlogs}</p>
-                                            : <select
-                                                value={data.backlogs}
-                                                name="backlogs"
-                                                id="backlogs"
-                                                required={edit}
-                                                onChange={handleChange}
-                                                className="w-full px-3 py-2 border rounded border-gray-400 "
-                                            >
-                                                <option value="" disabled>Select</option>
-                                                <option value="Nil">Nil</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value=">=4">{">"}=4</option>
-                                            </select>
-                                    }
-                                </div>
-                            )}
-                        </div>
-
-                        <div className="flex flex-col">
-                            {edit === false ? (
-                                <p className="font-medium text-gray-700">
-                                    <strong>Branch :</strong> {data.branch}
-                                </p>
-                            ) : (
-                                <div>
-                                    <label htmlFor="branch" className="block font-semibold text-gray-800 mb-1">Branch:</label>
-                                    {
-                                        edit === false
-                                            ? <p className="block font-semibold text-gray-800 mb-1">{data.branch}</p>
-                                            : <select
-                                                value={data.branch}
-                                                name="branch"
-                                                id="branch"
-                                                required={edit}
-                                                onChange={handleChange}
-                                                className="w-full px-3 py-2 border rounded border-gray-400 "
-                                            >
-                                                <option value="" disabled>Select Branch</option>
-                                                <option value="CS">CS</option>
-                                                <option value="IT">IT</option>
-                                                <option value="ECE">ECE</option>
-                                                <option value="EE">EE</option>
-                                                <option value="CIVIL">CIVIL</option>
-                                                <option value="MECH">MECH</option>
-                                                <option value="PIE">PIE</option>
-                                            </select>
-                                    }
-                                </div>
-                            )}
-                        </div>
-
-                        <div className="flex flex-col">
-                            {edit === false ? (
-                                <p className="font-medium text-gray-700">
-                                    <strong>Family Income :</strong> {data.familyIncome}
-                                </p>
-                            ) : (
-                                <div>
-                                    <label htmlFor="familyIncome" className="block font-semibold text-gray-800 mb-1">Family Income:</label>
-                                    {
-                                        edit === false
-                                            ? <p className="block font-semibold text-gray-800 mb-1">{data.familyIncome}</p>
-                                            : <select
-                                                value={data.familyIncome}
-                                                name="familyIncome"
-                                                id="familyIncome"
-                                                required={edit}
-                                                onChange={handleChange}
-                                                className="w-full px-3 py-2 border rounded border-gray-400 "
-                                            >
-                                                <option value="" disabled>Select Income</option>
-                                                <option value="1Lac">{"<"}1Lac</option>
-                                                <option value=">=1Lac">{">"}=1Lac</option>
-                                                <option value=">=5Lac">{">="}5Lac</option>
-                                            </select>
-                                    }
-                                </div>
-                            )}
-                        </div>
-
-                        <div className="flex flex-col">
-                            {edit === false ? (
-                                <p className="font-medium text-gray-700">
-                                    <strong>Category :</strong> {data.category}
-                                </p>
-                            ) : (
-                                <div>
-                                    <label htmlFor="category" className="block font-semibold text-gray-800 mb-1">Category:</label>
-                                    {
-                                        edit === false
-                                            ? <p className="block font-semibold text-gray-800 mb-1">{data.category}</p>
-                                            : <select
-                                                value={data.category}
-                                                name="category"
-                                                id="category"
-                                                required={edit}
-                                                onChange={handleChange}
-                                                className="w-full px-3 py-2 border rounded border-gray-400 "
-                                            >
-                                                <option value="" disabled>Select Category</option>
-                                                <option value="Gen">Gen</option>
-                                                <option value="OBC">OBC</option>
-                                                <option value="SC/ST">SC/ST</option>
-                                            </select>
-                                    }
-                                </div>
-                            )}
-                        </div>
-
-                        <div className="flex flex-col">
-                            {edit === false ? (
-                                <p className="font-medium text-gray-700">
-                                    <strong>Disability :</strong> {data.isDisabled}
-                                </p>
-                            ) : (
-                                <div>
-                                    <label htmlFor="isDisabled" className="block font-semibold text-gray-800 mb-1">Disability:</label>
-                                    {
-                                        edit === false
-                                            ? <p className="block font-semibold text-gray-800 mb-1">{data.isDisabled}</p>
-                                            : <select
-                                                value={data.isDisabled}
-                                                name="isDisabled"
-                                                id="isDisabled"
-                                                required={edit}
-                                                onChange={handleChange}
-                                                className="w-full px-3 py-2 border rounded border-gray-400 "
-                                            >
-                                                <option value="No">No</option>
-                                                <option value="Yes">Yes</option>
-                                            </select>
-                                    }
-                                </div>
-                            )}
-                        </div>
-                    </div>
-                    {
-                        edit ?
-                            <div>
-                                <button
-                                    type="submit"
-                                    className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-                                >
-                                    Submit
-                                </button>
-                            </div>
-                            : ""
-                    }
-                </form>
             </div>
-        </>
+        </div>
     );
 };
 

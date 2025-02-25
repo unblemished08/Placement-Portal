@@ -275,21 +275,21 @@ const StoreContextProvider = (props) => {
     
 
     // api req for userProfile
-    const [userData,setUserData] = useState({name:"Meetha",
-      rollNo:"69",
-      personal_email:"meetha@gmail.com",
-      college_email:"maimeetha@gmail.com",
-      phoneNumber:"6969696969",
-      gender:"Rainbow",
+    const [userData,setUserData] = useState({name:"Sameer",
+      rollNo:"2213055",
+      personal_email:"sameermeel01@gmail.com",
+      college_email:"12213055@nitkkr.ac.in",
+      phoneNumber:"9350367478",
+      gender:"Male",
       batch:"2022-26",
-      cgpa:"6.9",
-      backlogs:"Yes",
+      cgpa:"9.2",
+      backlogs:"No",
       branch:"IT",
-      familyIncome:"69",
-      category:'XYZ',
+      familyIncome:">1Lac",
+      category:'Gen',
       studentImage:null,
       isDisabled:"No",
-      password:"maimeethahu",
+      password:"sameer123$%^%",
       });
 
       // api req for the result of all copnies whose result declared till now
