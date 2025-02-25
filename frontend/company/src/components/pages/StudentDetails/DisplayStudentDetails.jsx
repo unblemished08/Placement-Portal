@@ -5,7 +5,7 @@ const DisplayStudentDetails = () => {
     const {appliedStudents}=useContext(StoreContext);
 
   return (
-    <div className=''>
+    <div className='bg-gray-900'>
       <StudentDetails appliedStudents={appliedStudents}/>
 
     </div>
