@@ -5,7 +5,10 @@ const DisplayStudentDetails = () => {
     const {appliedStudents}=useContext(StoreContext);
 
   return (
-    <StudentDetails appliedStudents={appliedStudents}/>
+    <div className=''>
+      <StudentDetails appliedStudents={appliedStudents}/>
+
+    </div>
   );
 }
 
