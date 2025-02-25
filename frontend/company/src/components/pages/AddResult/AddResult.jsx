@@ -2,6 +2,8 @@ import React, { useContext, useState } from "react";
 import { motion } from "framer-motion";
 import { StoreContext } from "../../context/StoreContext";
 
+import * as XLSX from "xlsx";
+
 const AddResult = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -56,6 +58,19 @@ const AddResult = () => {
     setResult(students);
     setStudents([]);
   };
+
+  const handleFileUpload = (e) => {
+    const reader=new FileReader();
+    reader.readAsBinaryString(e.target.files[0]);
+    reader.onload=(e)=>{
+      const data=e.target.result;
+      const workbook=XLSX.read(data,{type:"binary"});
+      const sheetName=workbook.SheetNames[0];
+      const sheet=workbook.Sheets[sheetName];
+      const parsedData=XLSX.utils.sheet_to_json(sheet);
+      console.log(parsedData);// data from sheet
+    };
+  }
 
   return (
     <motion.div
@@ -121,6 +136,8 @@ const AddResult = () => {
           >
             Add Student
           </motion.button>
+          <input type="file" accept=".xls, .xlsx" onChange={handleFileUpload}/>
+          
         </form>
       </motion.div>
 
