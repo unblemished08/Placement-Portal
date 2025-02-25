@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { StoreContext } from "../../Context/StoreContext";
 import ResultSlider from "./ResultSlider";
 import { useNavigate } from "react-router-dom"
+import ProfileButton from "./profile";
 
 function Home_user() {
   const navigate = useNavigate()
@@ -29,26 +30,7 @@ function Home_user() {
           </div>
 
           {/* Profile Shortcut */}
-          <div className="relative">
-            <button className="flex items-center space-x-2 focus:outline-none"
-              onClick={() => gotoProfile()}
-            >
-              <img
-                src="/images/profle.jpg" // Replace with actual user profile image
-                alt="Profile"
-                className="h-32 w-32 rounded-full border-2 border-white shadow-lg transition-all duration-300 ease-in-out hover:shadow-blue-500 hover:shadow-2xl hover:border-blue-500"
-              />
-            </button>
-
-            {/* Dropdown Menu (Optional) */}
-            <div className="absolute right-0 mt-2 w-48 bg-white text-black rounded-lg shadow-lg hidden group-hover:block">
-              <ul className="py-2">
-                <li className="px-4 py-2 hover:bg-gray-200 cursor-pointer">View Profile</li>
-                <li className="px-4 py-2 hover:bg-gray-200 cursor-pointer">Settings</li>
-                <li className="px-4 py-2 hover:bg-gray-200 cursor-pointer">Logout</li>
-              </ul>
-            </div>
-          </div>
+          <ProfileButton/>
         </div>
 
       </header>
