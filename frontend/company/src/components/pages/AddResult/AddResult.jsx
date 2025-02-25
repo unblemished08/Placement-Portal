@@ -5,7 +5,8 @@ import { StoreContext } from "../../context/StoreContext";
 const AddResult = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [jobRole, setJobRole] = useState("");
+  const [rollNo, setRollNo] = useState("");
+  const [status, setStatus] = useState("");
   const [students, setStudents] = useState([]);
   const [error, setError] = useState("");
 
@@ -13,7 +14,13 @@ const AddResult = () => {
 
   const addStudent = (e) => {
     e.preventDefault();
-    if (!name || !email || !jobRole) {
+    
+    const trimmedName = name.trim();
+    const trimmedRollNo = rollNo.trim();
+    const trimmedStatus = status.trim();
+    const trimmedEmail = rollNo.trim();
+
+    if (!trimmedRollNo || !trimmedStatus || !trimmedEmail || !trimmedName) {
       setError("All fields are required!");
       return;
     }
@@ -22,7 +29,8 @@ const AddResult = () => {
       id: Date.now(),
       name,
       email,
-      jobRole,
+      rollNo,
+      status,
     };
 
     const studentExists = students.some((student) => student.email === email);
@@ -36,7 +44,8 @@ const AddResult = () => {
     setStudents([...students, currStudent]);
     setName("");
     setEmail("");
-    setJobRole("");
+    setRollNo("");
+    status("");
   };
 
   const deleteStudent = (id) => {
@@ -73,6 +82,16 @@ const AddResult = () => {
             />
           </div>
           <div>
+            <label className="block text-gray-300 font-medium">Roll No:</label>
+            <input
+              type="text"
+              value={rollNo}
+              onChange={(e) => setRollNo(e.target.value)}
+              placeholder="Enter student's email"
+              className="w-full p-3 mt-1 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400"
+            />
+          </div>
+          <div>
             <label className="block text-gray-300 font-medium">Email:</label>
             <input
               type="email"
@@ -83,14 +102,16 @@ const AddResult = () => {
             />
           </div>
           <div>
-            <label className="block text-gray-300 font-medium">Job Role:</label>
-            <input
-              type="text"
-              value={jobRole}
-              onChange={(e) => setJobRole(e.target.value)}
-              placeholder="Enter job role"
-              className="w-full p-3 mt-1 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400"
-            />
+            <label className="block text-gray-300 font-medium">Status:</label>
+            <select
+              value={status}
+              onChange={(e) => setStatus(e.target.value)}
+              className="w-full p-3 mt-1 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400">
+              <option value="" disabled>Select</option>
+              <option value={"OA"}>Online Assesment</option>
+              <option value={"Interview"}>Interview</option>
+              <option value={"Final"}>Final</option>
+            </select>
           </div>
           {error && <p className="text-red-500 font-medium">{error}</p>}
           <motion.button
@@ -124,9 +145,10 @@ const AddResult = () => {
           <table className="min-w-full bg-gray-800 shadow-md rounded-lg overflow-hidden">
             <thead className="bg-blue-600 text-white">
               <tr>
+                <th className="py-3 px-6 text-left">Roll No</th>
                 <th className="py-3 px-6 text-left">Name</th>
                 <th className="py-3 px-6 text-left">Email</th>
-                <th className="py-3 px-6 text-left">Job Role</th>
+                <th className="py-3 px-6 text-left">Status</th>
                 <th className="py-3 px-6 text-center">Action</th>
               </tr>
             </thead>
@@ -145,13 +167,13 @@ const AddResult = () => {
                 {students.map((student, index) => (
                   <tr
                     key={student.id}
-                    className={`border-b border-gray-700 ${
-                      index % 2 === 0 ? "bg-gray-700" : "bg-gray-600"
-                    }`}
+                    className={`border-b border-gray-700 ${index % 2 === 0 ? "bg-gray-700" : "bg-gray-600"
+                      }`}
                   >
+                    <td className="py-3 px-6">{student.rollNo}</td>
                     <td className="py-3 px-6">{student.name}</td>
                     <td className="py-3 px-6">{student.email}</td>
-                    <td className="py-3 px-6">{student.jobRole}</td>
+                    <td className="py-3 px-6">{student.status}</td>
                     <td className="py-3 px-6 text-center">
                       <motion.button
                         onClick={() => deleteStudent(student.id)}

@@ -283,9 +283,43 @@ const StoreContextProvider = (props) => {
         },
     ]
 
+    const results = [
+        {
+            rollNo: "12213050",
+            name: "Google",
+            job_id:"M1001",
+            status:"Interview"
+        },
+        {
+            rollNo: "12213058",
+            name: "MicroSoft",
+            job_id:"Ms1001",
+            status:"Final"
+        },
+        {
+            rollNo: "12213057",
+            name: "Sap",
+            job_id:"s1001",
+            status:"OA"
+        },
+        {
+            rollNo: "12213056",
+            name: "JP Morgan",
+            job_id:"j1001",
+            status:"Final"
+        },
+        {
+            rollNo: "12213055",
+            name: "Visa",
+            job_id:"v1001",
+            Status:"OA"
+        },
+    ]
+    
     const contextValue = {
         companies,
         students,
+        results,
         data,
         setData
 
