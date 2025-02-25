@@ -12,8 +12,8 @@ const Company = ({
   job_role,
 }) => {
   return (
-    <div className="bg-gray-800 p-6 rounded-lg shadow-lg max-w-xl w-full hover:scale-105 transition-transform cursor-pointer text-white">
-      {/* Logo Section */}
+<div className="bg-gray-800 p-6 rounded-lg shadow-[4px_4px_10px_rgba(0,0,0,0.4)] max-w-xl w-full hover:scale-105 transition-transform duration-300 cursor-pointer text-white hover:shadow-[6px_6px_12px_rgba(0,0,150,0.5)]">
+{/* Logo Section */}
       <div className="flex items-center justify-between mb-6">
         <div>
           <img src={companyImage} alt={name} className="h-12" />
