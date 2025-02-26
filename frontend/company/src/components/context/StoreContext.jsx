@@ -114,6 +114,12 @@ const StoreContextProvider = (props) => {
     // api request for result declared by comapny
     const [result, setResult] = useState([]);
     useEffect(()=>{
+        // formate
+        // req  = {
+        //     token : "token",
+        //     students = result;
+        // } in backend fetch company details from token and save the result accordingaly
+        
         // console.log(result); send request
     },[result]);
 

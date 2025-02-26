@@ -47,7 +47,7 @@ const AddResult = () => {
     setName("");
     setEmail("");
     setRollNo("");
-    status("");
+    setStatus("");
   };
 
   const deleteStudent = (id) => {
@@ -60,19 +60,58 @@ const AddResult = () => {
   };
 
   const handleFileUpload = (e) => {
-    //sample sheet in public/result.xlsx
-    const reader=new FileReader();
-    reader.readAsBinaryString(e.target.files[0]);
-    reader.onload=(e)=>{
-      const data=e.target.result;
-      const workbook=XLSX.read(data,{type:"binary"});
-      const sheetName=workbook.SheetNames[0];
-      const sheet=workbook.Sheets[sheetName];
-      const parsedData=XLSX.utils.sheet_to_json(sheet);
-      console.log(parsedData);// data from sheet
+    if (!e.target.files || e.target.files.length === 0) return;
+  
+    const file = e.target.files[0];
+  
+    const reader = new FileReader();
+    reader.readAsBinaryString(file);
+    reader.onload = (e) => {
+      const data = e.target.result;
+      const workbook = XLSX.read(data, { type: "binary" });
+      const sheetName = workbook.SheetNames[0];
+      const sheet = workbook.Sheets[sheetName];
+      const parsedData = XLSX.utils.sheet_to_json(sheet);
+  
+      if (parsedData.length === 0) {
+        setError("The uploaded file is empty.");
+        return;
+      }
+  
+      // Expected column names
+      const requiredColumns = ["Name", "RollNo", "Email", "Result_Type"];
+      const fileColumns = Object.keys(parsedData[0]);
+  
+      // Check if all required columns exist
+      const missingColumns = requiredColumns.filter((col) => !fileColumns.includes(col));
+      if (missingColumns.length > 0) {
+        setError(`Missing columns: ${missingColumns.join(", ")}. Please upload a valid file.`);
+        return;
+      }
+  
+      // Clear previous student list before adding new ones
+      setStudents([]);
+  
+      const newStudents = parsedData.map((row) => ({
+        id: Date.now() + Math.random(),
+        name: row.Name.trim(),
+        email: row.Email.trim(),
+        rollNo: String(row.RollNo).trim(), // Convert RollNo to string before trimming
+        status: row.Result_Type.trim(),
+      }));
+  
+      setStudents(newStudents);
+      setError(""); // Clear errors if successful
     };
-  }
+  
+  };
+  
+  const handleClick = (e) => {
+    // Reset input field to allow re-uploading the same file
+    e.target.value = "";
 
+  }
+  
   return (
     <motion.div
       className="min-h-screen bg-gray-900 flex flex-col md:flex-row pt-5 px-8 text-gray-100"
@@ -118,7 +157,7 @@ const AddResult = () => {
             />
           </div>
           <div>
-            <label className="block text-gray-300 font-medium">Status:</label>
+            <label className="block text-gray-300 font-medium">Result Type:</label>
             <select
               value={status}
               onChange={(e) => setStatus(e.target.value)}
@@ -137,7 +176,8 @@ const AddResult = () => {
           >
             Add Student
           </motion.button>
-          <input type="file" accept=".xls, .xlsx" onChange={handleFileUpload}/>
+          <h3 className="text-2xl font-bold text-center mb-6">Upload Via Excel Sheet</h3>
+          <input type="file" accept=".xls, .xlsx" onClick={handleClick} onChange={handleFileUpload}/>
           
         </form>
       </motion.div>
@@ -166,7 +206,7 @@ const AddResult = () => {
                 <th className="py-3 px-6 text-left">Roll No</th>
                 <th className="py-3 px-6 text-left">Name</th>
                 <th className="py-3 px-6 text-left">Email</th>
-                <th className="py-3 px-6 text-left">Status</th>
+                <th className="py-3 px-6 text-left">Result Type</th>
                 <th className="py-3 px-6 text-center">Action</th>
               </tr>
             </thead>
@@ -199,8 +239,8 @@ const AddResult = () => {
                         className="flex justify-center items-center w-full"
                       >
                         <img
-                          src="/images/delete.png"
-                          className="w-6 invert"
+                          src="\images\delete.png"
+                          className="w-6"
                           alt="Delete"
                         />
                       </motion.button>
