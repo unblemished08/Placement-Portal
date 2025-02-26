@@ -32,7 +32,7 @@ const StoreContextProvider = (props) => {
             group_disscussion: true,
             tech_rounds: 3,
             isBonus: "No",
-            approved: "No",
+            approved: "Yes",
             result: "No",
         },
         {
@@ -58,7 +58,7 @@ const StoreContextProvider = (props) => {
             phoneNumber: "+1-800-555-5678",
             batch: "2025",
             isBonus: "No",
-            approved: "No",
+            approved: "Yes",
             result: "No",
         },
         {
@@ -85,7 +85,7 @@ const StoreContextProvider = (props) => {
             phoneNumber: "+1-800-555-8765",
             batch: "2025",
             isBonus: "No",
-            approved: "No",
+            approved: "Yes",
             result: "No",
         },
         {
@@ -221,7 +221,7 @@ const StoreContextProvider = (props) => {
             category: "SC/ST",
             studentImage: "google.com",
             isDisabled: "No",
-            approved: "No",
+            approved: "Yes",
             github: "google.com",
             linkedin:"google.com",
             leetcode:"google.com",
@@ -285,37 +285,187 @@ const StoreContextProvider = (props) => {
 
     const results = [
         {
-            rollNo: "12213050",
-            name: "Google",
-            job_id:"M1001",
-            status:"Interview"
+            companyName : "Google",
+            approved : "Yes",
+            students : [
+                {
+                    rollNo: "12213050",
+                    name: "Sameer",
+                    email: "sameer@gmail.com",
+                    status:"Interview"
+                },
+                {
+                    rollNo: "12213058",
+                    name: "Mohit",
+                    email:"mohit@gmai.com",
+                    status:"Final"
+                },
+                {
+                    rollNo: "12213057",
+                    name: "Sumit",
+                    email:"sumit@gmai.com",
+                    status:"OA"
+                },
+                {
+                    rollNo: "12213056",
+                    name: "Anish",
+                    email:"anish@gmai.com",
+                    status:"Final"
+                },
+                {
+                    rollNo: "12213055",
+                    name: "Sameer",
+                    email:"sam@gmai.com",
+                    status:"OA"
+                },
+            ]
         },
         {
-            rollNo: "12213058",
-            name: "MicroSoft",
-            job_id:"Ms1001",
-            status:"Final"
+            companyName : "MicroSoft",
+            approved : "No",
+            students : [
+                {
+                    rollNo: "12213050",
+                    name: "Sameer",
+                    email: "sameer@gmail.com",
+                    status:"Interview"
+                },
+                {
+                    rollNo: "12213058",
+                    name: "Mohit",
+                    email:"mohit@gmai.com",
+                    status:"Final"
+                },
+                {
+                    rollNo: "12213057",
+                    name: "Sumit",
+                    email:"sumit@gmai.com",
+                    status:"OA"
+                },
+                {
+                    rollNo: "12213056",
+                    name: "Anish",
+                    email:"anish@gmai.com",
+                    status:"Final"
+                },
+                {
+                    rollNo: "12213055",
+                    name: "Sameer",
+                    email:"sam@gmai.com",
+                    status:"OA"
+                },
+            ]
         },
         {
-            rollNo: "12213057",
-            name: "Sap",
-            job_id:"s1001",
-            status:"OA"
+            companyName : "Visa",
+            approved : "No",
+            students : [
+                {
+                    rollNo: "12213050",
+                    name: "Sameer",
+                    email: "sameer@gmail.com",
+                    status:"Interview"
+                },
+                {
+                    rollNo: "12213058",
+                    name: "Mohit",
+                    email:"mohit@gmai.com",
+                    status:"Final"
+                },
+                {
+                    rollNo: "12213057",
+                    name: "Sumit",
+                    email:"sumit@gmai.com",
+                    status:"OA"
+                },
+                {
+                    rollNo: "12213056",
+                    name: "Anish",
+                    email:"anish@gmai.com",
+                    status:"Final"
+                },
+                {
+                    rollNo: "12213055",
+                    name: "Sameer",
+                    email:"sam@gmai.com",
+                    status:"OA"
+                },
+            ]
         },
         {
-            rollNo: "12213056",
-            name: "JP Morgan",
-            job_id:"j1001",
-            status:"Final"
+            companyName : "Sap",
+            approved : "No",
+            students : [
+                {
+                    rollNo: "12213050",
+                    name: "Sameer",
+                    email: "sameer@gmail.com",
+                    status:"Interview"
+                },
+                {
+                    rollNo: "12213058",
+                    name: "Mohit",
+                    email:"mohit@gmai.com",
+                    status:"Final"
+                },
+                {
+                    rollNo: "12213057",
+                    name: "Sumit",
+                    email:"sumit@gmai.com",
+                    status:"OA"
+                },
+                {
+                    rollNo: "12213056",
+                    name: "Anish",
+                    email:"anish@gmai.com",
+                    status:"Final"
+                },
+                {
+                    rollNo: "12213055",
+                    name: "Sameer",
+                    email:"sam@gmai.com",
+                    status:"OA"
+                },
+            ]
         },
         {
-            rollNo: "12213055",
-            name: "Visa",
-            job_id:"v1001",
-            Status:"OA"
+            companyName : "Nvidia",
+            approved : "Yes",
+            students : [
+                {
+                    rollNo: "12213050",
+                    name: "Sameer",
+                    email: "sameer@gmail.com",
+                    status:"Interview"
+                },
+                {
+                    rollNo: "12213058",
+                    name: "Mohit",
+                    email:"mohit@gmai.com",
+                    status:"Final"
+                },
+                {
+                    rollNo: "12213057",
+                    name: "Sumit",
+                    email:"sumit@gmai.com",
+                    status:"OA"
+                },
+                {
+                    rollNo: "12213056",
+                    name: "Anish",
+                    email:"anish@gmai.com",
+                    status:"Final"
+                },
+                {
+                    rollNo: "12213055",
+                    name: "Sameer",
+                    email:"sam@gmai.com",
+                    status:"OA"
+                },
+            ]
         },
     ]
-    
+    // onchanging the data send the req acc to the type of approval wether it is for students, company or result
     const contextValue = {
         companies,
         students,

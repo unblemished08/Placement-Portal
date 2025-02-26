@@ -19,46 +19,50 @@ const Company_Result = () => {
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-900 text-gray-200 p-6">
             <div className="w-full max-w-4xl bg-gray-800 shadow-lg rounded-lg p-6">
-                <h2 className="text-3xl font-bold mb-6 text-white text-center">{data.name}</h2>
+                <h2 className="text-3xl font-bold mb-6 text-white text-center">{data.companyName}</h2>
 
                 <div className="overflow-x-auto">
                     <table className="w-full border-collapse text-gray-300">
                         {/* Table Header */}
                         <thead>
                             <tr className="bg-gray-700 text-gray-200 uppercase text-sm">
-                                <th className="p-3 text-left">Roll No</th>
-                                <th className="p-3 text-center">Status</th>
+                                <th className="p-3 text-left">Name</th>
+                                <th className="p-3 text-left">Email</th>
+                                <th className="p-3 text-center">Roll No</th>
+                                <th className="p-3 text-center">Result Type</th>
                             </tr>
                         </thead>
 
                         {/* Table Body */}
                         <tbody>
                             {Array.isArray(data.students) &&
-                                data.students.map((dt) => (
+                                data.students.map((student) => (
                                     <tr
-                                        key={dt.job_id}
+                                        key={student.rollNo}
                                         className="border-b border-gray-600 hover:bg-gray-700 transition duration-200"
                                     >
-                                        <td className="p-3">{dt.rollNo}</td>
-                                        <td className="p-3">{dt.status}</td>
+                                        <td className="p-3">{student.name}</td>
+                                        <td className="p-3">{student.email}</td>
+                                        <td className="p-3">{student.rollNo}</td>
+                                        <td className="p-3">{student.status}</td>
                                     </tr>
                                 ))}
                         </tbody>
                     </table>
                 </div>
 
-                {/* Example of a radio input section (Modify 'someField' accordingly) */}
+                {/* Approval Radio Buttons */}
                 <div className="mt-4">
-                    <label className="font-semibold text-gray-300">Approval:</label>
+                    <label className="font-semibold text-gray-300">Approve:</label>
                     <div className="flex space-x-6 mt-2">
                         {["Yes", "No"].map((option) => (
                             <label key={option} className="flex items-center space-x-2">
                                 <input
                                     type="radio"
-                                    name="approval"
+                                    name="approved"
                                     value={option}
-                                    checked={data.approval === option}
-                                    onChange={(e) => handleUpdate("approval", e.target.value)}
+                                    checked={data.approved === option}
+                                    onChange={(e) => handleUpdate("approved", e.target.value)}
                                     className="appearance-none w-5 h-5 border border-gray-500 rounded-full checked:bg-blue-500 focus:ring focus:ring-blue-400"
                                 />
                                 <span className="text-gray-300">{option}</span>
