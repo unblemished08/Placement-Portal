@@ -1,70 +1,75 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useRef, useState } from "react";
+import { motion } from "framer-motion";
 
 export const Navbar = () => {
-  const [clickedIndex, setClickedIndex] = useState(null);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  return (
+    <div className="bg-gray-900 p-4">
+      <SlideTabs />
+    </div>
+  );
+};
 
-  const handleClick = (index) => {
-    setClickedIndex(index);
-    setTimeout(() => setClickedIndex(null), 300); // Reset after animation
-  };
+const SlideTabs = () => {
+  const [position, setPosition] = useState({
+    left: 0,
+    width: 0,
+    opacity: 0,
+  });
 
   return (
-    <nav className="bg-gray-900 bg-gradient-to-r from-gray-800 to-black text-white sticky top-0 z-50 shadow-lg">
-      <div className="container mx-auto flex items-center justify-between px-6 py-4">
-        {/* Logo */}
-        <div className="text-2xl font-bold text-cyan-400 hover:text-cyan-300 transition-all duration-300">
-          <NavLink to="/">Placement Portal</NavLink>
-        </div>
+    <ul
+      onMouseLeave={() => {
+        setPosition((pv) => ({
+          ...pv,
+          opacity: 0,
+        }));
+      }}
+      className="relative mx-auto flex w-fit rounded-full border-2 border-white bg-gray-900 p-1"
+    >
+      <Tab setPosition={setPosition} href="/">Home</Tab>
+      <Tab setPosition={setPosition} href="/companies">Companies</Tab>
+      <Tab setPosition={setPosition} href="/result">Result</Tab>
+      <Tab setPosition={setPosition} href="/recruiters">Our Recruiters</Tab>
+      <Tab setPosition={setPosition} href="/stats">Stats</Tab>
 
-        {/* Menu Toggle (Mobile) */}
-        <button
-          className="lg:hidden text-white text-2xl focus:outline-none transition-transform transform hover:scale-110"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        >
-          {isMobileMenuOpen ? "✕" : "☰"}
-        </button>
+      <Cursor position={position} />
+    </ul>
+  );
+};
 
-        {/* Navigation Links */}
-        <ul
-          className={`lg:flex lg:items-center lg:space-x-8 absolute lg:static top-full left-0 w-full lg:w-auto bg-gray-900 lg:bg-transparent transition-all duration-500 ease-in-out transform ${
-            isMobileMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-5 lg:opacity-100 lg:translate-y-0"
-          }`}
-        >
-          {[
-            { name: "Home", href: "/" },
-            { name: "Companies", href: "/companies" },
-            { name: "Result", href: "/result" },
-            { name: "Our Recruiters", href: "/recruiters" },
-            { name: "Stats", href: "/stats" },
-          ].map((item, index) => (
-            <li
-              key={index}
-              onClick={() => handleClick(index)}
-              className={`relative py-2 px-4 transition-all duration-300 ease-in-out ${
-                clickedIndex === index ? "scale-110" : "scale-100"
-              }`}
-            >
-              <NavLink
-                to={item.href}
-                className={({ isActive }) =>
-                  `relative text-lg font-medium tracking-wide transition-all duration-300 ease-in-out
-                  ${
-                    isActive
-                      ? "text-cyan-400 border-b-2 border-cyan-500"
-                      : "hover:text-cyan-300 hover:border-b-2 hover:border-cyan-500"
-                  }`
-                }
-              >
-                {item.name}
-                {/* Glowing effect on hover */}
-                <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-cyan-400 transition-all duration-300 group-hover:w-full"></span>
-              </NavLink>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </nav>
+const Tab = ({ children, setPosition, href }) => {
+  const ref = useRef(null);
+
+  return (
+    <li
+      ref={ref}
+      onMouseEnter={() => {
+        if (!ref?.current) return;
+
+        const { width } = ref.current.getBoundingClientRect();
+
+        setPosition({
+          left: ref.current.offsetLeft,
+          width,
+          opacity: 1,
+        });
+      }}
+      className="relative z-10 block cursor-pointer px-3 py-1.5 text-xs uppercase text-white mix-blend-difference md:px-5 md:py-3 md:text-base"
+    >
+      <a href={href} className="block">
+        {children}
+      </a>
+    </li>
+  );
+};
+
+const Cursor = ({ position }) => {
+  return (
+    <motion.li
+      animate={{
+        ...position,
+      }}
+      className="absolute z-0 h-7 rounded-full bg-white md:h-12"
+    />
   );
 };

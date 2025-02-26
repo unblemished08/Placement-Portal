@@ -1,65 +1,75 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useRef, useState } from "react";
+import { motion } from "framer-motion";
 
 export const Navbar = () => {
-  const [clickedIndex, setClickedIndex] = useState(null);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  return (
+    <div className="bg-gray-900 p-4">
+      <SlideTabs />
+    </div>
+  );
+};
 
-  const handleClick = (index) => {
-    setClickedIndex(index);
-    setTimeout(() => setClickedIndex(null), 300); // Reset after animation
-  };
+const SlideTabs = () => {
+  const [position, setPosition] = useState({
+    left: 0,
+    width: 0,
+    opacity: 0,
+  });
 
   return (
-    <nav className="bg-gradient-to-r from-blue-400 to-blue-900 text-white sticky top-0 z-50 shadow-md">
-      <div className="container mx-auto flex items-center justify-between px-6 py-4">
-        {/* Logo */}
-        <div className="text-2xl font-bold">
-          <NavLink to="/">Placement Portal</NavLink>
-        </div>
+    <ul
+      onMouseLeave={() => {
+        setPosition((pv) => ({
+          ...pv,
+          opacity: 0,
+        }));
+      }}
+      className="relative mx-auto flex w-fit rounded-full border-2 border-white bg-gray-900 p-1"
+    >
+      <Tab setPosition={setPosition} href="/">Home</Tab>
+      <Tab setPosition={setPosition} href="/companyRequirements">Requirements</Tab>
+      <Tab setPosition={setPosition} href="/StudentDetails">Students</Tab>
+      <Tab setPosition={setPosition} href="/uploadResult">Upload Result</Tab>
+      <Tab setPosition={setPosition} href="/stats">Stats</Tab>
 
-        {/* Menu Toggle (Mobile) */}
-        <button
-          className="lg:hidden text-white text-xl focus:outline-none"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        >
-          {isMobileMenuOpen ? "✕" : "☰"}
-        </button>
+      <Cursor position={position} />
+    </ul>
+  );
+};
 
-        {/* Navigation Links */}
-        <ul
-          className={`lg:flex lg:items-center lg:space-x-8 ${
-            isMobileMenuOpen ? "block" : "hidden"
-          } absolute lg:static top-full left-0 w-full lg:w-auto bg-purple-500 lg:bg-transparent`}
-        >
-          {[
-            { name: "Home", href: "/" },
-            { name: "Requirements", href: "/companyRequirements" },
-            { name: "Students", href: "/StudentDetails" },
-            { name: "Upload Result", href: "/uploadResult" },
-            {name:"Stats"  ,href:"/stats"}
-          ].map((item, index) => (
-            <li
-              key={index}
-              onClick={() => handleClick(index)}
-              className={`${
-                clickedIndex === index ? "scale-110" : "scale-100"
-              } transition-transform duration-300 ease-in-out py-2`}
-            >
-              <NavLink
-                to={item.href}
-                className={({ isActive }) =>
-                  isActive
-                    ? "text-green-300 font-semibold border-b-2 border-green-400"
-                    : "hover:textgreen-400 hover:border-b-2 hover:border-green-400 transition-all"
-                }
-              >
-                {item.name}
-              </NavLink>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </nav>
+const Tab = ({ children, setPosition, href }) => {
+  const ref = useRef(null);
+
+  return (
+    <li
+      ref={ref}
+      onMouseEnter={() => {
+        if (!ref?.current) return;
+
+        const { width } = ref.current.getBoundingClientRect();
+
+        setPosition({
+          left: ref.current.offsetLeft,
+          width,
+          opacity: 1,
+        });
+      }}
+      className="relative z-10 block cursor-pointer px-3 py-1.5 text-xs uppercase text-white mix-blend-difference md:px-5 md:py-3 md:text-base"
+    >
+      <a href={href} className="block">
+        {children}
+      </a>
+    </li>
+  );
+};
+
+const Cursor = ({ position }) => {
+  return (
+    <motion.li
+      animate={{
+        ...position,
+      }}
+      className="absolute z-0 h-7 rounded-full bg-white md:h-12"
+    />
   );
 };

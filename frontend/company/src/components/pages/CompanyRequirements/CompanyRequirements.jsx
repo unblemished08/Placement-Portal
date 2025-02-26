@@ -153,7 +153,7 @@ const CompanyRequirements = () => {
 
     return (
         <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center py-8">
-            <h2 className="text-3xl font-bold mb-6">My Profile</h2>
+            <h2 className="text-3xl font-bold mb-6">Upload Requirements</h2>
             <div className="bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-4xl">
                 <div className="flex flex-col md:flex-row items-center md:items-start">
                     <div className="relative">
