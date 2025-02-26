@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const StudentDetails = ({ appliedStudents }) => {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate data fetching delay
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
 
   const handleClick = (student) => {
     navigate("/fullDetails", { state: { student } });
@@ -18,7 +26,15 @@ const StudentDetails = ({ appliedStudents }) => {
         >
           STUDENTS APPLIED
         </h1>
-        {appliedStudents.length > 0 ? (
+
+        {/* Show loading animation */}
+        {loading ? (
+          <div className="p-8">
+            <div className="animate-pulse bg-gray-500 h-10 w-full my-2 rounded"></div>
+            <div className="animate-pulse bg-gray-500 h-10 w-full my-2 rounded"></div>
+            <div className="animate-pulse bg-gray-500 h-10 w-full my-2 rounded"></div>
+          </div>
+        ) : appliedStudents.length > 0 ? (
           <div className="overflow-x-auto">
             <table className="min-w-full text-left text-white bg-gray-700">
               <thead className="bg-gray-600 border-b">
@@ -33,7 +49,10 @@ const StudentDetails = ({ appliedStudents }) => {
               </thead>
               <tbody>
                 {appliedStudents.map((student, index) => (
-                  <tr key={index} className="border-b border-gray-600 hover:bg-gray-600">
+                  <tr
+                    key={index}
+                    className="border-b border-gray-600 hover:bg-gray-600 hover:font-bold transition-all duration-300"
+                  >
                     <td className="py-2 px-4">{index + 1}</td>
                     <td className="py-2 px-4">{student.name}</td>
                     <td className="py-2 px-4">{student.rollNo}</td>
