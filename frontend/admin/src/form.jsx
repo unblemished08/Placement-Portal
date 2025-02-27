@@ -56,22 +56,12 @@ function Form() {
   };
 
   return (
-    <div className="bg-gray-100 min-h-screen flex justify-center items-center">
-      <div className="bg-white shadow-md rounded-lg p-6 w-5/12">
-        <h2 className="text-2xl font-bold mb-4 text-center">
-          Coordinators List
-        </h2>
-        <br />
-        {/* Form */}
-        <form
-          onSubmit={handleAddCoordinator}
-          className="flex flex-col space-y-4"
-        >
+    <div className="bg-gray-900 min-h-screen flex justify-center items-center">
+      <div className="bg-gray-800 text-white shadow-lg rounded-lg p-6 w-5/12">
+        <h2 className="text-2xl font-bold mb-4 text-center">Coordinators List</h2>
+        <form onSubmit={handleAddCoordinator} className="flex flex-col space-y-4">
           <div>
-            <label
-              htmlFor="email"
-              className="block text-sm font-semibold text-gray-700"
-            >
+            <label htmlFor="email" className="block text-sm font-semibold">
               Email (must end with @nitkkr.ac.in):
             </label>
             <input
@@ -79,44 +69,30 @@ function Form() {
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2"
+              className="mt-1 block w-full bg-gray-700 text-white border-gray-600 rounded-md shadow-sm p-2"
               placeholder="example@nitkkr.ac.in"
               required
             />
           </div>
-
-          {isBadEmail === true ? (
-            <p className="text-red-500">Email must end with @nitkkr.ac.in</p>
-          ) : isEmailAlreadyExists === true ? (
-            <p className="text-red-500">Email ID already exists</p>
-          ) : (
-            ""
-          )}
-
-          <label htmlFor="rollNo" className="font-semibold">
-            Roll No:
-          </label>
+          {isBadEmail && <p className="text-red-400">Email must end with @nitkkr.ac.in</p>}
+          {isEmailAlreadyExists && <p className="text-red-400">Email ID already exists</p>}
+          <label htmlFor="rollNo" className="font-semibold">Roll No:</label>
           <input
             type="text"
             id="rollNo"
             value={rollNo}
             onChange={(e) => setRollNo(e.target.value)}
-            className="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2"
+            className="mt-1 block w-full bg-gray-700 text-white border-gray-600 rounded-md shadow-sm p-2"
             placeholder="Roll No"
             required
           />
-          {isRollNoAlreadyExists && (
-            <p className="text-red-500">Roll No already exists</p>
-          )}
-
-          <label htmlFor="post" className="font-semibold">
-            Post:
-          </label>
+          {isRollNoAlreadyExists && <p className="text-red-400">Roll No already exists</p>}
+          <label htmlFor="post" className="font-semibold">Post:</label>
           <select
             id="post"
             value={post}
             onChange={(e) => setPost(e.target.value)}
-            className="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2"
+            className="mt-1 block w-full bg-gray-700 text-white border-gray-600 rounded-md shadow-sm p-2"
           >
             <option value="">Select Post</option>
             <option value="ICC">ICC</option>
@@ -124,77 +100,40 @@ function Form() {
           </select>
           <button
             type="submit"
-            className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+            className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md"
           >
             Add Coordinator
           </button>
         </form>
-
-        {/* Coordinator List */}
         <ul className="mt-6 space-y-4">
           {coordinators.map((coordinator, index) => (
             <li
               key={index}
-              className="flex justify-between items-center p-4 pr-2 bg-gray-50 border rounded shadow"
+              className="flex justify-between items-center p-4 bg-gray-700 border border-gray-600 rounded-md shadow"
             >
               <div>
-                <p className="font-medium">Email: {coordinator.email}</p>
-                <p className="font-medium">Roll No: {coordinator.rollNo}</p>
-                <p className="font-medium">Post: {coordinator.post}</p>
-                <div className="relative flex items-center space-x-2 mt-1">
-                  <label htmlFor={index}>Password: </label>
-                  <div className="relative w-4/6">
-                    <input
-                      type="password"
-                      id={index}
-                      value={coordinator.password}
-                      className="password-input border-gray-300 rounded-md shadow-sm px-2 py-1 w-full pr-12"
-                      readOnly
-                    />
-                    <button
-                      type="button"
-                      className="toggle-password absolute inset-y-0 right-2 text-blue-500 hover:underline text-sm"
-                      onClick={(e) => {
-                        const input = e.target
-                          .closest("div")
-                          .querySelector(".password-input");
-                        if (input.type === "password") {
-                          input.type = "text";
-                          e.target.textContent = "Hide";
-                        } else {
-                          input.type = "password";
-                          e.target.textContent = "Show";
-                        }
-                      }}
-                    >
-                      Show
-                    </button>
-                  </div>
-                  <div>
-                    <button
-                      type="button"
-                      title="Copy"
-                      onClick={() => {
-                        handleCopyPassword(coordinator.password);
-                        setCopiedIndex(index);
-                        setTimeout(() => setCopiedIndex(null), 1500);
-                      }}
-                      className="flex items-center justify-center rounded-md px-3 py-1"
-                    >
-                      {copiedIndex === index ? (
-                        <span className="text-green-500 font-medium">
-                          Copied
-                        </span>
-                      ) : (
-                        <img src="/copy.png" alt="Copy" className="w-7" />
-                      )}
-                    </button>
-                  </div>
+                <p>Email: {coordinator.email}</p>
+                <p>Roll No: {coordinator.rollNo}</p>
+                <p>Post: {coordinator.post}</p>
+                <div className="flex items-center space-x-2 mt-1">
+                  <input
+                    type="password"
+                    value={coordinator.password}
+                    className="bg-gray-600 text-white border-gray-500 rounded-md px-2 py-1 w-36"
+                    readOnly
+                  />
+                  <button
+                    type="button"
+                    className="text-blue-400 hover:text-blue-500"
+                    onClick={() => handleCopyPassword(coordinator.password)}
+                  >
+                    Copy
+                  </button>
                 </div>
               </div>
               <button
                 type="button"
-                className="delete-btn bg-red-500 text-white py-1 px-3 rounded hover:bg-red-600"
+                className="bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded-md"
                 onClick={() => handleDeleteCoordinator(index)}
               >
                 Delete
