@@ -2,23 +2,24 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
-const StudentDetails = ({ appliedStudents }) => {
+const StudentDetails = ({ appliedStudents = [] }) => {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
-  const [cgpaFilter, setCgpaFilter] = useState("All");
+  const [cgpaFilter, setCgpaFilter] = useState("");
 
   const handleClick = (student) => {
     navigate("/fullDetails", { state: { student } });
   };
 
   const filterStudents = () => {
+    if (!Array.isArray(appliedStudents)) return [];
     return appliedStudents
       .filter((student) =>
         student.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         student.rollNo.includes(searchQuery)
       )
       .filter((student) => {
-        if (cgpaFilter === "All") return true;
+        if (!cgpaFilter) return true;
         return student.cgpa >= parseFloat(cgpaFilter);
       });
   };
@@ -48,18 +49,14 @@ const StudentDetails = ({ appliedStudents }) => {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
-          <select
-            className="px-4 py-2 rounded bg-gray-700 text-white"
+          <input
+            type="number"
+            step="0.1"
+            placeholder="Sort by CGPA..."
+            className="px-4 py-2 rounded bg-gray-700 text-white placeholder-gray-400"
             value={cgpaFilter}
             onChange={(e) => setCgpaFilter(e.target.value)}
-          >
-            <option value="All">All CGPA</option>
-            <option value="9">Above 9</option>
-            <option value="8.5">Above 8.5</option>
-            <option value="8">Above 8</option>
-            <option value="7.5">Above 7.5</option>
-            <option value="7">Above 7</option>
-          </select>
+          />
         </div>
 
         {filterStudents().length > 0 ? (
