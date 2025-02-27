@@ -10,6 +10,7 @@ import About from "./components/pages/about/About";
 import Login from "./components/pages/Login_Signup/login";
 import ContactUs from "./components/pages/ContactUs/ContactUs";
 import PlacementStats from "./components/pages/statistics/Stats";
+import SignUp from "./components/pages/Login_Signup/SignUp";
 function App() {
   return (
     //every route must be added here if we need to render any sort of component to maintain single page
@@ -26,6 +27,7 @@ function App() {
       <Route path="/login" element={<Login/>}/>
       <Route path="/contact-us" element={<ContactUs/>}/>
       <Route path="/stats" element={<PlacementStats/>}/>
+      <Route path="/signup" element={SignUp}/>
       </Routes>
     </>   
   );
