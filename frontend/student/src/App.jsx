@@ -17,6 +17,7 @@ import ContactUs from "./Pages/ContactUs/ContactUs"
 import { StoreContext } from "./Context/StoreContext"
 import { useContext } from "react"
 import PlacementStats from "./Pages/statistics/Stats"
+import ChatApp from "./Pages/Chat/ChatApp"
 function App() {
   const {userData} = useContext(StoreContext);
   return (
@@ -38,6 +39,7 @@ function App() {
       <Route path="/contact-us" element={<ContactUs/>} />
       <Route path="/login" element={<Login/>}/>
       <Route path="/stats" element={<PlacementStats/>}/>
+      <Route path="/chatApp" element={<ChatApp/>}/>
       </Routes>
     {/* // </BrowserRouter> */}
     </>   

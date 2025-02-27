@@ -31,6 +31,7 @@ const SlideTabs = () => {
       <Tab setPosition={setPosition} href="/result">Result</Tab>
       <Tab setPosition={setPosition} href="/recruiters">Our Recruiters</Tab>
       <Tab setPosition={setPosition} href="/stats">Stats</Tab>
+      <Tab setPosition={setPosition} href="/chatApp">Discussion</Tab>
 
       <Cursor position={position} />
     </ul>
