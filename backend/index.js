@@ -9,6 +9,7 @@ import errorMiddleware from './Middlewares/errorMiddleware.js';
 import resultRoutes from './Routes/result.js';
 import saveDataRoutes from './Routes/saveData.js';
 import coordinatorRoutes from './Routes/coordinator.js';
+import companyRoutes from './Routes/company.js';
 
 import { Server } from 'socket.io';
 import http from 'http';
@@ -62,7 +63,7 @@ app.use('/getdata', stucomRoutes);
 app.use('/result', resultRoutes);
 app.use('/savedata', saveDataRoutes);
 app.use('/coordinator', coordinatorRoutes);
-
+app.use('/company', companyRoutes);
 
 
 let messages = []; // This is a temporary storage, you could use a database to persist messages
