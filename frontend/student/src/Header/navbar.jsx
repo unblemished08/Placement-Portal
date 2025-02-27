@@ -32,7 +32,7 @@ const SlideTabs = () => {
       <Tab setPosition={setPosition} href="/recruiters">Our Recruiters</Tab>
       <Tab setPosition={setPosition} href="/stats">Stats</Tab>
       <Tab setPosition={setPosition} href="/chatApp">Discussion</Tab>
-
+      <Tab setPosition={setPosition} href="/mockInterview">Mock Interview</Tab>
       <Cursor position={position} />
     </ul>
   );
