@@ -1,5 +1,5 @@
 import { Navbar } from "./Header/navbar"
-import {BrowserRouter,Route,Routes} from "react-router-dom"
+import {BrowserRouter,Route,Routes, useLocation} from "react-router-dom"
 
 const Statistics=()=><h1>Statistics Page</h1>
 const PastRecord=()=><h1>Past record Page</h1>
@@ -20,11 +20,14 @@ import PlacementStats from "./Pages/statistics/Stats"
 import ChatApp from "./Pages/Chat/ChatApp"
 function App() {
   const {userData} = useContext(StoreContext);
+  const location = useLocation();
+  const hideNavbar = location.pathname === "/login" || location.pathname === "/signup";
+
   return (
     //every route must be added here if we need to render any sort of component to maintain single page
     <>
     {/* // <BrowserRouter> */}
-      <Navbar/>
+    {!hideNavbar && <Navbar />}
       <Routes>
       <Route path="/" element={<Home_user/>}/>
       <Route path="/companies" element={<Companies/>}/>

@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   // State for form data
   const [formData, setFormData] = useState({ email: "", password: "" });
+  const navigate = useNavigate();
 
   // Handle input change
   const handleChange = (e) => {
@@ -27,7 +29,8 @@ const Login = () => {
       const data = await response.json();
 
       if (data.success) {
-        alert("Your account is successfully created");
+        alert("You are successfully logged in.");
+        navigate('/')
       } else {
         alert("You may try once again");
       }
@@ -54,7 +57,7 @@ const Login = () => {
           <h2 className="text-2xl font-bold text-white">Log in</h2>
           <p className="text-gray-400 mt-2">
             Don't have an account?{" "}
-            <a href="#" className="text-purple-400 hover:underline">
+            <a href="/signup" className="text-purple-400 hover:underline">
               Sign up
             </a>
           </p>

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import {useNavigate} from 'react-router-dom'
 
 const Login = () => {
   // State for form data
   const [formData, setFormData] = useState({ rollNo: "", password: "" });
-
+  const navigate = useNavigate();
   // Handle input change
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -27,7 +28,8 @@ const Login = () => {
       const data = await response.json();
 
       if (data.success) {
-        alert("Your account is successfully created");
+        alert("You are successfully logged in.");
+        navigate('/')
       } else {
         alert("You may try once again");
       }

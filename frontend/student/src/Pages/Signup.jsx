@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -26,7 +27,7 @@ const Signup = () => {
     gfg: "",
     codingninja: "",
   });
-
+  const navigate = useNavigate();
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -48,10 +49,11 @@ const Signup = () => {
 
     if(data.success)
     {
-      alert("Apka account bann gya hai badai ho")
+      alert("Your account is successfully created.")
+      navigate('/');
     }
     else{
-      alert("kirpya dubara try kre")
+      alert("Error, please try again")
     }
   };
 
@@ -94,6 +96,19 @@ const Signup = () => {
               />
             </div>
           </div>
+
+          {/* Phone Number */}
+          <div>
+              <label className="block text-gray-400">Phone Number</label>
+              <input
+                type="text"
+                name="phoneNumber"
+                className="w-full p-3 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:border-purple-400"
+                value={formData.phoneNumber}
+                onChange={handleChange}
+                required
+              />
+            </div>
 
           {/* Emails */}
           <div className="mt-4">

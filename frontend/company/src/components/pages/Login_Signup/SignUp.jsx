@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Signup = () => {
+const SignUp = () => {
   const [formData, setFormData] = useState({
     name: "",
     email:"",
@@ -28,12 +28,13 @@ const Signup = () => {
     const data=await response.json();
 
     if(data.success)
-    {
-      alert("Apka account bann gya hai badai ho")
-    }
-    else{
-      alert("kirpya dubara try kre")
-    }
+      {
+        alert("Your account is successfully created.")
+        navigate('/');
+      }
+      else{
+        alert("Error, please try again")
+      }
   };
 
   return (
@@ -49,7 +50,6 @@ const Signup = () => {
 
         <form onSubmit={handleSubmit} className="mt-6">
           {/* Name */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="block text-gray-400">Company Name</label>
               <input
@@ -61,7 +61,21 @@ const Signup = () => {
                 required
               />
             </div>
-          </div>
+          
+
+          {/* Phone Number */}
+          <div>
+              <label className="block text-gray-400">Phone Number</label>
+              <input
+                type="text"
+                name="phoneNumber"
+                className="w-full p-3 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:border-purple-400"
+                value={formData.phoneNumber}
+                onChange={handleChange}
+                required
+              />
+            </div>
+          
 
           {/* Emails */}
           <div className="mt-4">
@@ -102,4 +116,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default SignUp;

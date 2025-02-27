@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { StoreContext } from "../../Context/StoreContext";
 import ResultSlider from "./ResultSlider";
+import ProfileButton from "./Profile";
 
 function Home() {
   const { result_for_profile } = useContext(StoreContext);
@@ -11,6 +12,11 @@ function Home() {
         className="relative bg-cover bg-center bg-no-repeat text-white py-10"
         style={{ backgroundImage: "url('https://source.unsplash.com/1600x900/?career,technology')" }}
       >
+        {/* Profile Shortcut */}
+        <div className="absolute top-4 pt-2 pr-1 right-4">
+        <ProfileButton/>
+          
+        </div>
         {/* Bell Icon at Top-Right */}
         <div className="absolute top-4 pt-2 pr-1 right-4">
           <a href="/sendNotification">
