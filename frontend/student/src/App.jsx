@@ -14,6 +14,7 @@ import Home_user from "./Pages/Home_companies/Home_user"
 import Profile from "./Pages/Profile"
 import Recruiters from "./Pages/Recruiters"
 import ContactUs from "./Pages/ContactUs/ContactUs"
+import MockInterviewHelp from "./Pages/MockInterview"
 import { StoreContext } from "./Context/StoreContext"
 import { useContext } from "react"
 import PlacementStats from "./Pages/statistics/Stats"
@@ -43,6 +44,7 @@ function App() {
       <Route path="/login" element={<Login/>}/>
       <Route path="/stats" element={<PlacementStats/>}/>
       <Route path="/chatApp" element={<ChatApp/>}/>
+      <Route path="/mockInterview" element={<MockInterviewHelp/>}/>
       </Routes>
     {/* // </BrowserRouter> */}
     </>   
