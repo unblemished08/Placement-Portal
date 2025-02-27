@@ -1,9 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const StudentDetails = ({ appliedStudents }) => {
+const CompanyResult = ({ result }) => {
   const navigate = useNavigate();
-
   const handleClick = (student) => {
     navigate("/fullDetails", { state: { student } });
   };
@@ -13,12 +12,12 @@ const StudentDetails = ({ appliedStudents }) => {
       <div className="bg-gray-900 shadow-2xl rounded-2xl overflow-hidden w-full max-w-6xl border border-gray-700">
         <h1
           className={`text-4xl font-extrabold text-center py-6 tracking-wide uppercase shadow-md ${
-            appliedStudents.length > 0 ? "bg-green-700 text-white" : "bg-red-700 text-white"
+            result.length > 0 ? "bg-green-700 text-white" : "bg-red-700 text-white"
           }`}
         >
-          {appliedStudents.length > 0 ? "Students Applied" : "No Students Applied"}
+          {result.length > 0 ? "Students Applied" : "No Students Applied"}
         </h1>
-        {appliedStudents.length > 0 ? (
+        {result.length > 0 ? (
           <div className="overflow-x-auto">
             <table className="min-w-full table-auto text-md bg-gray-800 text-white">
               <thead>
@@ -32,7 +31,7 @@ const StudentDetails = ({ appliedStudents }) => {
                 </tr>
               </thead>
               <tbody>
-                {appliedStudents.map((student, index) => (
+                {result.map((student, index) => (
                   <tr
                     key={index}
                     className="border-b border-gray-600 transition duration-300 ease-in-out hover:bg-gray-600 transform hover:scale-105"
@@ -66,4 +65,4 @@ const StudentDetails = ({ appliedStudents }) => {
   );
 };
 
-export default StudentDetails;
+export default CompanyResult;
