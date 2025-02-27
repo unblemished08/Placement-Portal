@@ -30,6 +30,12 @@ const FinalResultSchema = new mongoose.Schema(
             enum: ["Intern + Full Time","Full Time", "Intern", "Research Intern/Project"],
             required: true,
         },
+        
+        approved:{
+            type:String,
+            enum:["Yes","No"],
+            default:"No",
+        }
     },
     {
         timestamps: true,

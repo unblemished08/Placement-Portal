@@ -23,6 +23,12 @@ const ResultSchema = new mongoose.Schema(
         status:{
             type:String,
             enum:["OA","Interview","Final"],
+        },
+
+        approved:{
+            type:String,
+            enum:["Yes","No"],
+            default:"No",
         }
    
     },
