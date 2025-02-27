@@ -123,6 +123,16 @@ const ContactUs = () => {
                             <p><a href="https://www.instagram.com/sameer_meel?igsh=MTlqeHZseDI2MzExcw=="><img className='w-10 transition-transform duration-300 hover:scale-110' src="images/instagram.png" alt="Instagram" /></a></p>
                         </div>
                     </div>
+
+                    <div className="mb-6">
+                        <h3 className="text-yellow-400 font-bold text-lg">Richa</h3>
+                        <div className='flex gap-6 p-3 justify-center'>
+                            <p><a href="https://mail.google.com/mail/?view=cm&to=richieerichaa@gmail.com" target='_blank'><img className='w-10 transition-transform duration-300 hover:scale-110' src="images/gmail.png" alt="gmail" /></a></p>
+                            <p><a href="https://github.com/Richa004"><img className='w-10 transition-transform duration-300 hover:scale-110' src="images/github.png" alt="github" /></a></p>
+                            <p><a href="https://www.linkedin.com/in/richa-yadav-15867b25a"><img className='w-10 transition-transform duration-300 hover:scale-110' src="images/linkedin.png" alt="linkedin" /></a></p>
+                            <p><a href="https://www.instagram.com/peace_full004?utm_source=qr&igsh=cGJ4ZXJvemd6MGlt"><img className='w-10 transition-transform duration-300 hover:scale-110' src="images/instagram.png" alt="Instagram" /></a></p>
+                        </div>
+                    </div>
                 </div>
 
             </div>
