@@ -38,7 +38,7 @@ const StudentDetails = ({ appliedStudents = [] }) => {
           transition={{ duration: 0.8 }}
           className="text-3xl md:text-4xl font-bold text-center py-6 text-white bg-gradient-to-r from-green-500 to-blue-500 rounded-xl shadow-lg border-b-4 border-white"
         >
-          STUDENTS <span className="text-yellow-400">APPLIED</span>
+          STUDENTS APPLIED
         </motion.h1>
 
         <div className="p-4 flex flex-col md:flex-row gap-4 items-center justify-between">
