@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export const Navbar = () => {
   return (
-    <div className="bg-gray-900 p-4">
+    <div className="sticky top-0 bg-gray-900 p-2 z-50">
       <SlideTabs />
     </div>
   );

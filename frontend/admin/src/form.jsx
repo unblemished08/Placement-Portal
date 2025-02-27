@@ -56,8 +56,8 @@ function Form() {
   };
 
   return (
-    <div className="bg-gray-900 min-h-screen flex justify-center items-center">
-      <div className="bg-white shadow-md rounded-lg p-6 w-5/12">
+    <div className="bg-gray-800 min-h-screen flex justify-center items-center">
+      <div className="bg-gray-900 shadow-lg rounded-lg p-6 w-5/12 text-white">
         <h2 className="text-2xl font-bold mb-4 text-center">
           Coordinators List
         </h2>
@@ -70,7 +70,7 @@ function Form() {
           <div>
             <label
               htmlFor="email"
-              className="block text-sm font-semibold text-gray-700"
+              className="block text-sm font-semibold"
             >
               Email (must end with @nitkkr.ac.in):
             </label>
@@ -79,7 +79,7 @@ function Form() {
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2"
+              className="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm p-2 text-white"
               placeholder="example@nitkkr.ac.in"
               required
             />
@@ -101,7 +101,7 @@ function Form() {
             id="rollNo"
             value={rollNo}
             onChange={(e) => setRollNo(e.target.value)}
-            className="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2"
+            className="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm p-2 text-white"
             placeholder="Roll No"
             required
           />
@@ -116,7 +116,7 @@ function Form() {
             id="post"
             value={post}
             onChange={(e) => setPost(e.target.value)}
-            className="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2"
+            className="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm p-2 text-white"
           >
             <option value="">Select Post</option>
             <option value="ICC">ICC</option>
@@ -135,7 +135,7 @@ function Form() {
           {coordinators.map((coordinator, index) => (
             <li
               key={index}
-              className="flex justify-between items-center p-4 pr-2 bg-gray-50 border rounded shadow"
+              className="flex justify-between items-center p-4 pr-2 bg-gray-800 border rounded shadow"
             >
               <div>
                 <p className="font-medium">Email: {coordinator.email}</p>
@@ -148,7 +148,7 @@ function Form() {
                       type="password"
                       id={index}
                       value={coordinator.password}
-                      className="password-input border-gray-300 rounded-md shadow-sm px-2 py-1 w-full pr-12"
+                      className="password-input border-gray-500 bg-gray-600 rounded-md shadow-sm px-2 py-1 w-full pr-12"
                       readOnly
                     />
                     <button
