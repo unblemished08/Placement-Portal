@@ -1,156 +1,129 @@
-/* General Styling */
+/* General Styles */
 body {
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: #1a202c; /* bg-gray-900 */
-    color: white;
-  }
-  
-  #video-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-  }
-  
-  #intro-video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .container {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 1.5rem; /* p-6 */
-  }
-  
-  .header {
-    display: flex;
-    flex-direction: column; /* Change to column */
-    align-items: center;
-    text-align: center;
-    gap: 1rem; /* gap-4 */
-    margin-bottom: 1.5rem; /* mb-6 */
-  }
-  
-  .logo {
-    border-radius: 1rem; /* rounded-2xl */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* shadow-lg */
-    /* width: 15rem; w-24 */
-    /* height: 20rem; h-24 */
-    opacity: 0;
-    transform: scale(0.8);
-    animation: fadeInLogo 0.5s forwards;
+  font-family: Arial, sans-serif;
+  background-color: #121212;
+  color: white;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  overflow-x: hidden;
 }
 
-  
-  .title {
-    font-size: 2rem; /* text-4xl */
-    font-weight: bold;
-    color: #e2e8f0; /* text-gray-100 */
-    opacity: 0;
-    transform: translateY(-20px);
-    animation: fadeInTitle 0.5s forwards;
-  }
-  
-  .description {
-    color: #cbd5e0; /* text-gray-400 */
-    font-size: 1.125rem; /* text-lg */
-    margin-bottom: 1.5rem; /* mb-6 */
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInDescription 0.5s forwards;
-  }
-  
-/* From Uiverse.io by Spacious74 */ 
-button {
-  font-size: 1.4em;
-  padding: 0.6em 0.8em;
-  border-radius: 0.5em;
-  border: none;
-  background-color: #000;
-  color: #fff;
-  cursor: pointer;
-  box-shadow: 2px 2px 3px #000000b4;
+/* Video Background */
+#video-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+#video-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.container-b {
+/* Main Content */
+.container {
   position: relative;
-  padding: 3px;
-  background: linear-gradient(90deg, #03a9f4, #f441a5);
-  border-radius: 0.9em;
-  transition: all 0.4s ease;
+  z-index: 1;
+  padding: 50px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
 }
 
-.container-b::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  margin: auto;
-  border-radius: 0.9em;
-  z-index: -10;
-  filter: blur(0);
-  transition: filter 0.4s ease;
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
 }
 
-.container-b:hover::before {
-  background: linear-gradient(90deg, #03a9f4, #f441a5);
-  filter: blur(1.2em);
-}
-.container-b:active::before {
-  filter: blur(0.2em);
+.logo {
+  height: 60px;
+  opacity: 0; /* Hidden for animation */
 }
 
-  
+.title {
+  font-size: 28px;
+  color: #00bfff;
+  text-align: center;
+  opacity: 0; /* Hidden for animation */
+}
+
+.description {
+  font-size: 18px;
+  margin-bottom: 20px;
+  text-align: center;
+  opacity: 0; /* Hidden for animation */
+}
+
+/* Card Layout */
+.roles {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: #1e1e1e;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+  width: 250px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease, background 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0; /* Initially hidden */
+  transform: translateY(50px); /* Start position for animation */
+}
+
+.card:hover {
+  background: #292929;
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+}
+
+/* Image Styling */
+.card img {
+  width: 180px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Card Content */
+.card h3 {
+  margin: 15px 0 10px;
+  color: #00bfff;
+}
+
+.card p {
+  color: #ccc;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
   .roles {
-    display: flex;
-    gap: 1.5rem; /* gap-6 */
     flex-wrap: wrap;
     justify-content: center;
   }
-  
-  .role {
-    padding: 0.75rem 1.5rem; /* px-6 py-3 */
-    border-radius: 9999px; /* rounded-full */
-    background: linear-gradient(90deg, #3b82f6, #8b5cf6); /* from-blue-500 to-purple-500 */
-    color: white;
-    font-size: 1.125rem; /* text-lg */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* shadow-lg */
-    text-decoration: none;
-    transition: background 0.3s;
+  .card {
+    width: 45%;
   }
-  
-  .role:hover {
-    background: linear-gradient(90deg, #2563eb, #7c3aed); /* hover:from-blue-600 hover:to-purple-600 */
+}
+@media (max-width: 768px) {
+  .card {
+    width: 100%;
   }
-  
-  @keyframes fadeInLogo {
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-  
-  @keyframes fadeInTitle {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  @keyframes fadeInDescription {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
+}
