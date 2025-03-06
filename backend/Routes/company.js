@@ -3,3 +3,5 @@ import express from "express";
 const router = express.Router();
 
 router.post('/getAllCompany', getAllCompany);
+
+export default router;

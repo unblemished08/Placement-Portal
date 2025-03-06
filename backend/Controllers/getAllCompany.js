@@ -1,5 +1,5 @@
-import Company from '../Models/Company'
-export default getAllCompany = async (req, res) => {
+import Company from '../Models/Company.js'
+export const getAllCompany = async (req, res) => {
   
     try {
       //get data of all companies
