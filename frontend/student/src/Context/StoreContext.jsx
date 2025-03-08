@@ -16,7 +16,7 @@ const StoreContextProvider = (props) => {
       cgpa: "8.0",
       backlogs: "No Backlog Allowed",
       branch: "CS, IT",
-      job_role: "Placement",
+      job_profile: "Placement",
       applied: true,
       isBonus: true,
       group_disscussion: true,
@@ -36,7 +36,7 @@ const StoreContextProvider = (props) => {
       cgpa: "8.0",
       backlogs: "No Backlog Allowed",
       branch: "CS, IT, ECE",
-      job_role: "Placement",
+      job_profile: "Placement",
       applied: false,
       isBonus: false,
       group_disscussion: true,
@@ -56,7 +56,7 @@ const StoreContextProvider = (props) => {
       cgpa: "8.0",
       backlogs: "No Backlog Allowed",
       branch: "CS, IT",
-      job_role: "Placement",
+      job_profile: "Placement",
       applied: true,
       isBonus: true,
       group_disscussion: true,
@@ -76,7 +76,7 @@ const StoreContextProvider = (props) => {
       cgpa: "8.0",
       backlogs: "No Backlog Allowed",
       branch: "CS, IT",
-      job_role: "Placement",
+      job_profile: "Placement",
       applied: false,
       isBonus: true,
       group_disscussion: true,
@@ -96,7 +96,7 @@ const StoreContextProvider = (props) => {
       cgpa: "8.0",
       backlogs: "No Backlog Allowed",
       branch: "CS, IT",
-      job_role: "Placement",
+      job_profile: "Placement",
       applied: true,
       isBonus: false,
       group_disscussion: false,
@@ -116,7 +116,7 @@ const StoreContextProvider = (props) => {
       cgpa: "7.5",
       backlogs: "No Backlog Allowed",
       branch: "CS, IT, ECE, EE",
-      job_role: "Placement",
+      job_profile: "Placement",
       applied: false,
       isBonus: true,
       group_disscussion: true,
@@ -136,7 +136,7 @@ const StoreContextProvider = (props) => {
       cgpa: "6.0",
       backlogs: "No Backlog Allowed",
       branch: "CS, IT",
-      job_role: "Placement, Intern",
+      job_profile: "Placement, Intern",
       applied: true,
       isBonus: false,
       group_disscussion: false,
@@ -156,7 +156,7 @@ const StoreContextProvider = (props) => {
       cgpa: "6.5",
       backlogs: "No Backlog Allowed",
       branch: "ME",
-      job_role: "Placement, Intern",
+      job_profile: "Placement, Intern",
       applied: false,
       isBonus: true,
       group_disscussion: true,
@@ -167,14 +167,15 @@ const StoreContextProvider = (props) => {
       batch: "2025",
     },
   ];
-  const [companies, setData] = useState([]);
+  const [companies, setCompany] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.post('http://localhost:5000/company/getAllCompany');
-        setData(response.data);
-        console.log(response.data);
+        const company_data = await axios.post('http://localhost:5000/company/getAllCompany');
+
+        setCompany(company_data.data);
+        console.log(company_data.data);
 
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -196,7 +197,7 @@ const StoreContextProvider = (props) => {
       cgpa: "8.0",
       backlogs: "No Backlog Allowed",
       branch: "CS, IT",
-      job_role: "Placement",
+      job_profile: "Placement",
       job_id: "ADOBE321",
       email: "careers@adobe.com",
       phoneNumber: "+1 408-536-6000",
@@ -216,7 +217,7 @@ const StoreContextProvider = (props) => {
       cgpa: "8.0",
       backlogs: "No Backlog Allowed",
       branch: "CS, IT",
-      job_role: "Placement",
+      job_profile: "Placement",
       job_id: "GOOG123",
       email: "careers@google.com",
       phoneNumber: "+1 650-253-0000",
@@ -236,7 +237,7 @@ const StoreContextProvider = (props) => {
       cgpa: "8.0",
       backlogs: "No Backlog Allowed",
       branch: "CS, IT",
-      job_role: "Placement",
+      job_profile: "Placement",
       job_id: "VISA2025",
       email: "careers@visa.com",
       phoneNumber: "+1 650-432-3200",
@@ -256,7 +257,7 @@ const StoreContextProvider = (props) => {
       cgpa: "8.0",
       backlogs: "No Backlog Allowed",
       branch: "CS, IT",
-      job_role: "Placement",
+      job_profile: "Placement",
       job_id: "MSFT001",
       email: "careers@microsoft.com",
       phoneNumber: "+1 425-882-8080",
@@ -276,7 +277,7 @@ const StoreContextProvider = (props) => {
       cgpa: "8.0",
       backlogs: "No Backlog Allowed",
       branch: "CS, IT, ECE",
-      job_role: "Placement",
+      job_profile: "Placement",
       job_id: "JPM001",
       email: "careers@jpmorgan.com",
       phoneNumber: "+1 212-270-6000",

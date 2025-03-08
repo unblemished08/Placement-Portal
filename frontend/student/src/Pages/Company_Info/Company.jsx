@@ -9,7 +9,7 @@ const Company = ({
   cgpa,
   backlogs,
   branch,
-  job_role,
+  job_profile,
 }) => {
   return (
 <div className="bg-gray-800 p-6 rounded-lg shadow-[4px_4px_10px_rgba(0,0,0,0.4)] max-w-xl w-full hover:scale-105 transition-transform duration-300 cursor-pointer text-white hover:shadow-[6px_6px_12px_rgba(0,0,150,0.5)] animate-zoomIn">
@@ -45,7 +45,7 @@ const Company = ({
         </div>
         <div className="flex items-start">
           <span className="font-semibold text-gray-400">Job Role :</span>
-          <span className="ml-2 text-gray-300">{job_role}</span>
+          <span className="ml-2 text-gray-300">{job_profile}</span>
         </div>
         <div className="flex items-start">
           <span className="font-semibold text-gray-400">Last Date :</span>

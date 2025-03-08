@@ -27,7 +27,7 @@ const Search = () => {
         .includes(branch.toLowerCase());
     const matchedRole =
       type === "" ||
-      company.job_role
+      company.job_profile
         .split(", ")
         .map((t) => t.toLowerCase())
         .includes(type.toLowerCase());
@@ -44,7 +44,7 @@ const Search = () => {
         .includes(branch.toLowerCase());
     const matchedRole =
       type === "" ||
-      company.job_role
+      company.job_profile
         .split(", ")
         .map((t) => t.toLowerCase())
         .includes(type.toLowerCase());
@@ -119,7 +119,7 @@ const Search = () => {
                   cgpa={company.cgpa}
                   backlogs={company.backlogs}
                   branch={company.branch}
-                  job_role={company.job_role}
+                  job_profile={company.job_profile}
                 />
               </div>
             ))
@@ -139,7 +139,7 @@ const Search = () => {
                 cgpa={company.cgpa}
                 backlogs={company.backlogs}
                 branch={company.branch}
-                job_role={company.job_role}
+                job_profile={company.job_profile}
               />
             </div>
           ))
