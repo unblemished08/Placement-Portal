@@ -6,7 +6,13 @@ export const getHighCtcStudents = async (req, res) => {
     try {
         const threshold = 25;
 
-        const results = await FinalResult.find({ ctc: { $gt: threshold } })
+        const filteredResults = await FinalResult.find();
+        
+        const results = filteredResults.filter(result => {
+            const match = result.ctc.match(/\d+(\.\d+)?/);
+            const numericCTC = match ? parseFloat(match[0]) : null;
+            return numericCTC !== null && numericCTC > threshold;
+        });
 
         const studentRollNos = results.map(result => result.rollNo);
         const job_ids = results.map(result => result.job_id);

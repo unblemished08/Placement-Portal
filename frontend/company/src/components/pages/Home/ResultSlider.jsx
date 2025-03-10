@@ -63,6 +63,9 @@ const ResultSlider = ({ student = [] }) => {
               <span className="font-bold">Roll No:</span> {currentStudent.rollNo}
             </div>
             <div>
+              <span className="font-bold">CTC:</span> {currentStudent.ctc}
+            </div>
+            <div>
               <span className="font-bold">Batch:</span> {currentStudent.batch}
             </div>
             <div>

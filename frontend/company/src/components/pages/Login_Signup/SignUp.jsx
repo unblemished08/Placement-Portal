@@ -17,7 +17,7 @@ const SignUp = () => {
     e.preventDefault();
     console.log("Signup Data:", formData);
 
-    const response=await fetch("http://localhost:5000/auth/student/login",{
+    const response=await fetch("http://localhost:5000/auth/student/signUp",{
       method:"POST",
       headers:{
         "Content-Type":"application/json",

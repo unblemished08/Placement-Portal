@@ -1,6 +1,6 @@
 import Company from "../Models/Company.js";
 
-export const login1 = async (req, res, next) => {
+export const signUp1 = async (req, res, next) => {
   const { name,ctc, job_id,email,phoneNumber,gender,batch,cgpa,backlogs,branch,location,job_profile,companyImage,last_date,password,group_disscussion,tech_rounds,hr_rounds,onlyPWD,OA,aptitude,description
    } = req.body;
 
@@ -123,7 +123,7 @@ export const login1 = async (req, res, next) => {
   }
 };
 
-export const signUp1 = async (req, res, next) => {
+export const login1 = async (req, res, next) => {
   const { name,job_id, password } = req.body;
 
   try {

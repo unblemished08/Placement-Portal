@@ -13,6 +13,7 @@
     "@schedule-x/events-service": "^2.21.0",
     "@schedule-x/react": "^2.20.0",
     "@schedule-x/theme-default": "^2.21.0",
+    "axios": "^1.8.2",
     "framer-motion": "^12.4.7",
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
