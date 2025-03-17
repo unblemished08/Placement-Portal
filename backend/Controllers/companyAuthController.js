@@ -164,3 +164,32 @@ export const login1 = async (req, res, next) => {
     res.status(404).json({ message: error.message });
   }
 };
+
+export const updateCompany = async (req, res, next) => { 
+  const {CompanyReq} = req.body;
+  const job_id = CompanyReq.job_id;
+  
+  try {
+    // Find the company by job_id
+    const company = await Company.findOne({ job_id });
+
+    if (!company) {
+      return next("Company not found");
+    }
+
+    // Update fields dynamically
+    Object.assign(company, CompanyReq);
+
+    // Save the updated company
+    await company.save();
+
+    res.status(200).json({
+      success: true,
+      message: "Company details updated successfully",
+      updatedCompany: company,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: error.message });
+  }
+};

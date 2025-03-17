@@ -354,18 +354,14 @@ const CompanyRequirements = () => {
 
                                         <div className='flex flex-col'>  <div>
                                             <label htmlFor="onlyPWD" className="block font-semibold text-gray-300 mb-1">Is Only PWD Candidates Allowed:</label>
-                                            <select
-                                                value={data.onlyPWD}
-                                                name="onlyPWD"
-                                                id="onlyPWD"
-                                                required={edit}
-                                                readOnly={!edit}
-                                                onChange={handleChange}
-                                                className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                                <option value="" disabled>Select</option>
-                                                <option value={true}>Yes</option>
-                                                <option value={false}>No</option>
-                                            </select>
+                                            <input
+                                                    type="text"
+                                                    value={data.onlyPWD}
+                                                    name="job_id"
+                                                    id="job_id"
+                                                    onChange={handleChange}
+                                                    className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                                            
                                         </div>
                                         </div>
 

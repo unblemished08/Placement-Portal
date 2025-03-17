@@ -30,9 +30,26 @@ const StoreContextProvider = (props) => {
 
   });
   // api req for updating company's requirements
-  const [isChange, setIsChange] = useState(true);
+  const [isChange, setIsChange] = useState(false);
   useEffect(() => {
     // req for changing the data -> send {companyRequirements} in the request
+    const updateData = async () => {
+      if(!isChange) return ;
+      try{
+        const token = localStorage.getItem("token");
+        const res = await axios.post('http://localhost:5000/auth/company/updateReq', {CompanyReq}, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+        setCompanyReq(res.data.updatedCompany);
+        // console.log(res.data.updatedCompany);
+        
+      }catch (error) {
+        console.error("Error updatinig data:", error);
+      }
+    }
+    updateData();
     setIsChange(false);
   }, [isChange]);
   
@@ -52,7 +69,6 @@ const StoreContextProvider = (props) => {
           }
         });
         setCompanyReq(companyResponse.data.company);
-        // console.log(CompanyReq);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -60,9 +76,9 @@ const StoreContextProvider = (props) => {
 
     fetchData();
   }, []);
-  useEffect(()=>{
-    console.log(CompanyReq)
-  },[CompanyReq])
+  // useEffect(()=>{
+  //   console.log(CompanyReq)
+  // },[CompanyReq])
 
   // student applied in particular company
   const appliedStudents = [
