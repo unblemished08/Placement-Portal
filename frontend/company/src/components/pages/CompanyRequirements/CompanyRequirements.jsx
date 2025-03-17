@@ -5,29 +5,11 @@ import { StoreContext } from '../../context/StoreContext';
 const CompanyRequirements = () => {
     const { CompanyReq, setCompanyReq, setIsChange } = useContext(StoreContext);
 
-    const [data, setData] = useState({
-        name: CompanyReq.name,
-        ctc: CompanyReq.ctc,
-        job_id: CompanyReq.job_id,
-        email: CompanyReq.email,
-        phoneNumber: CompanyReq.phoneNumber,
-        gender: CompanyReq.gender,
-        batch: CompanyReq.batch,
-        cgpa: CompanyReq.cgpa,
-        backlogs: CompanyReq.backlogs,
-        branch: CompanyReq.branch,
-        location: CompanyReq.location,
-        companyImage: CompanyReq.companyImage,
-        job_profile: CompanyReq.job_profile,
-        onlyPWD: CompanyReq.onlyPWD,
-        group_disscussion: CompanyReq.group_disscussion,
-        OA: CompanyReq.OA,
-        aptitude: CompanyReq.aptitude,
-        tech_rounds: CompanyReq.tech_rounds,
-        hr_rounds: CompanyReq.hr_rounds,
-        last_date: CompanyReq.last_date,
-        description: CompanyReq.description,
-    });
+    const [data, setData] = useState(CompanyReq);
+
+    useEffect(() => {
+        setData(CompanyReq);
+    }, [CompanyReq]);
 
     const [isNewLocationAdding, setIsNewLocationAddinig] = useState(false); // if we have clicked on add location or not
     const [newLocation, setNewLocation] = useState(""); // stores the new location 
@@ -228,11 +210,7 @@ const CompanyRequirements = () => {
                                                     </td>
                                                     {field === "group_disscussion" ? (
                                                         <td className="px-4 py-2 pl-20 text-gray-400 border-r border-gray-600">
-                                                            {data.group_disscussion === true ? "Yes" : "No"}
-                                                        </td>
-                                                    ) : field === "onlyPWD" ? (
-                                                        <td className="px-4 py-2 pl-20 text-gray-400 border-r border-gray-600">
-                                                            {data.onlyPWD === true ? "Yes" : "No"}
+                                                            {data.group_disscussion === true ? "Yes" : data.group_disscussion === false ? "No" : ""}
                                                         </td>
                                                     ) : ["branch", "job_profile", "location"].includes(field) ? (
                                                         <td className="px-4 py-2 pl-20 text-gray-400 border-r border-gray-600">
